@@ -8,7 +8,7 @@ export default function Home() {
       
       {/* Navigation */}
       <nav className="relative z-10 flex items-center justify-between p-6">
-        <div className="text-white text-2xl font-bold tracking-wider">
+        <div className="text-white text-2xl font-normal tracking-wider font-quantum">
           OMNIVERSE STUDIOS
         </div>
         <div className="hidden md:flex space-x-8">
@@ -33,12 +33,12 @@ export default function Home() {
       {/* Main Content */}
       <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center">
         {/* Main Title */}
-        <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 tracking-wider">
+        <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 tracking-wider font-quantum">
           OMNIVERSE STUDIOS
         </h1>
         
         {/* Subtitle */}
-        <p className="text-xl md:text-2xl text-white mb-4 tracking-wide">
+        <p className="text-xl md:text-2xl text-white mb-4 tracking-wide font-gaming">
           CREAMOS UNIVERSOS INMERSIVOS
         </p>
         <p className="text-lg md:text-xl text-white mb-12 tracking-wide">

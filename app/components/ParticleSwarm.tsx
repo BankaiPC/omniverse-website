@@ -13,7 +13,7 @@ interface ParticleSwarmProps {
 
 export default function ParticleSwarm({ className = '' }: ParticleSwarmProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number>(null);
   const particlesRef = useRef<Particle[]>([]);
   const settingsRef = useRef({
     particleNum: 5000,
