@@ -74,7 +74,7 @@ export default function Footer({ dict, currentLang }: FooterProps) {
       <div className="relative z-10">
         {/* Main Footer Content */}
         <div className="container mx-auto px-6 py-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
             {/* Brand Section */}
             <motion.div
               className="lg:col-span-1"
@@ -183,7 +183,7 @@ export default function Footer({ dict, currentLang }: FooterProps) {
                 {dict?.contact?.newsletter?.description || "Get the latest news and updates about our games and technology."}
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-3">
                 <input
                   type="email"
                   placeholder={dict?.contact?.newsletter?.placeholder || "Enter your email"}
@@ -209,9 +209,9 @@ export default function Footer({ dict, currentLang }: FooterProps) {
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <div className="container mx-auto px-6 py-6">
+          <div className="container mx-auto px-4 md:px-6 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <div className="text-gray-400 text-sm">
+              <div className="text-gray-400 text-sm text-center md:text-left">
                 © {currentYear} {dict?.hero?.title || "OMNIVERSE"}. {dict?.footer?.rights || "All rights reserved."}
               </div>
               

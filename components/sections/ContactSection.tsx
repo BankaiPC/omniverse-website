@@ -218,11 +218,11 @@ export default function ContactSection({ lang, dict }: ContactSectionProps) {
         <div className="absolute top-1/3 right-1/3 w-14 h-14 border-2 border-rose-500/20 rounded-full animate-ping" style={{ animationDelay: '1.8s' }} />
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 py-20">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
         {/* Title */}
         <motion.h2
           ref={titleRef}
-          className="text-5xl md:text-7xl font-quantum font-bold text-center text-white mb-16"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-quantum font-bold text-center text-white mb-8 sm:mb-12 md:mb-16"
           style={{
             textShadow: '0 0 20px rgba(239, 68, 68, 0.5)'
           }}
@@ -232,29 +232,29 @@ export default function ContactSection({ lang, dict }: ContactSectionProps) {
 
         {/* Description */}
         <motion.div
-          className="text-center mb-20 max-w-4xl mx-auto"
+          className="text-center mb-12 sm:mb-16 md:mb-20 max-w-4xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-xl text-gray-300 leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
             {dict?.contact?.description || "Ready to join the future of gaming? We'd love to hear from you. Send us a message and let's create something amazing together."}
           </p>
         </motion.div>
 
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {/* Contact Form */}
           <motion.form
             ref={formRef}
             onSubmit={handleSubmit}
-            className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10"
+            className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-8 border border-white/10"
           >
-            <h3 className="text-2xl font-quantum text-white mb-6">
+            <h3 className="text-xl sm:text-2xl font-quantum text-white mb-4 sm:mb-6">
               {dict?.contact?.form?.title || "Send us a Message"}
             </h3>
             
-            <div className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
+            <div className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm text-gray-300 mb-2">
                     {dict?.contact?.form?.name || "Name"}
@@ -388,7 +388,7 @@ export default function ContactSection({ lang, dict }: ContactSectionProps) {
               <p className="text-gray-300 text-sm mb-4">
                 {dict?.contact?.newsletter?.description || "Get the latest news and updates about our games and technology."}
               </p>
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <input
                   type="email"
                   placeholder={dict?.contact?.newsletter?.placeholder || "Enter your email"}

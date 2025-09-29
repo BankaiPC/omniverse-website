@@ -335,11 +335,6 @@ export default function Navigation({ title, currentLang, dict }: NavigationProps
         className={`font-normal tracking-wider font-quantum text-white transition-all duration-300 ${
           isScrolled ? 'text-xl' : 'text-2xl lg:text-3xl xl:text-4xl'
         }`}
-        whileHover={{ 
-          scale: 1.05,
-          textShadow: "0 0 10px #ff6b35",
-          transition: { duration: 0.3 }
-        }}
         initial={{ opacity: 0 }}
         animate={{
           opacity: isLoaded ? 1 : 0

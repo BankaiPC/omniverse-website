@@ -320,17 +320,17 @@ export default function InvestorsSection({ lang, dict }: InvestorsSectionProps) 
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               {/* Timeline Line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-yellow-400 to-orange-400" />
+              <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-yellow-400 to-orange-400" />
               
               {milestones.map((milestone, index) => (
                 <motion.div
                   key={index}
-                  className={`relative flex items-center mb-12 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  className={`relative flex items-center mb-12 ${index % 2 === 0 ? 'flex-row-reverse md:flex-row' : 'flex-row-reverse md:flex-row-reverse'}`}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? 50 : 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
+                  <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'pl-8 md:pr-8 text-left md:text-right' : 'pl-8 md:pl-8 text-left md:text-left'}`}>
                     <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
                       <div className="text-yellow-400 font-bold text-lg mb-2">
                         {milestone.year}
@@ -345,9 +345,9 @@ export default function InvestorsSection({ lang, dict }: InvestorsSectionProps) 
                   </div>
                   
                   {/* Timeline Dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-yellow-400 rounded-full border-4 border-black" />
+                  <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-yellow-400 rounded-full border-4 border-black" />
                   
-                  <div className="w-1/2" />
+                  <div className="hidden md:block w-1/2" />
                 </motion.div>
               ))}
             </div>
