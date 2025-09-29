@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { Vector3D } from '../lib/Vector3D';
-import { Perlin } from '../lib/Perlin';
-import { SmallPRNG } from '../lib/SmallPRNG';
-import { MouseMonitor } from '../lib/MouseMonitor';
-import { Particle } from '../lib/Particle';
+import { Vector3D } from '@/lib/Vector3D';
+import { Perlin } from '@/lib/Perlin';
+import { SmallPRNG } from '@/lib/SmallPRNG';
+import { MouseMonitor } from '@/lib/MouseMonitor';
+import { Particle } from '@/lib/Particle';
 
 interface ParticleSwarmProps {
   className?: string;
