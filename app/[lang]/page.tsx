@@ -13,7 +13,7 @@ export default async function Home({
   return (
     <div className="relative min-h-screen bg-black overflow-hidden">
       {/* Particle Swarm Background */}
-      <ParticleSwarm />
+      {/* <ParticleSwarm /> */}
       
       {/* Navigation */}
       <Navigation 

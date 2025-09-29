@@ -11,6 +11,9 @@ const orbitron = Orbitron({
 export const metadata: Metadata = {
   title: "Omniverse Studios - Creamos Universos Inmersivos",
   description: "Donde cada batalla cuenta una historia épica. Explora universos inmersivos y únete a nuestro equipo.",
+  icons: {
+    icon: "/Omniverse_logo.png"
+  }
 };
 
 export default function RootLayout({
