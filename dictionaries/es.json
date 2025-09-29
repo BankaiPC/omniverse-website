@@ -284,5 +284,36 @@
     "privacy": "Política de Privacidad",
     "terms": "Términos de Servicio",
     "cookies": "Política de Cookies"
+  },
+  "cookie": {
+    "title": "Preferencias de Cookies",
+    "description": "Utilizamos cookies para mejorar tu experiencia, analizar el tráfico del sitio y personalizar el contenido. Puedes elegir qué tipos de cookies permitir.",
+    "necessary": {
+      "title": "Cookies Necesarias",
+      "description": "Esenciales para que el sitio web funcione correctamente. No se pueden desactivar."
+    },
+    "analytics": {
+      "title": "Cookies de Análisis",
+      "description": "Nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web."
+    },
+    "functional": {
+      "title": "Cookies Funcionales",
+      "description": "Permiten funcionalidad mejorada y personalización."
+    },
+    "marketing": {
+      "title": "Cookies de Marketing",
+      "description": "Se utilizan para entregar anuncios relevantes y rastrear el rendimiento de las campañas."
+    },
+    "acceptAll": "Aceptar Todo",
+    "acceptSelected": "Aceptar Seleccionadas",
+    "rejectAll": "Rechazar Todo",
+    "footer": "Puedes cambiar tus preferencias en cualquier momento en nuestra configuración de privacidad."
+  },
+  "minimal": {
+    "title": "Cookies Requeridas",
+    "description": "Para brindarte la mejor experiencia, necesitamos tu consentimiento para usar cookies. Nuestro sitio web requiere cookies para funcionar correctamente y entregar contenido personalizado.",
+    "privacy": "Respetamos tu privacidad y solo usamos cookies para mejorar tu experiencia. Puedes aprender más sobre nuestra política de cookies.",
+    "acceptButton": "Aceptar Cookies y Continuar",
+    "note": "Al continuar, aceptas nuestro uso de cookies para análisis, funcionalidad y propósitos de marketing."
   }
 }

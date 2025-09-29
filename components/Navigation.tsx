@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
+import { useCookie } from '@/contexts/CookieContext';
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -66,6 +67,8 @@ interface NavigationProps {
 }
 
 export default function Navigation({ title, currentLang, dict }: NavigationProps) {
+  const { preferences } = useCookie();
+  
   // Translated navigation items
   const navItems = {
     home: dict?.navigation?.home || 'Home',
@@ -103,15 +106,29 @@ export default function Navigation({ title, currentLang, dict }: NavigationProps
       // Update scroll state
       setIsScrolled(scrollY > 50);
       
-      // Handle visibility based on scroll direction
-      if (scrollY > 100) { // Only start hiding after 100px scroll
-        if (scrollDirection === 'down' && scrollY > lastScrollY + 5) {
-          setIsVisible(false); // Hide when scrolling down
-        } else if (scrollDirection === 'up' && scrollY < lastScrollY - 5) {
-          setIsVisible(true); // Show when scrolling up
+      // Different behavior based on cookie preferences
+      if (preferences.analytics) {
+        // Enhanced scroll tracking for analytics users
+        if (scrollY > 50) { // Start hiding earlier for analytics users
+          if (scrollDirection === 'down' && scrollY > lastScrollY + 3) {
+            setIsVisible(false);
+          } else if (scrollDirection === 'up' && scrollY < lastScrollY - 3) {
+            setIsVisible(true);
+          }
+        } else {
+          setIsVisible(true);
         }
       } else {
-        setIsVisible(true); // Always show at the top
+        // Standard behavior for non-analytics users
+        if (scrollY > 100) {
+          if (scrollDirection === 'down' && scrollY > lastScrollY + 5) {
+            setIsVisible(false);
+          } else if (scrollDirection === 'up' && scrollY < lastScrollY - 5) {
+            setIsVisible(true);
+          }
+        } else {
+          setIsVisible(true);
+        }
       }
       
       setLastScrollY(scrollY);
@@ -119,7 +136,7 @@ export default function Navigation({ title, currentLang, dict }: NavigationProps
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, preferences.analytics]);
 
   // Navigation scroll function
   const scrollToSection = (sectionId: string) => {

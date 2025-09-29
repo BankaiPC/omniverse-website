@@ -284,5 +284,36 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "cookies": "Cookie Policy"
+  },
+  "cookie": {
+    "title": "Cookie Preferences",
+    "description": "We use cookies to enhance your experience, analyze site traffic, and personalize content. You can choose which types of cookies to allow.",
+    "necessary": {
+      "title": "Necessary Cookies",
+      "description": "Essential for the website to function properly. Cannot be disabled."
+    },
+    "analytics": {
+      "title": "Analytics Cookies",
+      "description": "Help us understand how visitors interact with our website."
+    },
+    "functional": {
+      "title": "Functional Cookies",
+      "description": "Enable enhanced functionality and personalization."
+    },
+    "marketing": {
+      "title": "Marketing Cookies",
+      "description": "Used to deliver relevant advertisements and track campaign performance."
+    },
+    "acceptAll": "Accept All",
+    "acceptSelected": "Accept Selected",
+    "rejectAll": "Reject All",
+    "footer": "You can change your preferences at any time in our privacy settings."
+  },
+  "minimal": {
+    "title": "Cookies Required",
+    "description": "To provide you with the best experience, we need your consent to use cookies. Our website requires cookies to function properly and deliver personalized content.",
+    "privacy": "We respect your privacy and only use cookies to enhance your experience. You can learn more about our cookie policy.",
+    "acceptButton": "Accept Cookies & Continue",
+    "note": "By continuing, you agree to our use of cookies for analytics, functionality, and marketing purposes."
   }
 }

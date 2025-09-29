@@ -10,6 +10,9 @@ import TeamSection from '@/components/sections/TeamSection';
 import InvestorsSection from '@/components/sections/InvestorsSection';
 import ContactSection from '@/components/sections/ContactSection';
 import Footer from '@/components/Footer';
+import CookieModal from '@/components/CookieModal';
+import ContentWrapper from '@/components/ContentWrapper';
+import { CookieProvider } from '@/contexts/CookieContext';
 
 export default function Home({
   params,
@@ -56,16 +59,21 @@ export default function Home({
     );
   }
 
-  return (
-    <div className="relative">
-      <HomeSection lang={lang} dict={dict} />
-      <AboutSection lang={lang} dict={dict} />
-      <GameSection lang={lang} dict={dict} />
-      <AcademySection lang={lang} dict={dict} />
-      <TeamSection lang={lang} dict={dict} />
-      <InvestorsSection lang={lang} dict={dict} />
-      <ContactSection lang={lang} dict={dict} />
-      <Footer dict={dict} currentLang={lang} />
-    </div>
-  );
+        return (
+          <CookieProvider>
+            <ContentWrapper dict={dict} currentLang={lang}>
+              <div className="relative">
+                <HomeSection lang={lang} dict={dict} />
+                <AboutSection lang={lang} dict={dict} />
+                <GameSection lang={lang} dict={dict} />
+                <AcademySection lang={lang} dict={dict} />
+                <TeamSection lang={lang} dict={dict} />
+                <InvestorsSection lang={lang} dict={dict} />
+                <ContactSection lang={lang} dict={dict} />
+                <Footer dict={dict} currentLang={lang} />
+              </div>
+            </ContentWrapper>
+            <CookieModal dict={dict} currentLang={lang} />
+          </CookieProvider>
+        );
 }
