@@ -1,26 +1,288 @@
 {
   "navigation": {
     "home": "Home",
-    "projects": "Projects",
+    "about": "About",
+    "game": "Game",
+    "academy": "Academy",
     "team": "Team",
-    "careers": "Careers",
+    "investors": "Investors",
     "contact": "Contact"
   },
   "hero": {
     "title": "OMNIVERSE GAMES",
-    "subtitle": "WE CREATE IMMERSIVE UNIVERSES",
-    "description": "Where every battle tells an epic story"
+    "subtitle": "The Future of Gaming",
+    "description": "Experience the next generation of immersive gaming technology. Join us on a journey through infinite possibilities.",
+    "playButton": "Play Now",
+    "learnButton": "Learn More"
   },
-  "buttons": {
-    "exploreProjects": "Explore Projects",
-    "joinTeam": "Join the Team",
-    "viewBattlezone": "View The Primordial Battlezone"
+  "about": {
+    "title": "About Us",
+    "description": "We are pioneers in the gaming industry, dedicated to creating immersive experiences that transcend reality. Our mission is to push the boundaries of technology and bring people together through innovative gaming solutions.",
+    "mission": {
+      "title": "Our Mission",
+      "description": "To revolutionize the gaming industry through cutting-edge technology and create unforgettable experiences for players worldwide."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be the leading force in creating the future of interactive entertainment and virtual experiences."
+    },
+    "features": {
+      "innovation": {
+        "title": "Innovation",
+        "description": "Cutting-edge technology that pushes the boundaries of what's possible in gaming."
+      },
+      "global": {
+        "title": "Global Reach",
+        "description": "Connecting players worldwide through immersive virtual experiences."
+      },
+      "gaming": {
+        "title": "Gaming Excellence",
+        "description": "Delivering unparalleled gaming experiences with attention to every detail."
+      },
+      "future": {
+        "title": "Future Vision",
+        "description": "Building the future of entertainment and human interaction."
+      }
+    }
   },
-  "status": {
-    "online": "System online",
-    "launchYear": "Launch year"
+  "games": {
+    "title": "Our Games",
+    "cyberRealm": {
+      "title": "Cyber Realm",
+      "description": "Futuristic cyberpunk adventure in a neon-lit world"
+    },
+    "spaceOdyssey": {
+      "title": "Space Odyssey",
+      "description": "Epic space exploration and combat simulation"
+    },
+    "mysticWorlds": {
+      "title": "Mystic Worlds",
+      "description": "Fantasy adventure with magical creatures and spells"
+    },
+    "playButton": "Learn More",
+    "gameFeatures": {
+      "title": "Game Features",
+      "vr": {
+        "title": "VR Support",
+        "description": "Immersive virtual reality experience"
+      },
+      "multiplayer": {
+        "title": "Multiplayer",
+        "description": "Play with friends worldwide"
+      },
+      "graphics": {
+        "title": "4K Graphics",
+        "description": "Stunning visual fidelity"
+      },
+      "performance": {
+        "title": "High Performance",
+        "description": "Optimized for smooth gameplay"
+      }
+    }
   },
-  "instructions": {
-    "mouse": "Click and drag to attract • Right click to repulse • Mouse-wheel click for time dilation"
+  "academy": {
+    "title": "Omniverse Academy",
+    "description": "Master the art of game development and immersive technology with our comprehensive courses designed by industry experts.",
+    "courses": {
+      "gameDev": {
+        "title": "Game Development",
+        "description": "Learn to create immersive games from scratch"
+      },
+      "vrDesign": {
+        "title": "VR Design",
+        "description": "Master virtual reality design principles"
+      },
+      "aiGaming": {
+        "title": "AI in Gaming",
+        "description": "Integrate artificial intelligence in games"
+      },
+      "gameArt": {
+        "title": "Game Art & Animation",
+        "description": "Create stunning visuals and animations"
+      }
+    },
+    "stats": {
+      "students": "Students",
+      "courses": "Courses",
+      "success": "Success Rate",
+      "support": "Support"
+    },
+    "enrollButton": "Enroll Now",
+    "cta": {
+      "title": "Ready to Start Your Journey?",
+      "description": "Join thousands of students who have already transformed their careers with our comprehensive courses.",
+      "browseButton": "Browse All Courses",
+      "freeTrialButton": "Start Free Trial"
+    }
+  },
+  "team": {
+    "title": "Meet Our Team",
+    "description": "Our diverse team of passionate professionals is dedicated to creating extraordinary gaming experiences that inspire and entertain players worldwide.",
+    "members": {
+      "alex": {
+        "name": "Alex Chen",
+        "role": "CEO & Founder",
+        "bio": "Visionary leader with 15+ years in gaming industry"
+      },
+      "sarah": {
+        "name": "Sarah Johnson",
+        "role": "CTO",
+        "bio": "Tech innovator specializing in VR and AI"
+      },
+      "mike": {
+        "name": "Mike Rodriguez",
+        "role": "Lead Game Designer",
+        "bio": "Creative director with award-winning game portfolio"
+      },
+      "emma": {
+        "name": "Emma Wilson",
+        "role": "Head of Art",
+        "bio": "Visual artist creating stunning immersive experiences"
+      },
+      "david": {
+        "name": "David Kim",
+        "role": "Lead Developer",
+        "bio": "Full-stack developer passionate about performance"
+      },
+      "lisa": {
+        "name": "Lisa Thompson",
+        "role": "Community Manager",
+        "bio": "Building and nurturing our global gaming community"
+      }
+    },
+    "values": {
+      "title": "Our Values",
+      "innovation": {
+        "title": "Innovation",
+        "description": "We constantly push boundaries and explore new possibilities"
+      },
+      "collaboration": {
+        "title": "Collaboration",
+        "description": "Great things happen when we work together"
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "We strive for the highest quality in everything we do"
+      },
+      "impact": {
+        "title": "Impact",
+        "description": "Creating positive change in the gaming world"
+      }
+    }
+  },
+  "investors": {
+    "title": "Our Investors",
+    "description": "We're backed by leading investors who share our vision of transforming the gaming industry through innovative technology and immersive experiences.",
+    "ventureCapital": {
+      "name": "TechVentures Capital",
+      "type": "Series A Lead",
+      "description": "Leading venture capital firm focused on gaming and tech startups"
+    },
+    "gamingFund": {
+      "name": "Gaming Innovation Fund",
+      "type": "Strategic Investor",
+      "description": "Specialized gaming industry investment fund"
+    },
+    "corporate": {
+      "name": "Meta Gaming Corp",
+      "type": "Corporate Partner",
+      "description": "Strategic partnership with major gaming corporation"
+    },
+    "angel": {
+      "name": "Angel Investors Group",
+      "type": "Angel Round",
+      "description": "Group of successful gaming industry entrepreneurs"
+    },
+    "metrics": {
+      "totalFunding": "Total Funding Raised",
+      "totalFundingDesc": "Across multiple funding rounds",
+      "investors": "Investors",
+      "investorsDesc": "Leading industry investors",
+      "growth": "Revenue Growth",
+      "growthDesc": "Year-over-year growth",
+      "countries": "Countries",
+      "countriesDesc": "Global market presence"
+    },
+    "timeline": {
+      "title": "Our Journey"
+    },
+    "milestones": {
+      "seriesA": {
+        "title": "Series A Funding",
+        "description": "Raised $15M to accelerate product development"
+      },
+      "launch": {
+        "title": "Product Launch",
+        "description": "Successfully launched first gaming platform"
+      },
+      "seed": {
+        "title": "Seed Funding",
+        "description": "Initial $5M seed round to build MVP"
+      },
+      "founded": {
+        "title": "Company Founded",
+        "description": "Started with vision to revolutionize gaming"
+      }
+    },
+    "cta": {
+      "title": "Interested in Investing?",
+      "description": "Join our mission to revolutionize gaming. Contact us to learn about investment opportunities.",
+      "contactButton": "Contact Us",
+      "pitchButton": "View Pitch Deck"
+    }
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "description": "Ready to join the future of gaming? We'd love to hear from you. Send us a message and let's create something amazing together.",
+    "form": {
+      "title": "Send us a Message",
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "What's this about?",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your project or idea...",
+      "submitButton": "Send Message"
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": {
+        "title": "Address",
+        "content": "123 Gaming Street, Tech City, TC 12345"
+      },
+      "phone": {
+        "title": "Phone",
+        "content": "+1 (555) 123-4567"
+      },
+      "email": {
+        "title": "Email",
+        "content": "hello@omniverse.com"
+      },
+      "hours": {
+        "title": "Hours",
+        "content": "Mon-Fri 9AM-6PM PST"
+      }
+    },
+    "social": {
+      "title": "Follow Us"
+    },
+    "newsletter": {
+      "title": "Stay Updated",
+      "description": "Get the latest news and updates about our games and technology.",
+      "placeholder": "Enter your email",
+      "button": "Subscribe"
+    }
+  },
+  "footer": {
+    "description": "Experience the next generation of immersive gaming technology. Join us on a journey through infinite possibilities.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact Info",
+    "newsletter": "Stay Updated",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Policy"
   }
 }

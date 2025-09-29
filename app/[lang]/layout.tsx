@@ -12,10 +12,8 @@ export default async function LangLayout({
   const { lang } = await params;
   
   return (
-    <html lang={lang}>
-      <body>
-        {children}
-      </body>
-    </html>
+    <div data-lang={lang}>
+      {children}
+    </div>
   );
 }

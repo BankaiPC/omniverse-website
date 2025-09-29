@@ -1,26 +1,288 @@
 {
   "navigation": {
     "home": "Inicio",
-    "projects": "Proyectos",
+    "about": "Acerca de",
+    "game": "Juego",
+    "academy": "Academia",
     "team": "Equipo",
-    "careers": "Carreras",
+    "investors": "Inversores",
     "contact": "Contacto"
   },
   "hero": {
     "title": "OMNIVERSE GAMES",
-    "subtitle": "CREAMOS UNIVERSOS INMERSIVOS",
-    "description": "Donde cada batalla cuenta una historia épica"
+    "subtitle": "El Futuro del Gaming",
+    "description": "Experimenta la próxima generación de tecnología de gaming inmersivo. Únete a nosotros en un viaje a través de posibilidades infinitas.",
+    "playButton": "Jugar Ahora",
+    "learnButton": "Saber Más"
   },
-  "buttons": {
-    "exploreProjects": "Explorar Proyectos",
-    "joinTeam": "Únete al Equipo",
-    "viewBattlezone": "Ver The Primordial Battlezone"
+  "about": {
+    "title": "Acerca de Nosotros",
+    "description": "Somos pioneros en la industria del gaming, dedicados a crear experiencias inmersivas que trascienden la realidad. Nuestra misión es empujar los límites de la tecnología y unir a las personas a través de soluciones de gaming innovadoras.",
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "Revolucionar la industria del gaming a través de tecnología de vanguardia y crear experiencias inolvidables para jugadores de todo el mundo."
+    },
+    "vision": {
+      "title": "Nuestra Visión",
+      "description": "Ser la fuerza líder en la creación del futuro del entretenimiento interactivo y las experiencias virtuales."
+    },
+    "features": {
+      "innovation": {
+        "title": "Innovación",
+        "description": "Tecnología de vanguardia que empuja los límites de lo que es posible en el gaming."
+      },
+      "global": {
+        "title": "Alcance Global",
+        "description": "Conectando jugadores de todo el mundo a través de experiencias virtuales inmersivas."
+      },
+      "gaming": {
+        "title": "Excelencia en Gaming",
+        "description": "Entregando experiencias de gaming incomparables con atención a cada detalle."
+      },
+      "future": {
+        "title": "Visión del Futuro",
+        "description": "Construyendo el futuro del entretenimiento y la interacción humana."
+      }
+    }
   },
-  "status": {
-    "online": "Sistema en línea",
-    "launchYear": "Año de lanzamiento"
+  "games": {
+    "title": "Nuestros Juegos",
+    "cyberRealm": {
+      "title": "Reino Cibernético",
+      "description": "Aventura cyberpunk futurista en un mundo iluminado por neón"
+    },
+    "spaceOdyssey": {
+      "title": "Odisea Espacial",
+      "description": "Simulación épica de exploración espacial y combate"
+    },
+    "mysticWorlds": {
+      "title": "Mundos Místicos",
+      "description": "Aventura de fantasía con criaturas mágicas y hechizos"
+    },
+    "playButton": "Saber Más",
+    "gameFeatures": {
+      "title": "Características del Juego",
+      "vr": {
+        "title": "Soporte VR",
+        "description": "Experiencia de realidad virtual inmersiva"
+      },
+      "multiplayer": {
+        "title": "Multijugador",
+        "description": "Juega con amigos de todo el mundo"
+      },
+      "graphics": {
+        "title": "Gráficos 4K",
+        "description": "Fidelidad visual impresionante"
+      },
+      "performance": {
+        "title": "Alto Rendimiento",
+        "description": "Optimizado para un gameplay fluido"
+      }
+    }
   },
-  "instructions": {
-    "mouse": "Click and drag to attract • Right click to repulse • Mouse-wheel click for time dilation"
+  "academy": {
+    "title": "Academia Omniverse",
+    "description": "Domina el arte del desarrollo de juegos y la tecnología inmersiva con nuestros cursos integrales diseñados por expertos de la industria.",
+    "courses": {
+      "gameDev": {
+        "title": "Desarrollo de Juegos",
+        "description": "Aprende a crear juegos inmersivos desde cero"
+      },
+      "vrDesign": {
+        "title": "Diseño VR",
+        "description": "Domina los principios del diseño de realidad virtual"
+      },
+      "aiGaming": {
+        "title": "IA en Gaming",
+        "description": "Integra inteligencia artificial en juegos"
+      },
+      "gameArt": {
+        "title": "Arte y Animación de Juegos",
+        "description": "Crea visuales y animaciones impresionantes"
+      }
+    },
+    "stats": {
+      "students": "Estudiantes",
+      "courses": "Cursos",
+      "success": "Tasa de Éxito",
+      "support": "Soporte"
+    },
+    "enrollButton": "Inscribirse Ahora",
+    "cta": {
+      "title": "¿Listo para Comenzar tu Viaje?",
+      "description": "Únete a miles de estudiantes que ya han transformado sus carreras con nuestros cursos integrales.",
+      "browseButton": "Explorar Todos los Cursos",
+      "freeTrialButton": "Comenzar Prueba Gratuita"
+    }
+  },
+  "team": {
+    "title": "Conoce Nuestro Equipo",
+    "description": "Nuestro diverso equipo de profesionales apasionados está dedicado a crear experiencias de gaming extraordinarias que inspiran y entretienen a jugadores de todo el mundo.",
+    "members": {
+      "alex": {
+        "name": "Alex Chen",
+        "role": "CEO y Fundador",
+        "bio": "Líder visionario con más de 15 años en la industria del gaming"
+      },
+      "sarah": {
+        "name": "Sarah Johnson",
+        "role": "CTO",
+        "bio": "Innovadora tecnológica especializada en VR e IA"
+      },
+      "mike": {
+        "name": "Mike Rodriguez",
+        "role": "Diseñador Principal de Juegos",
+        "bio": "Director creativo con portafolio de juegos galardonado"
+      },
+      "emma": {
+        "name": "Emma Wilson",
+        "role": "Jefa de Arte",
+        "bio": "Artista visual creando experiencias inmersivas impresionantes"
+      },
+      "david": {
+        "name": "David Kim",
+        "role": "Desarrollador Principal",
+        "bio": "Desarrollador full-stack apasionado por el rendimiento"
+      },
+      "lisa": {
+        "name": "Lisa Thompson",
+        "role": "Gerente de Comunidad",
+        "bio": "Construyendo y nutriendo nuestra comunidad global de gaming"
+      }
+    },
+    "values": {
+      "title": "Nuestros Valores",
+      "innovation": {
+        "title": "Innovación",
+        "description": "Constantemente empujamos límites y exploramos nuevas posibilidades"
+      },
+      "collaboration": {
+        "title": "Colaboración",
+        "description": "Cosas grandiosas suceden cuando trabajamos juntos"
+      },
+      "excellence": {
+        "title": "Excelencia",
+        "description": "Nos esforzamos por la más alta calidad en todo lo que hacemos"
+      },
+      "impact": {
+        "title": "Impacto",
+        "description": "Creando cambio positivo en el mundo del gaming"
+      }
+    }
+  },
+  "investors": {
+    "title": "Nuestros Inversores",
+    "description": "Estamos respaldados por inversores líderes que comparten nuestra visión de transformar la industria del gaming a través de tecnología innovadora y experiencias inmersivas.",
+    "ventureCapital": {
+      "name": "TechVentures Capital",
+      "type": "Líder Serie A",
+      "description": "Firma de capital de riesgo líder enfocada en startups de gaming y tecnología"
+    },
+    "gamingFund": {
+      "name": "Fondo de Innovación Gaming",
+      "type": "Inversor Estratégico",
+      "description": "Fondo de inversión especializado en la industria del gaming"
+    },
+    "corporate": {
+      "name": "Meta Gaming Corp",
+      "type": "Socio Corporativo",
+      "description": "Asociación estratégica con corporación de gaming importante"
+    },
+    "angel": {
+      "name": "Grupo de Inversores Ángel",
+      "type": "Ronda Ángel",
+      "description": "Grupo de empresarios exitosos de la industria del gaming"
+    },
+    "metrics": {
+      "totalFunding": "Financiación Total Recaudada",
+      "totalFundingDesc": "A través de múltiples rondas de financiación",
+      "investors": "Inversores",
+      "investorsDesc": "Inversores líderes de la industria",
+      "growth": "Crecimiento de Ingresos",
+      "growthDesc": "Crecimiento año tras año",
+      "countries": "Países",
+      "countriesDesc": "Presencia en el mercado global"
+    },
+    "timeline": {
+      "title": "Nuestro Viaje"
+    },
+    "milestones": {
+      "seriesA": {
+        "title": "Financiación Serie A",
+        "description": "Recaudamos $15M para acelerar el desarrollo del producto"
+      },
+      "launch": {
+        "title": "Lanzamiento del Producto",
+        "description": "Lanzamos exitosamente la primera plataforma de gaming"
+      },
+      "seed": {
+        "title": "Financiación Semilla",
+        "description": "Ronda semilla inicial de $5M para construir MVP"
+      },
+      "founded": {
+        "title": "Empresa Fundada",
+        "description": "Comenzamos con la visión de revolucionar el gaming"
+      }
+    },
+    "cta": {
+      "title": "¿Interesado en Invertir?",
+      "description": "Únete a nuestra misión de revolucionar el gaming. Contáctanos para conocer las oportunidades de inversión.",
+      "contactButton": "Contáctanos",
+      "pitchButton": "Ver Pitch Deck"
+    }
+  },
+  "contact": {
+    "title": "Ponte en Contacto",
+    "description": "¿Listo para unirte al futuro del gaming? Nos encantaría saber de ti. Envíanos un mensaje y creemos algo increíble juntos.",
+    "form": {
+      "title": "Envíanos un Mensaje",
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "email": "Email",
+      "emailPlaceholder": "tu@email.com",
+      "subject": "Asunto",
+      "subjectPlaceholder": "¿De qué se trata?",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntanos sobre tu proyecto o idea...",
+      "submitButton": "Enviar Mensaje"
+    },
+    "info": {
+      "title": "Información de Contacto",
+      "address": {
+        "title": "Dirección",
+        "content": "123 Gaming Street, Tech City, TC 12345"
+      },
+      "phone": {
+        "title": "Teléfono",
+        "content": "+1 (555) 123-4567"
+      },
+      "email": {
+        "title": "Email",
+        "content": "hello@omniverse.com"
+      },
+      "hours": {
+        "title": "Horarios",
+        "content": "Lun-Vie 9AM-6PM PST"
+      }
+    },
+    "social": {
+      "title": "Síguenos"
+    },
+    "newsletter": {
+      "title": "Mantente Actualizado",
+      "description": "Recibe las últimas noticias y actualizaciones sobre nuestros juegos y tecnología.",
+      "placeholder": "Ingresa tu email",
+      "button": "Suscribirse"
+    }
+  },
+  "footer": {
+    "description": "Experimenta la próxima generación de tecnología de gaming inmersivo. Únete a nosotros en un viaje a través de posibilidades infinitas.",
+    "quickLinks": "Enlaces Rápidos",
+    "contact": "Información de Contacto",
+    "newsletter": "Mantente Actualizado",
+    "rights": "Todos los derechos reservados.",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "cookies": "Política de Cookies"
   }
 }

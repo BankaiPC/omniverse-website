@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
 
 // Register ScrollTrigger plugin
@@ -61,30 +61,29 @@ const AnimatedText = ({ text }: { text: string }) => {
 
 interface NavigationProps {
   title: string;
-  navItems: {
-    home: string;
-    projects: string;
-    team: string;
-    careers: string;
-    contact: string;
-  };
   currentLang: 'en' | 'es';
+  dict: any;
 }
 
-export default function Navigation({ title, navItems, currentLang }: NavigationProps) {
+export default function Navigation({ title, currentLang, dict }: NavigationProps) {
+  // Translated navigation items
+  const navItems = {
+    home: dict?.navigation?.home || 'Home',
+    about: dict?.navigation?.about || 'About',
+    game: dict?.navigation?.game || 'Game',
+    academy: dict?.navigation?.academy || 'Academy',
+    team: dict?.navigation?.team || 'Team',
+    investors: dict?.navigation?.investors || 'Investors',
+    contact: dict?.navigation?.contact || 'Contact'
+  };
   const navRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const navLinksRef = useRef<HTMLDivElement>(null);
   const languageSwitcherRef = useRef<HTMLDivElement>(null);
-  const [isHidden, setIsHidden] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
   const [isLoaded, setIsLoaded] = useState(false);
-
-  // Framer Motion scroll hooks
-  const { scrollY } = useScroll();
-  const navY = useTransform(scrollY, [0, 100], [0, -100]);
-  const navOpacity = useTransform(scrollY, [0, 50], [1, 0.8]);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   // Loading animation effect
   useEffect(() => {
@@ -95,43 +94,43 @@ export default function Navigation({ title, navItems, currentLang }: NavigationP
     return () => clearTimeout(timer);
   }, []);
 
+  // Scroll detection for blur, padding effects, and visibility
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const direction = currentScrollY > lastScrollY ? 'down' : 'up';
+      const scrollY = window.scrollY;
+      const scrollDirection = scrollY > lastScrollY ? 'down' : 'up';
       
-      setScrollDirection(direction);
-      setLastScrollY(currentScrollY);
-
-      // Hide/show navigation based on scroll direction
-      if (direction === 'down' && currentScrollY > 100 && !isHidden) {
-        setIsHidden(true);
-        // Reduce padding when hiding
-        if (navRef.current) {
-          gsap.to(navRef.current, {
-            paddingTop: "0.75rem",
-            paddingBottom: "0.75rem",
-            duration: 0.3,
-            ease: "power2.inOut"
-          });
+      // Update scroll state
+      setIsScrolled(scrollY > 50);
+      
+      // Handle visibility based on scroll direction
+      if (scrollY > 100) { // Only start hiding after 100px scroll
+        if (scrollDirection === 'down' && scrollY > lastScrollY + 5) {
+          setIsVisible(false); // Hide when scrolling down
+        } else if (scrollDirection === 'up' && scrollY < lastScrollY - 5) {
+          setIsVisible(true); // Show when scrolling up
         }
-      } else if (direction === 'up' && isHidden) {
-        setIsHidden(false);
-        // Restore padding when showing
-        if (navRef.current) {
-          gsap.to(navRef.current, {
-            paddingTop: "1.5rem",
-            paddingBottom: "1.5rem",
-            duration: 0.3,
-            ease: "power2.inOut"
-          });
-        }
+      } else {
+        setIsVisible(true); // Always show at the top
       }
+      
+      setLastScrollY(scrollY);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY, isHidden]);
+  }, [lastScrollY]);
+
+  // Navigation scroll function
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
 
   useEffect(() => {
     if (!navRef.current || !titleRef.current || !navLinksRef.current || !languageSwitcherRef.current) return;
@@ -226,38 +225,44 @@ export default function Navigation({ title, navItems, currentLang }: NavigationP
   return (
     <motion.nav 
       ref={navRef}
-      className="fixed top-0 left-0 right-0 flex items-center justify-between px-4 py-4 md:px-8 md:py-6 lg:px-12 lg:py-8 transition-all duration-300"
+      className={`fixed top-0 left-0 right-0 flex items-center transition-all duration-300 backdrop-blur-md bg-black/20 shadow-lg ${
+        isScrolled && !isVisible
+          ? 'justify-center px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4' 
+          : 'justify-between px-4 py-4 md:px-8 md:py-6 lg:px-12 lg:py-8'
+      }`}
       style={{ 
         zIndex: 1000,
-        y: isHidden ? -100 : 0,
-        opacity: isHidden ? 0 : 1,
-        paddingTop: '1.5rem',
-        paddingBottom: '1.5rem',
-        paddingLeft: '2rem',
-        paddingRight: '2rem'
+        paddingTop: (isScrolled && !isVisible) ? '0.75rem' : '1.5rem',
+        paddingBottom: (isScrolled && !isVisible) ? '0.75rem' : '1.5rem',
+        paddingLeft: (isScrolled && !isVisible) ? '1rem' : '2rem',
+        paddingRight: (isScrolled && !isVisible) ? '1rem' : '2rem',
+        backdropFilter: isScrolled ? 'blur(12px)' : 'none',
+        backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.3)' : 'transparent',
+        boxShadow: isScrolled ? '0 8px 32px rgba(0, 0, 0, 0.3)' : 'none'
       }}
       initial={{ y: -120, opacity: 0 }}
       animate={{ 
-        y: isLoaded ? (isHidden ? -100 : 0) : -120,
-        opacity: isLoaded ? (isHidden ? 0 : 1) : 0
+        y: isLoaded ? 0 : -120,
+        opacity: isLoaded ? 1 : 0
       }}
       transition={{ 
-        duration: 0.8, 
+        duration: 0.3, 
         ease: "easeOut",
         delay: isLoaded ? 0 : 0.2
       }}
     >
       <motion.div 
         ref={titleRef}
-        className="text-white text-2xl font-normal tracking-wider font-quantum"
+        className={`font-normal tracking-wider font-quantum text-white transition-all duration-300 ${
+          isScrolled ? 'text-xl' : 'text-2xl'
+        }`}
         whileHover={{ 
           scale: 1.05,
           textShadow: "0 0 10px #ff6b35",
           transition: { duration: 0.3 }
         }}
-        initial={{ y: -30, opacity: 0 }}
+        initial={{ opacity: 0 }}
         animate={{
-          y: isLoaded ? (scrollDirection === 'down' ? -5 : 0) : -30,
           opacity: isLoaded ? 1 : 0
         }}
         transition={{ 
@@ -268,10 +273,11 @@ export default function Navigation({ title, navItems, currentLang }: NavigationP
       >
         {title}
       </motion.div>
-      <div className="flex items-center gap-6">
-        <motion.div 
-          ref={navLinksRef}
-          className="hidden md:flex space-x-6 lg:space-x-8 px-4"
+      {(!isScrolled || isVisible) && (
+        <div className="flex items-center gap-6">
+          <motion.div 
+            ref={navLinksRef}
+            className="hidden md:flex px-4 transition-all duration-300 space-x-6 lg:space-x-8"
           initial={{ opacity: 0, x: 50, y: -20 }}
           animate={{ 
             opacity: isLoaded ? 1 : 0, 
@@ -285,20 +291,18 @@ export default function Navigation({ title, navItems, currentLang }: NavigationP
           }}
         >
           {Object.entries(navItems).map(([key, value], index) => (
-            <motion.a 
+            <motion.button 
               key={key}
-              href="#" 
-              className={`text-white hover:text-orange-400 transition-colors px-3 py-2 rounded-md ${
-                key === 'home' ? 'border-b-2 border-orange-400 pb-1' : ''
-              }`}
+              onClick={() => scrollToSection(key)}
+              className="text-white hover:text-orange-400 transition-colors px-3 py-2 rounded-md"
               whileTap={{ scale: 0.95 }}
               animate={{
-                y: scrollDirection === 'down' ? -3 : 0,
+                y: 0,
                 transition: { duration: 0.2, delay: index * 0.05 }
               }}
             >
               <AnimatedText text={value} />
-            </motion.a>
+            </motion.button>
           ))}
         </motion.div>
         <motion.div 
@@ -306,17 +310,17 @@ export default function Navigation({ title, navItems, currentLang }: NavigationP
           initial={{ opacity: 0, y: -20 }}
           animate={{ 
             opacity: isLoaded ? 1 : 0, 
-            y: isLoaded ? (scrollDirection === 'down' ? -3 : 0) : -20
+            y: isLoaded ? 0 : -20
           }}
           transition={{ 
             duration: 0.8, 
-            delay: isLoaded ? 0.7 : 0,
-            y: { duration: 0.2 }
+            delay: isLoaded ? 0.7 : 0
           }}
         >
           <LanguageSwitcher currentLang={currentLang} />
         </motion.div>
-      </div>
+        </div>
+      )}
     </motion.nav>
   );
 }
