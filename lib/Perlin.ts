@@ -1,14 +1,14 @@
 import { Vector3D } from './Vector3D';
 
 export class Perlin {
-  grad3: Vector3D[];
-  p: number[];
-  permutation: number[];
-  gradP: Vector3D[];
-  F2: number;
-  G2: number;
-  F3: number;
-  G3: number;
+  grad3: Vector3D[] = [];
+  p: number[] = [];
+  permutation: number[] = [];
+  gradP: Vector3D[] = [];
+  F2: number = 0;
+  G2: number = 0;
+  F3: number = 0;
+  G3: number = 0;
 
   constructor() {
     this.grad3 = [

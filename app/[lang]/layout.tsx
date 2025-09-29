@@ -7,12 +7,15 @@ export default async function LangLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ lang: 'en' | 'es' }>;
+  params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
   
+  // Type assertion to ensure lang is one of our supported languages
+  const validLang = (lang === 'en' || lang === 'es') ? lang as 'en' | 'es' : 'en';
+  
   return (
-    <div data-lang={lang}>
+    <div data-lang={validLang}>
       {children}
     </div>
   );

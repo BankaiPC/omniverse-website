@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 const locales = ['en', 'es'];
 const defaultLocale = 'es';
 
 // Get the preferred locale from the Accept-Language header
-function getLocale(request: Request): string {
+function getLocale(request: NextRequest): string {
   const acceptLanguage = request.headers.get('accept-language');
   if (!acceptLanguage) return defaultLocale;
 
@@ -18,7 +18,7 @@ function getLocale(request: Request): string {
   return defaultLocale;
 }
 
-export function middleware(request: Request) {
+export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   
   // Check if there is any supported locale in the pathname

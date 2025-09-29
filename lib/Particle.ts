@@ -11,8 +11,8 @@ export class Particle {
   b: Vector3D; // window bounds for wrapping
   r: SmallPRNG; // random context
   m: MouseMonitor; // mouse position monitor
-  i: number; // iteration
-  l: number; // life
+  i: number = 0; // iteration
+  l: number = 0; // life
 
   constructor(generator: Perlin, bounds: Vector3D, rctx: SmallPRNG, mon: MouseMonitor) {
     this.p = new Vector3D(); // position

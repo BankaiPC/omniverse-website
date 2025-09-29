@@ -1,7 +1,7 @@
 export class Vector3D {
-  x: number;
-  y: number;
-  z: number;
+  x: number = 0;
+  y: number = 0;
+  z: number = 0;
 
   constructor(x: number = 0, y: number = 0, z: number = 0) {
     this.set(x, y, z);

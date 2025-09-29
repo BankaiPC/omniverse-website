@@ -17,7 +17,7 @@ import { CookieProvider } from '@/contexts/CookieContext';
 export default function Home({
   params,
 }: {
-  params: Promise<{ lang: 'en' | 'es' }>;
+  params: Promise<{ lang: string }>;
 }) {
   const [lang, setLang] = useState<'en' | 'es'>('en');
   const [dict, setDict] = useState<any>(null);
@@ -27,8 +27,13 @@ export default function Home({
     const initializePage = async () => {
       try {
         const resolvedParams = await params;
-        setLang(resolvedParams.lang);
-        const dictionary = await getClientDictionary(resolvedParams.lang);
+        // Validate and ensure lang is one of our supported languages
+        const validLang = (resolvedParams.lang === 'en' || resolvedParams.lang === 'es') 
+          ? resolvedParams.lang as 'en' | 'es' 
+          : 'en';
+        
+        setLang(validLang);
+        const dictionary = await getClientDictionary(validLang);
         setDict(dictionary);
       } catch (error) {
         console.error('Error loading dictionary:', error);
