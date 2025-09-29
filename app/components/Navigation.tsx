@@ -16,7 +16,7 @@ interface NavigationProps {
 
 export default function Navigation({ title, navItems, currentLang }: NavigationProps) {
   return (
-    <nav className="relative z-50 flex items-center justify-between p-6" style={{ zIndex: 1000 }}>
+    <nav className="relative flex items-center justify-between p-6" style={{ zIndex: 1000 }}>
       <div className="text-white text-2xl font-normal tracking-wider font-quantum">
         {title}
       </div>
