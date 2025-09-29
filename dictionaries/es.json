@@ -1,0 +1,26 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "team": "Equipo",
+    "careers": "Carreras",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "OMNIVERSE GAMES",
+    "subtitle": "CREAMOS UNIVERSOS INMERSIVOS",
+    "description": "Donde cada batalla cuenta una historia épica"
+  },
+  "buttons": {
+    "exploreProjects": "Explorar Proyectos",
+    "joinTeam": "Únete al Equipo",
+    "viewBattlezone": "Ver The Primordial Battlezone"
+  },
+  "status": {
+    "online": "Sistema en línea",
+    "launchYear": "Año de lanzamiento"
+  },
+  "instructions": {
+    "mouse": "Click and drag to attract • Right click to repulse • Mouse-wheel click for time dilation"
+  }
+}
