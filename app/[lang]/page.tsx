@@ -1,6 +1,6 @@
-import ParticleSwarm from "../components/ParticleSwarm";
-import Navigation from "../components/Navigation";
-import { getDictionary } from '../../dictionaries';
+import ParticleSwarm from "@/components/ParticleSwarm";
+import Navigation from "@/components/Navigation";
+import { getDictionary } from '@/dictionaries';
 
 export default async function Home({
   params,
