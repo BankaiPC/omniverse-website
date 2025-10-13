@@ -9,12 +9,12 @@ import GamingButton from "@/components/GamingButton";
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-interface GameSectionProps {
+interface ProjectsSectionProps {
   lang: 'en' | 'es';
   dict: any;
 }
 
-export default function GameSection({ lang, dict }: GameSectionProps) {
+export default function ProjectsSection({ lang, dict }: ProjectsSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const gamesRef = useRef<HTMLDivElement>(null);
@@ -59,24 +59,24 @@ export default function GameSection({ lang, dict }: GameSectionProps) {
   const games = [
     {
       id: 1,
-      title: dict?.games?.cyberRealm?.title || "Cyber Realm",
-      description: dict?.games?.cyberRealm?.description || "Futuristic cyberpunk adventure in a neon-lit world",
+      title: dict?.projects?.cyberRealm?.title || "Cyber Realm",
+      description: dict?.projects?.cyberRealm?.description || "Futuristic cyberpunk adventure in a neon-lit world",
       image: "/api/placeholder/400/300",
       genre: "RPG",
       status: "Available Now"
     },
     {
       id: 2,
-      title: dict?.games?.spaceOdyssey?.title || "Space Odyssey",
-      description: dict?.games?.spaceOdyssey?.description || "Epic space exploration and combat simulation",
+      title: dict?.projects?.spaceOdyssey?.title || "Space Odyssey",
+      description: dict?.projects?.spaceOdyssey?.description || "Epic space exploration and combat simulation",
       image: "/api/placeholder/400/300",
       genre: "Simulation",
       status: "Coming Soon"
     },
     {
       id: 3,
-      title: dict?.games?.mysticWorlds?.title || "Mystic Worlds",
-      description: dict?.games?.mysticWorlds?.description || "Fantasy adventure with magical creatures and spells",
+      title: dict?.projects?.mysticWorlds?.title || "Mystic Worlds",
+      description: dict?.projects?.mysticWorlds?.description || "Fantasy adventure with magical creatures and spells",
       image: "/api/placeholder/400/300",
       genre: "Adventure",
       status: "In Development"
@@ -86,29 +86,29 @@ export default function GameSection({ lang, dict }: GameSectionProps) {
   const features = [
     {
       icon: "🎮",
-      title: dict?.gameFeatures?.vr?.title || "VR Support",
-      description: dict?.gameFeatures?.vr?.description || "Immersive virtual reality experience"
+      title: dict?.projects?.gameFeatures?.vr?.title || "VR Support",
+      description: dict?.projects?.gameFeatures?.vr?.description || "Immersive virtual reality experience"
     },
     {
       icon: "🌐",
-      title: dict?.gameFeatures?.multiplayer?.title || "Multiplayer",
-      description: dict?.gameFeatures?.multiplayer?.description || "Play with friends worldwide"
+      title: dict?.projects?.gameFeatures?.multiplayer?.title || "Multiplayer",
+      description: dict?.projects?.gameFeatures?.multiplayer?.description || "Play with friends worldwide"
     },
     {
       icon: "🎨",
-      title: dict?.gameFeatures?.graphics?.title || "4K Graphics",
-      description: dict?.gameFeatures?.graphics?.description || "Stunning visual fidelity"
+      title: dict?.projects?.gameFeatures?.graphics?.title || "4K Graphics",
+      description: dict?.projects?.gameFeatures?.graphics?.description || "Stunning visual fidelity"
     },
     {
       icon: "⚡",
-      title: dict?.gameFeatures?.performance?.title || "High Performance",
-      description: dict?.gameFeatures?.performance?.description || "Optimized for smooth gameplay"
+      title: dict?.projects?.gameFeatures?.performance?.title || "High Performance",
+      description: dict?.projects?.gameFeatures?.performance?.description || "Optimized for smooth gameplay"
     }
   ];
 
   return (
     <section 
-      id="game"
+      id="projects"
       ref={sectionRef}
       className="relative min-h-screen w-full flex-shrink-0 bg-gradient-to-br from-purple-900 via-black to-blue-900 overflow-hidden"
     >
@@ -175,7 +175,7 @@ export default function GameSection({ lang, dict }: GameSectionProps) {
             textShadow: '0 0 20px rgba(147, 51, 234, 0.5)'
           }}
         >
-          {dict?.games?.title || "Our Games"}
+          {dict?.projects?.title || "Projects"}
         </motion.h2>
 
         {/* Games Grid */}
@@ -222,7 +222,7 @@ export default function GameSection({ lang, dict }: GameSectionProps) {
                   {game.description}
                 </p>
                 <GamingButton>
-                  {dict?.games?.playButton || "Learn More"}
+                  {dict?.projects?.playButton || "Learn More"}
                 </GamingButton>
               </div>
             </motion.div>
@@ -235,7 +235,7 @@ export default function GameSection({ lang, dict }: GameSectionProps) {
           className="text-center"
         >
           <h3 className="text-3xl font-quantum text-white mb-12">
-            {dict?.gameFeatures?.title || "Game Features"}
+            {dict?.projects?.gameFeatures?.title || "Game Features"}
           </h3>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

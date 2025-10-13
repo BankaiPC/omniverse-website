@@ -105,10 +105,6 @@ export default function AcademySection({ lang, dict }: AcademySectionProps) {
       label: dict?.academy?.stats?.students || "Students"
     },
     {
-      number: "50+",
-      label: dict?.academy?.stats?.courses || "Courses"
-    },
-    {
       number: "95%",
       label: dict?.academy?.stats?.success || "Success Rate"
     },
@@ -212,7 +208,7 @@ export default function AcademySection({ lang, dict }: AcademySectionProps) {
         {/* Stats */}
         <motion.div
           ref={statsRef}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20"
+          className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-20"
         >
           {stats.map((stat, index) => (
             <motion.div

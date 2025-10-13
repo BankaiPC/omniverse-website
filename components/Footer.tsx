@@ -15,7 +15,7 @@ export default function Footer({ dict, currentLang }: FooterProps) {
 
   const quickLinks = [
     { name: dict?.navigation?.about || 'About', href: '#about' },
-    { name: dict?.navigation?.game || 'Game', href: '#game' },
+    { name: dict?.navigation?.projects || 'Projects', href: '#projects' },
     { name: dict?.navigation?.academy || 'Academy', href: '#academy' },
     { name: dict?.navigation?.team || 'Team', href: '#team' },
     { name: dict?.navigation?.investors || 'Investors', href: '#investors' },

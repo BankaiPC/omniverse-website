@@ -2,7 +2,7 @@
   "navigation": {
     "home": "Inicio",
     "about": "Acerca de",
-    "game": "Juego",
+    "projects": "proyectos",
     "academy": "Academia",
     "team": "Equipo",
     "investors": "Inversores",
@@ -11,33 +11,33 @@
   "language": "Idioma",
   "hero": {
     "title": "OMNIVERSE GAMES",
-    "subtitle": "El Futuro del Gaming",
-    "description": "Experimenta la próxima generación de tecnología de gaming inmersivo. Únete a nosotros en un viaje a través de posibilidades infinitas.",
+    "subtitle": "Gaming Con sentido",
+    "description": "tecnología al servicio del gaming, blockchain, esports, pvp, ia, y mucho más…",
     "playButton": "Jugar Ahora",
     "learnButton": "Saber Más"
   },
   "about": {
     "title": "Acerca de Nosotros",
-    "description": "Somos pioneros en la industria del gaming, dedicados a crear experiencias inmersivas que trascienden la realidad. Nuestra misión es empujar los límites de la tecnología y unir a las personas a través de soluciones de gaming innovadoras.",
+    "description": "Somos pioneros en la industria gaming en dedicados a crear experiencias inmersivas, transparentes, competitivas y divertidas, uniendo varias tecnologías como blockchain de una manera transparente y con sentido común. Desarrollamos productos cerrados para el usuario final, y generamos industria en la zona con nuestra Academia.",
     "mission": {
       "title": "Nuestra Misión",
-      "description": "Revolucionar la industria del gaming a través de tecnología de vanguardia y crear experiencias inolvidables para jugadores de todo el mundo."
+      "description": "Revolucionar la industria del gaming a través de nuestro enfoque de blockchain y también el esport."
     },
     "vision": {
       "title": "Nuestra Visión",
-      "description": "Ser la fuerza líder en la creación del futuro del entretenimiento interactivo y las experiencias virtuales."
+      "description": "desarrollar productos para los fans en los que encuentren cubiertas sus necesidades de entretenimiento."
     },
     "features": {
-      "innovation": {
-        "title": "Innovación",
+      "blockchain": {
+        "title": "Cadena de bloques",
         "description": "Tecnología de vanguardia que empuja los límites de lo que es posible en el gaming."
       },
       "global": {
         "title": "Alcance Global",
         "description": "Conectando jugadores de todo el mundo a través de experiencias virtuales inmersivas."
       },
-      "gaming": {
-        "title": "Excelencia en Gaming",
+      "esport": {
+        "title": "Esport",
         "description": "Entregando experiencias de gaming incomparables con atención a cada detalle."
       },
       "future": {
@@ -46,8 +46,8 @@
       }
     }
   },
-  "games": {
-    "title": "Nuestros Juegos",
+  "projects": {
+    "title": "proyectos",
     "cyberRealm": {
       "title": "Reino Cibernético",
       "description": "Aventura cyberpunk futurista en un mundo iluminado por neón"
@@ -83,7 +83,7 @@
   },
   "academy": {
     "title": "Academia Omniverse",
-    "description": "Domina el arte del desarrollo de juegos y la tecnología inmersiva con nuestros cursos integrales diseñados por expertos de la industria.",
+    "description": "Domina el desarrollo de videojuegos, blockchain, IA. Etc. Con salida directa a la industria y a nuestro estudio.",
     "courses": {
       "gameDev": {
         "title": "Desarrollo de Juegos",
@@ -104,7 +104,6 @@
     },
     "stats": {
       "students": "Estudiantes",
-      "courses": "Cursos",
       "success": "Tasa de Éxito",
       "support": "Soporte"
     },
