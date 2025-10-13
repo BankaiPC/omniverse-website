@@ -2,7 +2,7 @@
   "navigation": {
     "home": "Home",
     "about": "About",
-    "game": "Game",
+    "projects": "Projects",
     "academy": "Academy",
     "team": "Team",
     "investors": "Investors",
@@ -11,33 +11,33 @@
   "language": "Language",
   "hero": {
     "title": "OMNIVERSE GAMES",
-    "subtitle": "The Future of Gaming",
-    "description": "Experience the next generation of immersive gaming technology. Join us on a journey through infinite possibilities.",
+    "subtitle": "Gaming With Sense",
+    "description": "Technology at the service of gaming, blockchain, esports, PVP, AI, and much more…",
     "playButton": "Play Now",
     "learnButton": "Learn More"
   },
   "about": {
     "title": "About Us",
-    "description": "We are pioneers in the gaming industry, dedicated to creating immersive experiences that transcend reality. Our mission is to push the boundaries of technology and bring people together through innovative gaming solutions.",
+    "description": "We are pioneers in the gaming industry dedicated to creating immersive, transparent, competitive, and fun experiences, combining various technologies like blockchain in a transparent and common-sense way. We develop closed products for the end user and generate industry momentum in the region with our Academy.",
     "mission": {
       "title": "Our Mission",
-      "description": "To revolutionize the gaming industry through cutting-edge technology and create unforgettable experiences for players worldwide."
+      "description": "Revolutionizing the gaming industry through our blockchain approach, as well as esports."
     },
     "vision": {
       "title": "Our Vision",
-      "description": "To be the leading force in creating the future of interactive entertainment and virtual experiences."
+      "description": "TO develop products for fans that meet their entertainment needs."
     },
     "features": {
-      "innovation": {
-        "title": "Innovation",
+      "blockchain": {
+        "title": "Blockchain",
         "description": "Cutting-edge technology that pushes the boundaries of what's possible in gaming."
       },
       "global": {
         "title": "Global Reach",
         "description": "Connecting players worldwide through immersive virtual experiences."
       },
-      "gaming": {
-        "title": "Gaming Excellence",
+      "esport": {
+        "title": "Esport",
         "description": "Delivering unparalleled gaming experiences with attention to every detail."
       },
       "future": {
@@ -46,8 +46,8 @@
       }
     }
   },
-  "games": {
-    "title": "Our Games",
+  "projects": {
+    "title": "Projects",
     "cyberRealm": {
       "title": "Cyber Realm",
       "description": "Futuristic cyberpunk adventure in a neon-lit world"
@@ -104,7 +104,6 @@
     },
     "stats": {
       "students": "Students",
-      "courses": "Courses",
       "success": "Success Rate",
       "support": "Support"
     },

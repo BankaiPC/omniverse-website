@@ -73,7 +73,7 @@ export default function Navigation({ title, currentLang, dict }: NavigationProps
   const navItems = {
     home: dict?.navigation?.home || 'Home',
     about: dict?.navigation?.about || 'About',
-    game: dict?.navigation?.game || 'Game',
+    projects: dict?.navigation?.projects || 'Projects',
     academy: dict?.navigation?.academy || 'Academy',
     team: dict?.navigation?.team || 'Team',
     investors: dict?.navigation?.investors || 'Investors',

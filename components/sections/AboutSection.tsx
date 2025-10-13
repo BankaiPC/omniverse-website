@@ -57,9 +57,9 @@ export default function AboutSection({ lang, dict }: AboutSectionProps) {
 
   const features = [
     {
-      icon: "🚀",
-      title: dict?.about?.features?.innovation?.title || "Innovation",
-      description: dict?.about?.features?.innovation?.description || "Cutting-edge technology that pushes the boundaries of what's possible in gaming."
+      icon: "⛓️",
+      title: dict?.about?.features?.blockchain?.title || "Blockchain",
+      description: dict?.about?.features?.blockchain?.description || "Cutting-edge technology that pushes the boundaries of what's possible in gaming."
     },
     {
       icon: "🌍",
@@ -68,8 +68,8 @@ export default function AboutSection({ lang, dict }: AboutSectionProps) {
     },
     {
       icon: "🎮",
-      title: dict?.about?.features?.gaming?.title || "Gaming Excellence",
-      description: dict?.about?.features?.gaming?.description || "Delivering unparalleled gaming experiences with attention to every detail."
+      title: dict?.about?.features?.esport?.title || "Esport",
+      description: dict?.about?.features?.esport?.description || "Delivering unparalleled gaming experiences with attention to every detail."
     },
     {
       icon: "🔮",
