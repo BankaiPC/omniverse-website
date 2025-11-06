@@ -15,10 +15,10 @@ export default function Footer({ dict, currentLang }: FooterProps) {
 
   const quickLinks = [
     { name: dict?.navigation?.about || 'About', href: '#about' },
-    { name: dict?.navigation?.projects || 'Projects', href: '#projects' },
-    { name: dict?.navigation?.academy || 'Academy', href: '#academy' },
-    { name: dict?.navigation?.team || 'Team', href: '#team' },
-    { name: dict?.navigation?.investors || 'Investors', href: '#investors' },
+    // { name: dict?.navigation?.projects || 'Projects', href: '#projects' },
+    // { name: dict?.navigation?.academy || 'Academy', href: '#academy' },
+    // { name: dict?.navigation?.team || 'Team', href: '#team' },
+    // { name: dict?.navigation?.investors || 'Investors', href: '#investors' },
     { name: dict?.navigation?.contact || 'Contact', href: '#contact' }
   ];
 
@@ -163,7 +163,7 @@ export default function Footer({ dict, currentLang }: FooterProps) {
                 <div className="flex items-center space-x-3">
                   <span className="text-orange-400">✉️</span>
                   <span className="text-gray-300">
-                    {dict?.contact?.info?.email?.content || "hello@omniverse.com"}
+                    {dict?.contact?.info?.email?.content || "bankaipc@gmail.com"}
                   </span>
                 </div>
               </div>
