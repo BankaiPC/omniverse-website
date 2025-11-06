@@ -244,21 +244,24 @@
       "subjectPlaceholder": "¿De qué se trata?",
       "message": "Mensaje",
       "messagePlaceholder": "Cuéntanos sobre tu proyecto o idea...",
-      "submitButton": "Enviar Mensaje"
+      "submitButton": "Enviar Mensaje",
+      "sending": "Enviando...",
+      "successMessage": "Mensaje enviado correctamente! Nos pondremos en contacto contigo lo antes posible.",
+      "errorMessage": "Error al enviar el mensaje. Por favor, inténtalo de nuevo."
     },
     "info": {
       "title": "Información de Contacto",
       "address": {
         "title": "Dirección",
-        "content": "123 Gaming Street, Tech City, TC 12345"
+        "content": "C/ faisanes 25, Busot, Alicante, España"
       },
       "phone": {
         "title": "Teléfono",
-        "content": "+1 (555) 123-4567"
+        "content": "+34 (666) 772 481"
       },
       "email": {
         "title": "Email",
-        "content": "hello@omniverse.com"
+        "content": "bankaipc@gmail.com"
       },
       "hours": {
         "title": "Horarios",

@@ -244,21 +244,24 @@
       "subjectPlaceholder": "What's this about?",
       "message": "Message",
       "messagePlaceholder": "Tell us about your project or idea...",
-      "submitButton": "Send Message"
+      "submitButton": "Send Message",
+      "sending": "Sending...",
+      "successMessage": "Message sent successfully! We'll get back to you soon.",
+      "errorMessage": "Failed to send message. Please try again."
     },
     "info": {
       "title": "Contact Information",
       "address": {
         "title": "Address",
-        "content": "123 Gaming Street, Tech City, TC 12345"
+        "content": "C/ faisanes 25, Busot, Alicante, Spain"
       },
       "phone": {
         "title": "Phone",
-        "content": "+1 (555) 123-4567"
+        "content": "+34 (666) 772 481"
       },
       "email": {
         "title": "Email",
-        "content": "hello@omniverse.com"
+        "content": "bankaipc@gmail.com"
       },
       "hours": {
         "title": "Hours",
