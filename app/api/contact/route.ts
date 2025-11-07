@@ -16,13 +16,13 @@ export async function POST(request: NextRequest) {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.NEXT_PUBLIC_EMAIL_USER,
-        pass: process.env.NEXT_PUBLIC_EMAIL_PASSWORD,
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
       },
     });
 
     const mailOptions = {
-      from: process.env.NEXT_PUBLIC_EMAIL_USER,
+      from: process.env.EMAIL_USER,
       to: 'bankaipc@gmail.com',
       subject: `Contact Form: ${subject}`,
       html: `
