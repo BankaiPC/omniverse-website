@@ -48,9 +48,9 @@
   },
   "projects": {
     "title": "Projects",
-    "cyberRealm": {
-      "title": "Cyber Realm",
-      "description": "Futuristic cyberpunk adventure in a neon-lit world"
+    "omniverse": {
+      "title": "Omniverse",
+      "description": "The primordial battlezone"
     },
     "spaceOdyssey": {
       "title": "Space Odyssey",

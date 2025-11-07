@@ -1,11 +1,13 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
+import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useCookie } from '@/contexts/CookieContext';
+import OmniverseLogo from '@/components/assets/Omniverse_logo.png';
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -288,7 +290,7 @@ export default function Navigation({ title, currentLang, dict }: NavigationProps
       scrub: 1,
       onUpdate: (self) => {
         gsap.to(titleRef.current, {
-          y: self.progress * 30,
+          // y: self.progress * 30,
           duration: 0.1,
           ease: "none"
         });
@@ -307,7 +309,7 @@ export default function Navigation({ title, currentLang, dict }: NavigationProps
       className={`fixed top-0 left-0 right-0 flex items-center transition-all duration-300 backdrop-blur-md bg-black/50 shadow-lg ${
         isScrolled && !isVisible
           ? 'justify-center px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 xl:px-12 xl:py-6' 
-          : 'justify-between px-4 py-4 md:px-8 md:py-6 lg:px-12 lg:py-8 xl:px-16 xl:py-10'
+          : 'justify-between px-4 py-2 md:px-8 md:py-4 lg:px-12 lg:py-6 xl:px-16 xl:py-8'
       }`}
       style={{ 
         zIndex: 1000,
@@ -315,7 +317,7 @@ export default function Navigation({ title, currentLang, dict }: NavigationProps
         paddingBottom: (isScrolled && !isVisible) ? '0.75rem' : window.innerWidth >= 1280 ? '2.5rem' : '1.5rem',
         paddingLeft: (isScrolled && !isVisible) ? '1rem' : window.innerWidth >= 1280 ? '4rem' : '2rem',
         paddingRight: (isScrolled && !isVisible) ? '1rem' : window.innerWidth >= 1280 ? '4rem' : '2rem',
-        backdropFilter: isScrolled ? 'blur(12px)' : 'none',
+        backdropFilter: isScrolled ? 'blur(32px)' : 'none',
         backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.3)' : 'transparent',
         boxShadow: isScrolled ? '0 8px 32px rgba(0, 0, 0, 0.3)' : 'none'
       }}
@@ -345,7 +347,7 @@ export default function Navigation({ title, currentLang, dict }: NavigationProps
           ease: "easeOut"
         }}
       >
-        {title}
+        <Image src={OmniverseLogo} alt="Omniverse Logo" width={200} height={100} />
       </motion.div>
       {(!isScrolled || isVisible) && (
         <div className="flex items-center gap-4">

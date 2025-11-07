@@ -48,9 +48,9 @@
   },
   "projects": {
     "title": "proyectos",
-    "cyberRealm": {
-      "title": "Reino Cibernético",
-      "description": "Aventura cyberpunk futurista en un mundo iluminado por neón"
+    "omniverse": {
+      "title": "Omniverse",
+      "description": "El campo de batalla primordial"
     },
     "spaceOdyssey": {
       "title": "Odisea Espacial",

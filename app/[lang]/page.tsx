@@ -70,7 +70,7 @@ export default function Home({
               <div className="relative">
                 <HomeSection lang={lang} dict={dict} />
                 <AboutSection lang={lang} dict={dict} />
-                {/* <GameSection lang={lang} dict={dict} /> */}
+                <GameSection lang={lang} dict={dict} />
                 {/* <AcademySection lang={lang} dict={dict} /> */}
                 {/* <TeamSection lang={lang} dict={dict} /> */}
                 {/* <InvestorsSection lang={lang} dict={dict} /> */}
