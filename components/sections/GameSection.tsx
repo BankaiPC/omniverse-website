@@ -59,28 +59,12 @@ export default function ProjectsSection({ lang, dict }: ProjectsSectionProps) {
   const games = [
     {
       id: 1,
-      title: dict?.projects?.cyberRealm?.title || "Cyber Realm",
-      description: dict?.projects?.cyberRealm?.description || "Futuristic cyberpunk adventure in a neon-lit world",
+      title: dict?.projects?.omniverse?.title || "Omniverse",
+      description: dict?.projects?.omniverse?.description || "The primordial battlezone",
       image: "/api/placeholder/400/300",
-      genre: "RPG",
+      genre: "Battlezone",
       status: "Available Now"
     },
-    {
-      id: 2,
-      title: dict?.projects?.spaceOdyssey?.title || "Space Odyssey",
-      description: dict?.projects?.spaceOdyssey?.description || "Epic space exploration and combat simulation",
-      image: "/api/placeholder/400/300",
-      genre: "Simulation",
-      status: "Coming Soon"
-    },
-    {
-      id: 3,
-      title: dict?.projects?.mysticWorlds?.title || "Mystic Worlds",
-      description: dict?.projects?.mysticWorlds?.description || "Fantasy adventure with magical creatures and spells",
-      image: "/api/placeholder/400/300",
-      genre: "Adventure",
-      status: "In Development"
-    }
   ];
 
   const features = [
@@ -181,12 +165,14 @@ export default function ProjectsSection({ lang, dict }: ProjectsSectionProps) {
         {/* Games Grid */}
         <motion.div
           ref={gamesRef}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
+          className={`grid gap-8 mb-20 ${
+            games.length === 1 ? "place-content-center" : "md:grid-cols-2 lg:grid-cols-3"
+          }`}
         >
           {games.map((game, index) => (
             <motion.div
               key={game.id}
-              className="group relative bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 hover:border-purple-400/50 transition-all duration-300"
+              className="w-[320px] md:min-w-sm group relative bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 hover:border-purple-400/50 transition-all duration-300"
               whileHover={{ scale: 1.02, y: -5 }}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
