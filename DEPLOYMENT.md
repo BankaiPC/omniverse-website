@@ -3,7 +3,7 @@
 ## Prerequisites
 - Cloudflare account with a domain
 - Git repository (GitHub, GitLab, or Bitbucket)
-- Gmail account with App Password set up
+- Resend account (free tier available) - [Sign up at resend.com](https://resend.com)
 
 ## Step 1: Push Code to Git Repository
 
@@ -37,10 +37,11 @@ git push origin main
 4. **Set Environment Variables**
    - Click **Environment variables** section
    - Add the following variables:
-     - **Variable name**: `EMAIL_USER`
-       - **Value**: Your Gmail address (e.g., `your-email@gmail.com`)
-     - **Variable name**: `EMAIL_PASSWORD`
-       - **Value**: Your Gmail App Password (not your regular password)
+     - **Variable name**: `RESEND_API_KEY`
+       - **Value**: Your Resend API key (get it from [resend.com/api-keys](https://resend.com/api-keys))
+     - **Variable name**: `EMAIL_FROM` (optional)
+       - **Value**: Your verified domain email (e.g., `noreply@yourdomain.com`)
+       - If not set, will use Resend's default `onboarding@resend.dev`
    - Make sure to set these for **Production**, **Preview**, and **Development** environments
 
 5. **Deploy**
@@ -87,37 +88,53 @@ git push origin main
 
 ### API Routes Not Working
 - Ensure environment variables are set correctly
-- Check that `EMAIL_USER` and `EMAIL_PASSWORD` are set (without `NEXT_PUBLIC_` prefix)
+- Check that `RESEND_API_KEY` is set in Cloudflare Pages
+- Verify Edge Runtime is configured (already set in the code)
 - Review Cloudflare Pages function logs
 
 ### Email Not Sending
-- Verify Gmail App Password is correct (not regular password)
-- Check that environment variables are set in Cloudflare Pages
+- Verify Resend API key is correct and active
+- Check that `RESEND_API_KEY` environment variable is set in Cloudflare Pages
+- Verify your domain in Resend dashboard (if using custom `EMAIL_FROM`)
 - Review server logs in Cloudflare dashboard
+- Check Resend dashboard for email delivery status
 
 ### DNS Issues
 - Ensure CNAME record points to your Pages URL
 - Check that proxy is enabled (orange cloud)
 - Wait a few minutes for DNS propagation
 
-## Gmail App Password Setup
+## Resend Setup
 
-If you haven't set up a Gmail App Password:
+1. **Create Resend Account**
+   - Go to [resend.com](https://resend.com) and sign up (free tier available)
+   - Verify your email address
 
-1. Go to your [Google Account](https://myaccount.google.com/)
-2. Navigate to **Security** → **2-Step Verification** (enable if not already)
-3. Go to **App passwords**
-4. Select **Mail** and **Other (Custom name)**
-5. Enter a name like "Cloudflare Pages"
-6. Copy the generated 16-character password
-7. Use this password in `EMAIL_PASSWORD` environment variable
+2. **Get API Key**
+   - Go to [API Keys](https://resend.com/api-keys) in Resend dashboard
+   - Click **Create API Key**
+   - Give it a name (e.g., "Cloudflare Pages")
+   - Copy the API key (you'll only see it once!)
+
+3. **Verify Domain (Optional but Recommended)**
+   - Go to **Domains** in Resend dashboard
+   - Add your domain
+   - Follow DNS setup instructions
+   - Once verified, you can use `noreply@yourdomain.com` as `EMAIL_FROM`
+
+4. **Set Environment Variable**
+   - Add `RESEND_API_KEY` in Cloudflare Pages environment variables
+   - Optionally add `EMAIL_FROM` with your verified domain email
 
 ## Environment Variables Reference
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `EMAIL_USER` | Your Gmail address | `your-email@gmail.com` |
-| `EMAIL_PASSWORD` | Gmail App Password | `abcd efgh ijkl mnop` |
+| Variable | Description | Required | Example |
+|----------|-------------|----------|---------|
+| `RESEND_API_KEY` | Your Resend API key | Yes | `re_xxxxxxxxxxxxx` |
+| `EMAIL_FROM` | Sender email address | No | `noreply@yourdomain.com` |
 
-**Important**: Never use `NEXT_PUBLIC_` prefix for these variables as they contain sensitive credentials.
+**Important**: 
+- Never use `NEXT_PUBLIC_` prefix for these variables as they contain sensitive credentials
+- The API route uses Edge Runtime for Cloudflare Pages compatibility
+- Emails will be sent to `bankaipc@gmail.com` as configured in the code
 
