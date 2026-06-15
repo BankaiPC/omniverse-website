@@ -1,13 +1,11 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
-import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useCookie } from '@/contexts/CookieContext';
-import OmniverseLogo from '@/components/assets/Omniverse_logo.png';
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -347,7 +345,19 @@ export default function Navigation({ title, currentLang, dict }: NavigationProps
           ease: "easeOut"
         }}
       >
-        <Image src={OmniverseLogo} alt="Omniverse Logo" width={200} height={100} />
+        <span
+          className="font-quantum"
+          style={{
+            fontSize: isScrolled ? '1.1rem' : '1.4rem',
+            fontWeight: 400,
+            letterSpacing: '0.18em',
+            color: '#ffffff',
+            textShadow: '0 0 12px rgba(255,255,255,0.6), 0 0 28px rgba(255,255,255,0.2)',
+            transition: 'font-size 0.3s ease',
+          }}
+        >
+          OMNIVERSE GAMES
+        </span>
       </motion.div>
       {(!isScrolled || isVisible) && (
         <div className="flex items-center gap-4">
