@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Omniverse Games <contacto@omniverse-games.com>',
+        from: 'Omniverse Games <onboarding@resend.dev>',
         to: ['bankaipc@gmail.com'],
         reply_to: email,
         subject: `[Contacto Web] ${subject}`,
