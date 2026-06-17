@@ -1,64 +1,13 @@
 'use client';
 
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useCookie } from '@/contexts/CookieContext';
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
-
-// AnimatedText component for letter-by-letter animation
-const AnimatedText = ({ text }: { text: string }) => {
-  const letters = text.split('');
-  const [isHovered, setIsHovered] = useState(false);
-  
-  return (
-    <span 
-      className="inline-block"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {letters.map((letter, index) => (
-        <motion.span
-          key={index}
-          className="inline-block"
-          initial={{ y: 0, rotateX: 0 }}
-          animate={isHovered ? {
-            y: [0, -12, -2, 0],
-            rotateX: [0, 15, 5, 0],
-            scale: [1, 1.1, 1.05, 1],
-            textShadow: [
-              "0 0 0px #ff6b35",
-              "0 0 8px #ff6b35",
-              "0 0 4px #ff6b35",
-              "0 0 0px #ff6b35"
-            ]
-          } : {
-            y: 0,
-            rotateX: 0,
-            scale: 1,
-            textShadow: "0 0 0px #ff6b35"
-          }}
-          transition={{
-            duration: 1.0,
-            delay: isHovered ? index * 0.08 : 0,
-            ease: "easeOut",
-            times: isHovered ? [0, 0.3, 0.7, 1] : undefined
-          }}
-          style={{ 
-            display: 'inline-block',
-            transformOrigin: 'center bottom'
-          }}
-        >
-          {letter === ' ' ? '\u00A0' : letter}
-        </motion.span>
-      ))}
-    </span>
-  );
-};
 
 interface NavigationProps {
   title: string;
@@ -66,475 +15,218 @@ interface NavigationProps {
   dict: any;
 }
 
-export default function Navigation({ title, currentLang, dict }: NavigationProps) {
+const NavLink: React.FC<{ label: string; onClick: () => void }> = ({ label, onClick }) => (
+  <motion.button
+    onClick={onClick}
+    className="relative text-[#71717A] font-quantum text-xs tracking-widest uppercase cursor-pointer px-3 py-2"
+    whileHover={{ color: '#E5E5E5' }}
+    transition={{ duration: 0.2, ease: 'easeOut' }}
+    style={{ background: 'none', border: 'none' }}
+  >
+    <motion.span
+      className="relative z-10"
+      whileHover={{ x: 1 }}
+      transition={{ duration: 0.2, ease: 'easeOut' }}
+    >
+      {label}
+    </motion.span>
+  </motion.button>
+);
+
+const Navigation: React.FC<NavigationProps> = ({ title, currentLang, dict }) => {
   const { preferences } = useCookie();
-  
-  // Translated navigation items
-  const navItems = {
-    home: dict?.navigation?.home || 'Home',
-    about: dict?.navigation?.about || 'About',
-    // projects: dict?.navigation?.projects || 'Projects',
-    // academy: dict?.navigation?.academy || 'Academy',
-    // team: dict?.navigation?.team || 'Team',
-    // investors: dict?.navigation?.investors || 'Investors',
-    contact: dict?.navigation?.contact || 'Contact'
+
+  const navItems: Record<string, string> = {
+    home:    dict?.navigation?.home    || 'Inicio',
+    about:   dict?.navigation?.about   || 'Nosotros',
+    projects: dict?.navigation?.projects || 'Proyectos',
+    contact: dict?.navigation?.contact || 'Contacto',
   };
-  const navRef = useRef<HTMLElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-  const navLinksRef = useRef<HTMLDivElement>(null);
-  const languageSwitcherRef = useRef<HTMLDivElement>(null);
+
+  const navRef        = useRef<HTMLElement>(null);
+  const titleRef      = useRef<HTMLDivElement>(null);
+  const navLinksRef   = useRef<HTMLDivElement>(null);
+  const langRef       = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const [isLoaded,         setIsLoaded]         = useState(false);
+  const [isScrolled,       setIsScrolled]       = useState(false);
+  const [isVisible,        setIsVisible]        = useState(true);
+  const [lastScrollY,      setLastScrollY]      = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Loading animation effect
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 500); // Start animation after 500ms
-
-    return () => clearTimeout(timer);
+    const t = setTimeout(() => setIsLoaded(true), 300);
+    return () => clearTimeout(t);
   }, []);
 
-  // Scroll detection for blur, padding effects, and visibility
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const scrollDirection = scrollY > lastScrollY ? 'down' : 'up';
-      
-      // Update scroll state
-      setIsScrolled(scrollY > 50);
-      
-      // Different behavior based on cookie preferences
-      if (preferences.analytics) {
-        // Enhanced scroll tracking for analytics users
-        if (scrollY > 50) { // Start hiding earlier for analytics users
-          if (scrollDirection === 'down' && scrollY > lastScrollY + 3) {
-            setIsVisible(false);
-          } else if (scrollDirection === 'up' && scrollY < lastScrollY - 3) {
-            setIsVisible(true);
-          }
-        } else {
-          setIsVisible(true);
-        }
-      } else {
-        // Standard behavior for non-analytics users
-        if (scrollY > 100) {
-          if (scrollDirection === 'down' && scrollY > lastScrollY + 5) {
-            setIsVisible(false);
-          } else if (scrollDirection === 'up' && scrollY < lastScrollY - 5) {
-            setIsVisible(true);
-          }
-        } else {
-          setIsVisible(true);
-        }
-      }
-      
-      setLastScrollY(scrollY);
-    };
+    const onScroll = () => {
+      const y   = window.scrollY;
+      const dir = y > lastScrollY ? 'down' : 'up';
+      const threshold = preferences.analytics ? 50 : 100;
+      const delta     = preferences.analytics ? 3  : 5;
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+      setIsScrolled(y > 50);
+
+      if (y > threshold) {
+        if (dir === 'down' && y > lastScrollY + delta) setIsVisible(false);
+        if (dir === 'up'   && y < lastScrollY - delta) setIsVisible(true);
+      } else {
+        setIsVisible(true);
+      }
+      setLastScrollY(y);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, [lastScrollY, preferences.analytics]);
 
-  // Navigation scroll function
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-      // Close mobile menu after navigation
-      setIsMobileMenuOpen(false);
-    }
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setIsMobileMenuOpen(false);
   };
 
-  // Mobile menu toggle - using functional update to avoid stale state
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(prev => !prev);
-  };
-
-  // Close mobile menu on escape key
   useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isMobileMenuOpen) {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setIsMobileMenuOpen(false); };
+    if (isMobileMenuOpen) { document.addEventListener('keydown', onKey); return () => document.removeEventListener('keydown', onKey); }
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (!mobileMenuRef.current?.contains(e.target as Node) && !(e.target as Element)?.closest('[data-mobile-toggle]')) {
         setIsMobileMenuOpen(false);
       }
     };
-
     if (isMobileMenuOpen) {
-      document.addEventListener('keydown', handleEscape);
-      return () => document.removeEventListener('keydown', handleEscape);
+      const t = setTimeout(() => document.addEventListener('mousedown', onClick), 100);
+      return () => { clearTimeout(t); document.removeEventListener('mousedown', onClick); };
     }
   }, [isMobileMenuOpen]);
 
-  // Close mobile menu on outside click
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      // Check if the click is outside both the mobile menu and the toggle button
-      const isClickInsideMenu = mobileMenuRef.current?.contains(event.target as Node);
-      const isClickOnToggleButton = (event.target as Element)?.closest('button[aria-label="Toggle mobile menu"]');
-      
-      if (isMobileMenuOpen && !isClickInsideMenu && !isClickOnToggleButton) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-
-    if (isMobileMenuOpen) {
-      // Use a small delay to prevent immediate closure when clicking the toggle button
-      const timeoutId = setTimeout(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-      }, 100);
-      
-      return () => {
-        clearTimeout(timeoutId);
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
-    }
-  }, [isMobileMenuOpen]);
-
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
-    // Cleanup on unmount
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'unset';
+    return () => { document.body.style.overflow = 'unset'; };
   }, [isMobileMenuOpen]);
 
   useEffect(() => {
-    if (!navRef.current || !titleRef.current || !navLinksRef.current || !languageSwitcherRef.current) return;
-
-    // Initial setup - hide elements
-    gsap.set([titleRef.current, navLinksRef.current, languageSwitcherRef.current], {
-      opacity: 0,
-      y: -30
-    });
-
-    // Entrance animation
-    const tl = gsap.timeline({ delay: 0.5 });
-    tl.to(titleRef.current, {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power2.out"
-    })
-    .to(navLinksRef.current, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: "power2.out"
-    }, "-=0.5")
-    .to(languageSwitcherRef.current, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: "power2.out"
-    }, "-=0.3");
-
-    // Scroll-triggered background animation
-    ScrollTrigger.create({
-      trigger: navRef.current,
-      start: "top top",
-      end: "bottom top",
-      onEnter: () => {
-        gsap.to(navRef.current, {
-          backgroundColor: "rgba(0, 0, 0, 0.9)",
-          backdropFilter: "blur(10px)",
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      },
-      onLeave: () => {
-        gsap.to(navRef.current, {
-          backgroundColor: "rgba(0, 0, 0, 0)",
-          backdropFilter: "blur(0px)",
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      },
-      onEnterBack: () => {
-        gsap.to(navRef.current, {
-          backgroundColor: "rgba(0, 0, 0, 0.9)",
-          backdropFilter: "blur(10px)",
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      },
-      onLeaveBack: () => {
-        gsap.to(navRef.current, {
-          backgroundColor: "rgba(0, 0, 0, 0)",
-          backdropFilter: "blur(0px)",
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      }
-    });
-
-    // Parallax effect for title
-    ScrollTrigger.create({
-      trigger: "body",
-      start: "top top",
-      end: "bottom bottom",
-      scrub: 1,
-      onUpdate: (self) => {
-        gsap.to(titleRef.current, {
-          // y: self.progress * 30,
-          duration: 0.1,
-          ease: "none"
-        });
-      }
-    });
-
-    // Cleanup
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
+    if (!navRef.current || !titleRef.current || !navLinksRef.current || !langRef.current) return;
+    gsap.set([titleRef.current, navLinksRef.current, langRef.current], { opacity: 0, y: -20 });
+    const tl = gsap.timeline({ delay: 0.3 });
+    tl.to(titleRef.current,  { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' })
+      .to(navLinksRef.current, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }, '-=0.2')
+      .to(langRef.current,     { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }, '-=0.2');
+    return () => { tl.kill(); };
   }, []);
 
   return (
-    <motion.nav 
+    <motion.nav
       ref={navRef}
-      className={`fixed top-0 left-0 right-0 flex items-center transition-all duration-300 backdrop-blur-md bg-black/50 shadow-lg ${
-        isScrolled && !isVisible
-          ? 'justify-center px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 xl:px-12 xl:py-6' 
-          : 'justify-between px-4 py-2 md:px-8 md:py-4 lg:px-12 lg:py-6 xl:px-16 xl:py-8'
-      }`}
-      style={{ 
+      className="fixed top-0 left-0 right-0 flex items-center justify-between px-6 md:px-10"
+      style={{
         zIndex: 1000,
-        paddingTop: (isScrolled && !isVisible) ? '0.75rem' : window.innerWidth >= 1280 ? '2.5rem' : '1.5rem',
-        paddingBottom: (isScrolled && !isVisible) ? '0.75rem' : window.innerWidth >= 1280 ? '2.5rem' : '1.5rem',
-        paddingLeft: (isScrolled && !isVisible) ? '1rem' : window.innerWidth >= 1280 ? '4rem' : '2rem',
-        paddingRight: (isScrolled && !isVisible) ? '1rem' : window.innerWidth >= 1280 ? '4rem' : '2rem',
-        backdropFilter: isScrolled ? 'blur(32px)' : 'none',
-        backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.3)' : 'transparent',
-        boxShadow: isScrolled ? '0 8px 32px rgba(0, 0, 0, 0.3)' : 'none'
+        height: isScrolled ? '52px' : '68px',
+        backgroundColor: isScrolled ? 'rgba(10, 10, 11, 0.92)' : 'transparent',
+        backdropFilter: isScrolled ? 'blur(16px)' : 'none',
+        borderBottom: isScrolled ? '1px solid #27272A' : '1px solid transparent',
+        transition: 'height 0.2s ease-out, background-color 0.2s ease-out, border-color 0.2s ease-out, backdrop-filter 0.2s ease-out',
       }}
-      initial={{ y: -120, opacity: 0 }}
-      animate={{ 
-        y: isLoaded ? 0 : -120,
-        opacity: isLoaded ? 1 : 0
-      }}
-      transition={{ 
-        duration: 0.3, 
-        ease: "easeOut",
-        delay: isLoaded ? 0 : 0.2
-      }}
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: isLoaded ? 0 : -80, opacity: isLoaded ? 1 : 0 }}
+      transition={{ duration: 0.3, ease: 'easeOut' }}
     >
-      <motion.div 
-        ref={titleRef}
-        className={`font-normal tracking-wider font-quantum text-white transition-all duration-300 ${
-          isScrolled ? 'text-xl' : 'text-2xl lg:text-3xl xl:text-4xl'
-        }`}
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: isLoaded ? 1 : 0
-        }}
-        transition={{ 
-          duration: 0.6, 
-          delay: isLoaded ? 0.3 : 0,
-          ease: "easeOut"
-        }}
-      >
+      {/* Logo */}
+      <div ref={titleRef} style={{ opacity: 0 }}>
         <span
           className="font-quantum"
           style={{
-            fontSize: isScrolled ? '1.1rem' : '1.4rem',
-            fontWeight: 400,
-            letterSpacing: '0.18em',
-            color: '#ffffff',
-            textShadow: '0 0 12px rgba(255,255,255,0.6), 0 0 28px rgba(255,255,255,0.2)',
-            transition: 'font-size 0.3s ease',
+            fontSize: isScrolled ? '0.95rem' : '1.1rem',
+            letterSpacing: '0.2em',
+            color: '#E5E5E5',
+            transition: 'font-size 0.2s ease-out',
+            cursor: 'default',
           }}
         >
           OMNIVERSE GAMES
         </span>
-      </motion.div>
+      </div>
+
+      {/* Desktop nav */}
       {(!isScrolled || isVisible) && (
-        <div className="flex items-center gap-4">
-          {/* Desktop Navigation */}
-          <motion.div 
-            ref={navLinksRef}
-            className="hidden xl:flex px-4 transition-all duration-300 space-x-6 xl:space-x-8"
-            initial={{ opacity: 0, x: 50, y: -20 }}
-            animate={{ 
-              opacity: isLoaded ? 1 : 0, 
-              x: isLoaded ? 0 : 50,
-              y: isLoaded ? 0 : -20
-            }}
-            transition={{ 
-              duration: 0.8, 
-              delay: isLoaded ? 0.5 : 0,
-              ease: "easeOut"
-            }}
-          >
-            {Object.entries(navItems).map(([key, value], index) => (
-              <motion.button 
-                key={key}
-                onClick={() => scrollToSection(key)}
-                className="text-white hover:text-orange-400 transition-colors px-3 py-2 rounded-md cursor-pointer"
-                whileTap={{ scale: 0.95 }}
-                animate={{
-                  y: 0,
-                  transition: { duration: 0.2, delay: index * 0.05 }
-                }}
-              >
-                <AnimatedText text={value} />
-              </motion.button>
-            ))}
-          </motion.div>
-
-          {/* Language Switcher - Desktop */}
-          <motion.div 
-            ref={languageSwitcherRef}
-            className="hidden xl:block"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ 
-              opacity: isLoaded ? 1 : 0, 
-              y: isLoaded ? 0 : -20
-            }}
-            transition={{ 
-              duration: 0.8, 
-              delay: isLoaded ? 0.7 : 0
-            }}
-          >
-            <LanguageSwitcher currentLang={currentLang} />
-          </motion.div>
-
-          {/* Mobile Menu Button */}
-          <motion.div
-            className="xl:hidden relative"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ 
-              opacity: isLoaded ? 1 : 0, 
-              scale: isLoaded ? 1 : 0.8
-            }}
-            transition={{ 
-              duration: 0.6, 
-              delay: isLoaded ? 0.8 : 0
-            }}
-          >
-            <button
-              className="relative w-10 h-10 flex items-center justify-center text-white hover:text-orange-400 transition-colors duration-300 cursor-pointer z-50"
-              onClick={toggleMobileMenu}
-              aria-label="Toggle mobile menu"
-              aria-expanded={isMobileMenuOpen}
-              type="button"
-            >
-              <div className="w-6 h-6 flex flex-col justify-center items-center">
-                <motion.span
-                  className="block w-6 h-0.5 bg-current"
-                  animate={{
-                    y: isMobileMenuOpen ? 6 : -6,
-                    rotate: isMobileMenuOpen ? 45 : 0
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
-                <motion.span
-                  className="block w-6 h-0.5 bg-current mt-1"
-                  animate={{
-                    opacity: isMobileMenuOpen ? 0 : 1
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
-                <motion.span
-                  className="block w-6 h-0.5 bg-current mt-1"
-                  animate={{
-                    y: isMobileMenuOpen ? -6 : 6,
-                    rotate: isMobileMenuOpen ? -45 : 0
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
-              </div>
-            </button>
-          </motion.div>
-        </div>
-      )}
-
-      {/* Mobile Menu Dropdown */}
-      {isMobileMenuOpen && (
-        <motion.div
-          ref={mobileMenuRef}
-          className="xl:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-md border-t border-white/10 shadow-2xl"
-          initial={{ opacity: 0, y: -20, scale: 0.95 }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            scale: 1
-          }}
-          exit={{
-            opacity: 0,
-            y: -20,
-            scale: 0.95
-          }}
-          transition={{ 
-            duration: 0.3,
-            ease: "easeOut"
-          }}
-          style={{ 
-            zIndex: 9998
-          }}
-        >
-        <div 
-          className="px-6 py-8 space-y-6 max-h-[80vh] overflow-y-auto"
-          onScroll={(e) => e.stopPropagation()}
-        >
-          {/* Mobile Navigation Links */}
-          <div className="space-y-4">
-            {Object.entries(navItems).map(([key, value], index) => (
-              <motion.button
-                key={key}
-                onClick={() => scrollToSection(key)}
-                className="w-full text-left text-white hover:text-orange-400 transition-colors duration-300 py-3 px-4 rounded-lg hover:bg-white/5 cursor-pointer"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{
-                  opacity: isMobileMenuOpen ? 1 : 0,
-                  x: isMobileMenuOpen ? 0 : -20
-                }}
-                transition={{
-                  duration: 0.3,
-                  delay: isMobileMenuOpen ? index * 0.1 : 0
-                }}
-                whileHover={{ x: 5 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className="text-lg font-quantum">{value}</span>
-              </motion.button>
+        <div className="flex items-center gap-2">
+          <div ref={navLinksRef} className="hidden xl:flex items-center gap-1" style={{ opacity: 0 }}>
+            {Object.entries(navItems).map(([key, val]) => (
+              <NavLink key={key} label={val} onClick={() => scrollTo(key)} />
             ))}
           </div>
 
-          {/* Mobile Language Switcher */}
-          <motion.div
-            className="pt-4 border-t border-white/10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{
-              opacity: isMobileMenuOpen ? 1 : 0,
-              y: isMobileMenuOpen ? 0 : 20
-            }}
-            transition={{
-              duration: 0.3,
-              delay: isMobileMenuOpen ? 0.4 : 0
-            }}
+          <div ref={langRef} className="hidden xl:block ml-4" style={{ opacity: 0 }}>
+            <LanguageSwitcher currentLang={currentLang} />
+          </div>
+
+          {/* Mobile toggle */}
+          <button
+            data-mobile-toggle
+            className="xl:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5 ml-2"
+            onClick={() => setIsMobileMenuOpen(p => !p)}
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
           >
-            <div className="flex items-center justify-between">
-              <span className="text-white text-sm font-quantum">
-                {dict?.language || "Language"}
-              </span>
-        <LanguageSwitcher currentLang={currentLang} />
-      </div>
-          </motion.div>
+            <motion.span
+              className="block w-5 h-px bg-[#E5E5E5]"
+              animate={{ y: isMobileMenuOpen ? 4 : 0, rotate: isMobileMenuOpen ? 45 : 0 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
+            />
+            <motion.span
+              className="block w-5 h-px bg-[#E5E5E5]"
+              animate={{ opacity: isMobileMenuOpen ? 0 : 1 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
+            />
+            <motion.span
+              className="block w-5 h-px bg-[#E5E5E5]"
+              animate={{ y: isMobileMenuOpen ? -4 : 0, rotate: isMobileMenuOpen ? -45 : 0 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
+            />
+          </button>
         </div>
-      </motion.div>
+      )}
+
+      {/* Mobile menu */}
+      {isMobileMenuOpen && (
+        <motion.div
+          ref={mobileMenuRef}
+          className="xl:hidden absolute top-full left-0 right-0"
+          style={{
+            backgroundColor: '#111113',
+            borderBottom: '1px solid #27272A',
+            zIndex: 9998,
+          }}
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2, ease: 'easeOut' }}
+        >
+          <div className="px-6 py-6 space-y-1">
+            {Object.entries(navItems).map(([key, val], i) => (
+              <motion.button
+                key={key}
+                onClick={() => scrollTo(key)}
+                className="w-full text-left py-3 px-2 text-[#71717A] font-quantum text-xs tracking-widest uppercase"
+                style={{ background: 'none', border: 'none', borderBottom: '1px solid #27272A' }}
+                initial={{ opacity: 0, x: -12 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.2, delay: i * 0.05, ease: 'easeOut' }}
+                whileHover={{ color: '#E5E5E5', x: 4 }}
+              >
+                {val}
+              </motion.button>
+            ))}
+            <div className="pt-4">
+              <LanguageSwitcher currentLang={currentLang} />
+            </div>
+          </div>
+        </motion.div>
       )}
     </motion.nav>
   );
-}
+};
+
+export default Navigation;
