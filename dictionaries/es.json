@@ -17,32 +17,32 @@
     "learnButton": "Saber Más"
   },
   "about": {
-    "title": "Acerca de Nosotros",
-    "description": "Somos pioneros en la industria gaming en dedicados a crear experiencias inmersivas, transparentes, competitivas y divertidas, uniendo varias tecnologías como blockchain de una manera transparente y con sentido común. Desarrollamos productos cerrados para el usuario final, y generamos industria en la zona con nuestra Academia.",
+    "title": "Quiénes Somos",
+    "description": "En Omniverse Games desarrollamos videojuegos y experiencias digitales de nueva generación. Combinamos innovación, tecnología y creatividad para crear mundos inmersivos diseñados para conectar a millones de jugadores.",
     "mission": {
       "title": "Nuestra Misión",
-      "description": "Revolucionar la industria del gaming a través de nuestro enfoque de blockchain y también el esport."
+      "description": "Crear experiencias de juego innovadoras que inspiren, entretengan y conecten comunidades a través de universos digitales únicos."
     },
     "vision": {
       "title": "Nuestra Visión",
-      "description": "desarrollar productos para los fans en los que encuentren cubiertas sus necesidades de entretenimiento."
+      "description": "Convertir a Omniverse Games en un referente global del entretenimiento interactivo, desarrollando franquicias y tecnologías que definan el futuro del gaming."
     },
     "features": {
       "blockchain": {
-        "title": "Cadena de bloques",
-        "description": "Tecnología de vanguardia que empuja los límites de lo que es posible en el gaming."
+        "title": "Blockchain Propia",
+        "description": "Infraestructura blockchain desarrollada internamente. Propiedad real de activos digitales sin depender de terceros."
       },
       "global": {
         "title": "Alcance Global",
-        "description": "Conectando jugadores de todo el mundo a través de experiencias virtuales inmersivas."
+        "description": "Conectamos jugadores de todo el mundo a través de universos digitales diseñados para comunidades sin fronteras."
       },
       "esport": {
         "title": "Esport",
-        "description": "Entregando experiencias de gaming incomparables con atención a cada detalle."
+        "description": "Competición, comunidad y espectáculo. Construimos ecosistemas de juego competitivo de primer nivel."
       },
       "future": {
-        "title": "Visión del Futuro",
-        "description": "Construyendo el futuro del entretenimiento y la interacción humana."
+        "title": "Universos Inmersivos",
+        "description": "Cada proyecto es un universo propio: narrativas, economías y mecánicas diseñadas para absorber al jugador."
       }
     }
   },
@@ -64,8 +64,8 @@
     "gameFeatures": {
       "title": "Características del Juego",
       "vr": {
-        "title": "Soporte VR",
-        "description": "Experiencia de realidad virtual inmersiva"
+        "title": "Blockchain Propia",
+        "description": "Economía de activos digitales sobre nuestra propia cadena. Sin Ethereum, sin intermediarios."
       },
       "multiplayer": {
         "title": "Multijugador",
@@ -265,17 +265,17 @@
       },
       "hours": {
         "title": "Horarios",
-        "content": "Lun-Vie 9AM-6PM PST"
+        "content": "Lun-Vie 9:00-18:00 CET"
       }
     },
     "social": {
       "title": "Síguenos"
     },
     "newsletter": {
-      "title": "Mantente Actualizado",
-      "description": "Recibe las últimas noticias y actualizaciones sobre nuestros juegos y tecnología.",
-      "placeholder": "Ingresa tu email",
-      "button": "Suscribirse"
+      "title": "Descarga el Launcher",
+      "description": "Accede al launcher de Omniverse Games y sé el primero en jugar The Primordial Battlezone.",
+      "placeholder": "Tu email",
+      "button": "Descargar"
     }
   },
   "footer": {

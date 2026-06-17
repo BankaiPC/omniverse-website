@@ -5,13 +5,64 @@ import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 interface AboutSectionProps {
   lang: 'en' | 'es';
   dict: any;
 }
+
+// Blockchain: hexagonal node network
+const IconBlockchain = () => (
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-10 h-10 text-[#ff6b35]">
+    <polygon points="24,4 36,11 36,25 24,32 12,25 12,11" strokeLinejoin="round"/>
+    <polygon points="24,16 30,20 30,28 24,32 18,28 18,20" strokeLinejoin="round" strokeOpacity="0.5"/>
+    <line x1="24" y1="4" x2="24" y2="16"/>
+    <line x1="36" y1="11" x2="30" y2="20"/>
+    <line x1="36" y1="25" x2="30" y2="28"/>
+    <line x1="24" y1="32" x2="24" y2="44"/>
+    <line x1="12" y1="25" x2="18" y2="28"/>
+    <line x1="12" y1="11" x2="18" y2="20"/>
+    <circle cx="24" cy="4" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="36" cy="11" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="36" cy="25" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="24" cy="44" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="12" cy="25" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="12" cy="11" r="2" fill="currentColor" stroke="none"/>
+  </svg>
+);
+
+// Global: globe with latitude/longitude lines
+const IconGlobal = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-10 h-10 text-[#4de8ff]">
+    <circle cx="12" cy="12" r="9"/>
+    <ellipse cx="12" cy="12" rx="4" ry="9"/>
+    <line x1="3" y1="9" x2="21" y2="9"/>
+    <line x1="3" y1="15" x2="21" y2="15"/>
+    <line x1="3.5" y1="6" x2="20.5" y2="6" strokeOpacity="0.3"/>
+    <line x1="3.5" y1="18" x2="20.5" y2="18" strokeOpacity="0.3"/>
+  </svg>
+);
+
+// Esport: game controller
+const IconEsport = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-10 h-10 text-[#fbbf24]">
+    <path d="M6 12h4M8 10v4" strokeLinecap="round"/>
+    <circle cx="16" cy="11" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="18" cy="13" r="1" fill="currentColor" stroke="none"/>
+    <path d="M2 12C2 8 4.5 6 8 6h8c3.5 0 6 2 6 6v1c0 2.5-1.5 4-3 5l-1 .5c-1 .5-2 .5-3 0l-2-1a2 2 0 00-2 0l-2 1c-1 .5-2 .5-3 0L5 18c-1.5-1-3-2.5-3-5v-1z" strokeLinejoin="round"/>
+  </svg>
+);
+
+// Universos Inmersivos: concentric rings with center dot (planet/universe)
+const IconUniverse = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-10 h-10 text-[#ff6b35]">
+    <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="12" cy="12" r="5"/>
+    <circle cx="12" cy="12" r="9"/>
+    <ellipse cx="12" cy="12" rx="9" ry="3.5" strokeDasharray="2 2"/>
+  </svg>
+);
 
 export default function AboutSection({ lang, dict }: AboutSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -22,7 +73,6 @@ export default function AboutSection({ lang, dict }: AboutSectionProps) {
   useEffect(() => {
     if (!sectionRef.current || !titleRef.current || !contentRef.current || !featuresRef.current) return;
 
-    // Create timeline for entrance animations
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -32,135 +82,91 @@ export default function AboutSection({ lang, dict }: AboutSectionProps) {
       }
     });
 
-    // Title animation
     tl.fromTo(titleRef.current,
       { y: 100, opacity: 0, scale: 0.8 },
       { y: 0, opacity: 1, scale: 1, duration: 1, ease: "power2.out" }
     )
-    // Content animation
     .fromTo(contentRef.current,
       { y: 50, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
       "-=0.5"
     )
-    // Features animation
     .fromTo(featuresRef.current,
       { y: 30, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
       "-=0.3"
     );
 
-    return () => {
-      tl.kill();
-    };
+    return () => { tl.kill(); };
   }, []);
 
   const features = [
     {
-      icon: "⛓️",
-      title: dict?.about?.features?.blockchain?.title || "Blockchain",
-      description: dict?.about?.features?.blockchain?.description || "Cutting-edge technology that pushes the boundaries of what's possible in gaming."
+      icon: <IconBlockchain />,
+      title: dict?.about?.features?.blockchain?.title || "Blockchain Propia",
+      description: dict?.about?.features?.blockchain?.description || "Infraestructura blockchain desarrollada internamente. Propiedad real de activos digitales."
     },
     {
-      icon: "🌍",
-      title: dict?.about?.features?.global?.title || "Global Reach",
-      description: dict?.about?.features?.global?.description || "Connecting players worldwide through immersive virtual experiences."
+      icon: <IconGlobal />,
+      title: dict?.about?.features?.global?.title || "Alcance Global",
+      description: dict?.about?.features?.global?.description || "Conectamos jugadores de todo el mundo a través de universos digitales sin fronteras."
     },
     {
-      icon: "🎮",
+      icon: <IconEsport />,
       title: dict?.about?.features?.esport?.title || "Esport",
-      description: dict?.about?.features?.esport?.description || "Delivering unparalleled gaming experiences with attention to every detail."
+      description: dict?.about?.features?.esport?.description || "Competición, comunidad y espectáculo. Ecosistemas de juego competitivo de primer nivel."
     },
     {
-      icon: "🔮",
-      title: dict?.about?.features?.future?.title || "Future Vision",
-      description: dict?.about?.features?.future?.description || "Building the future of entertainment and human interaction."
+      icon: <IconUniverse />,
+      title: dict?.about?.features?.future?.title || "Universos Inmersivos",
+      description: dict?.about?.features?.future?.description || "Cada proyecto es un universo propio: narrativas, economías y mecánicas diseñadas para absorber al jugador."
     }
   ];
 
   return (
-    <section 
+    <section
       id="about"
       ref={sectionRef}
-      className="relative min-h-screen w-full flex-shrink-0 bg-gradient-to-br from-gray-900 via-black to-gray-800 overflow-hidden"
+      className="os-section relative min-h-screen w-full flex-shrink-0 overflow-hidden"
     >
-      {/* Animated Geometric Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Floating Geometric Shapes */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-xl animate-pulse" />
-        <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-green-500/20 to-teal-500/20 rounded-lg rotate-45 blur-lg animate-bounce" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-32 left-1/4 w-40 h-40 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-20 right-1/3 w-28 h-28 bg-gradient-to-br from-pink-500/20 to-purple-500/20 rounded-lg rotate-12 blur-lg animate-bounce" style={{ animationDelay: '3s' }} />
-        
-        {/* Animated Grid Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M20 20c0-11.046-8.954-20-20-20v20h20z'/%3E%3C/g%3E%3C/svg%3E")`,
-            animation: 'float 6s ease-in-out infinite'
-          }} />
-        </div>
-        
-        {/* Floating Particles */}
-        <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-white/20 rounded-full animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 3}s`
-              }}
-            />
-          ))}
-        </div>
-      </div>
+      <div className="absolute inset-0 os-pattern pointer-events-none" />
 
       <div className="relative z-10 container mx-auto px-6 py-20">
-        {/* Title */}
         <motion.h2
           ref={titleRef}
           className="text-5xl md:text-7xl font-quantum font-bold text-center text-white mb-16"
-          style={{
-            textShadow: '0 0 20px rgba(255, 107, 53, 0.5)'
-          }}
+          style={{ textShadow: '0 0 20px rgba(255, 107, 53, 0.5)' }}
         >
-          {dict?.about?.title || "About Us"}
+          {dict?.about?.title || "Quiénes Somos"}
         </motion.h2>
 
-        {/* Main Content */}
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            ref={contentRef}
-            className="text-center mb-20"
-          >
+          <motion.div ref={contentRef} className="text-center mb-20">
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">
-              {dict?.about?.description || "We are pioneers in the gaming industry, dedicated to creating immersive experiences that transcend reality. Our mission is to push the boundaries of technology and bring people together through innovative gaming solutions."}
+              {dict?.about?.description || "En Omniverse Games desarrollamos videojuegos y experiencias digitales de nueva generación."}
             </p>
-            
+
             <div className="grid md:grid-cols-2 gap-8 text-left">
               <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
                 <h3 className="text-2xl font-quantum text-orange-400 mb-4">
-                  {dict?.about?.mission?.title || "Our Mission"}
+                  {dict?.about?.mission?.title || "Nuestra Misión"}
                 </h3>
                 <p className="text-gray-300">
-                  {dict?.about?.mission?.description || "To revolutionize the gaming industry through cutting-edge technology and create unforgettable experiences for players worldwide."}
+                  {dict?.about?.mission?.description || "Crear experiencias de juego innovadoras que inspiren, entretengan y conecten comunidades."}
                 </p>
               </div>
-              
+
               <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
                 <h3 className="text-2xl font-quantum text-orange-400 mb-4">
-                  {dict?.about?.vision?.title || "Our Vision"}
+                  {dict?.about?.vision?.title || "Nuestra Visión"}
                 </h3>
                 <p className="text-gray-300">
-                  {dict?.about?.vision?.description || "To be the leading force in creating the future of interactive entertainment and virtual experiences."}
+                  {dict?.about?.vision?.description || "Convertir a Omniverse Games en un referente global del entretenimiento interactivo."}
                 </p>
               </div>
             </div>
           </motion.div>
 
-          {/* Features Grid */}
           <motion.div
             ref={featuresRef}
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
@@ -172,7 +178,7 @@ export default function AboutSection({ lang, dict }: AboutSectionProps) {
                 whileHover={{ scale: 1.05, y: -10 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="flex justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-quantum text-white mb-3">
@@ -186,10 +192,6 @@ export default function AboutSection({ lang, dict }: AboutSectionProps) {
           </motion.div>
         </div>
       </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-400/10 rounded-full blur-xl" />
-      <div className="absolute bottom-20 right-10 w-48 h-48 bg-blue-400/10 rounded-full blur-xl" />
     </section>
   );
 }

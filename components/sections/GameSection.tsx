@@ -6,13 +6,45 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import GamingButton from "@/components/GamingButton";
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 interface ProjectsSectionProps {
   lang: 'en' | 'es';
   dict: any;
 }
+
+const IconChain = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8 text-[#ff6b35]">
+    <polygon points="12,2 18,5.5 18,12.5 12,16 6,12.5 6,5.5" strokeLinejoin="round"/>
+    <line x1="12" y1="16" x2="12" y2="22"/>
+    <circle cx="12" cy="22" r="1.5" fill="currentColor" stroke="none"/>
+    <circle cx="18" cy="5.5" r="1.5" fill="currentColor" stroke="none"/>
+    <circle cx="6" cy="5.5" r="1.5" fill="currentColor" stroke="none"/>
+  </svg>
+);
+
+const IconMultiplayer = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8 text-[#4de8ff]">
+    <circle cx="8" cy="8" r="3"/>
+    <circle cx="16" cy="8" r="3"/>
+    <path d="M2 20c0-3.3 2.7-6 6-6h8c3.3 0 6 2.7 6 6" strokeLinecap="round"/>
+  </svg>
+);
+
+const IconGraphics = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8 text-[#fbbf24]">
+    <rect x="2" y="4" width="20" height="14" rx="2"/>
+    <line x1="8" y1="22" x2="16" y2="22"/>
+    <line x1="12" y1="18" x2="12" y2="22"/>
+    <path d="M7 10l3 3 4-5 3 4" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const IconPerformance = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8 text-[#ff6b35]">
+    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" strokeLinejoin="round"/>
+  </svg>
+);
 
 export default function ProjectsSection({ lang, dict }: ProjectsSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -23,7 +55,6 @@ export default function ProjectsSection({ lang, dict }: ProjectsSectionProps) {
   useEffect(() => {
     if (!sectionRef.current || !titleRef.current || !gamesRef.current || !featuresRef.current) return;
 
-    // Create timeline for entrance animations
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -33,27 +64,22 @@ export default function ProjectsSection({ lang, dict }: ProjectsSectionProps) {
       }
     });
 
-    // Title animation
     tl.fromTo(titleRef.current,
       { y: 100, opacity: 0, scale: 0.8 },
       { y: 0, opacity: 1, scale: 1, duration: 1, ease: "power2.out" }
     )
-    // Games animation
     .fromTo(gamesRef.current,
       { y: 50, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
       "-=0.5"
     )
-    // Features animation
     .fromTo(featuresRef.current,
       { y: 30, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
       "-=0.3"
     );
 
-    return () => {
-      tl.kill();
-    };
+    return () => { tl.kill(); };
   }, []);
 
   const games = [
@@ -61,135 +87,93 @@ export default function ProjectsSection({ lang, dict }: ProjectsSectionProps) {
       id: 1,
       title: dict?.projects?.omniverse?.title || "Omniverse",
       description: dict?.projects?.omniverse?.description || "The primordial battlezone",
-      image: "/api/placeholder/400/300",
       genre: "Battlezone",
-      status: "Available Now"
+      status: lang === 'es' ? 'Próximamente' : 'Coming Soon'
     },
   ];
 
   const features = [
     {
-      icon: "🎮",
-      title: dict?.projects?.gameFeatures?.vr?.title || "VR Support",
-      description: dict?.projects?.gameFeatures?.vr?.description || "Immersive virtual reality experience"
+      icon: <IconChain />,
+      title: dict?.projects?.gameFeatures?.vr?.title || "Blockchain Propia",
+      description: dict?.projects?.gameFeatures?.vr?.description || "Economía de activos digitales sobre nuestra propia cadena. Sin intermediarios."
     },
     {
-      icon: "🌐",
-      title: dict?.projects?.gameFeatures?.multiplayer?.title || "Multiplayer",
-      description: dict?.projects?.gameFeatures?.multiplayer?.description || "Play with friends worldwide"
+      icon: <IconMultiplayer />,
+      title: dict?.projects?.gameFeatures?.multiplayer?.title || "Multijugador",
+      description: dict?.projects?.gameFeatures?.multiplayer?.description || "Juega con jugadores de todo el mundo en tiempo real."
     },
     {
-      icon: "🎨",
-      title: dict?.projects?.gameFeatures?.graphics?.title || "4K Graphics",
-      description: dict?.projects?.gameFeatures?.graphics?.description || "Stunning visual fidelity"
+      icon: <IconGraphics />,
+      title: dict?.projects?.gameFeatures?.graphics?.title || "Gráficos 4K",
+      description: dict?.projects?.gameFeatures?.graphics?.description || "Fidelidad visual de última generación."
     },
     {
-      icon: "⚡",
-      title: dict?.projects?.gameFeatures?.performance?.title || "High Performance",
-      description: dict?.projects?.gameFeatures?.performance?.description || "Optimized for smooth gameplay"
+      icon: <IconPerformance />,
+      title: dict?.projects?.gameFeatures?.performance?.title || "Alto Rendimiento",
+      description: dict?.projects?.gameFeatures?.performance?.description || "Optimizado para una experiencia fluida en cualquier hardware."
     }
   ];
 
   return (
-    <section 
+    <section
       id="projects"
       ref={sectionRef}
-      className="relative min-h-screen w-full flex-shrink-0 bg-gradient-to-br from-purple-900 via-black to-blue-900 overflow-hidden"
+      className="relative min-h-screen w-full flex-shrink-0 overflow-hidden"
+      style={{ background: 'linear-gradient(135deg, #06060e 0%, #0d0d1a 50%, #06060e 100%)' }}
     >
-      {/* Gaming-Themed Animated Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Floating Game Icons */}
-        <div className="absolute top-20 left-20 text-6xl opacity-10 animate-bounce" style={{ animationDelay: '0s' }}>🎮</div>
-        <div className="absolute top-40 right-32 text-5xl opacity-10 animate-bounce" style={{ animationDelay: '1s' }}>🎯</div>
-        <div className="absolute bottom-40 left-32 text-4xl opacity-10 animate-bounce" style={{ animationDelay: '2s' }}>⚡</div>
-        <div className="absolute bottom-20 right-20 text-5xl opacity-10 animate-bounce" style={{ animationDelay: '3s' }}>🏆</div>
-        
-        {/* Animated Circuit Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <defs>
-              <pattern id="circuit" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <path d="M0,10 L20,10 M10,0 L10,20" stroke="currentColor" strokeWidth="0.5" fill="none" />
-                <circle cx="10" cy="10" r="1" fill="currentColor" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#circuit)" className="animate-pulse" />
-          </svg>
-        </div>
-        
-        {/* Floating Energy Orbs */}
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-br from-purple-500/30 to-blue-500/30 rounded-full blur-xl animate-pulse" />
-        <div className="absolute top-1/3 right-1/3 w-24 h-24 bg-gradient-to-br from-cyan-500/30 to-purple-500/30 rounded-full blur-lg animate-bounce" style={{ animationDelay: '1.5s' }} />
-        <div className="absolute bottom-1/3 left-1/3 w-40 h-40 bg-gradient-to-br from-pink-500/30 to-purple-500/30 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '3s' }} />
-        <div className="absolute bottom-1/4 right-1/4 w-28 h-28 bg-gradient-to-br from-yellow-500/30 to-orange-500/30 rounded-full blur-lg animate-bounce" style={{ animationDelay: '2.5s' }} />
-        
-        {/* Animated Grid Lines */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent animate-pulse" />
-          <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-pink-500/50 to-transparent animate-pulse" style={{ animationDelay: '2s' }} />
-          <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent animate-pulse" style={{ animationDelay: '3s' }} />
-        </div>
-        
-        {/* Floating Particles with Gaming Colors */}
-        <div className="absolute inset-0">
-          {[...Array(15)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-3 h-3 rounded-full animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                backgroundColor: ['#8b5cf6', '#3b82f6', '#ec4899', '#06b6d4', '#f59e0b'][Math.floor(Math.random() * 5)],
-                opacity: 0.3,
-                animationDelay: `${Math.random() * 4}s`,
-                animationDuration: `${1.5 + Math.random() * 2}s`
-              }}
-            />
-          ))}
-        </div>
+      {/* Subtle circuit pattern */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <defs>
+            <pattern id="circuit-game" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M0,10 L20,10 M10,0 L10,20" stroke="#ff6b35" strokeWidth="0.3" fill="none"/>
+              <circle cx="10" cy="10" r="0.8" fill="#ff6b35"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#circuit-game)"/>
+        </svg>
       </div>
 
+      {/* Ambient glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#ff6b35]/5 rounded-full blur-3xl pointer-events-none"/>
+
       <div className="relative z-10 container mx-auto px-6 py-20">
-        {/* Title */}
         <motion.h2
           ref={titleRef}
           className="text-5xl md:text-7xl font-quantum font-bold text-center text-white mb-16"
-          style={{
-            textShadow: '0 0 20px rgba(147, 51, 234, 0.5)'
-          }}
+          style={{ textShadow: '0 0 20px rgba(255, 107, 53, 0.5)' }}
         >
-          {dict?.projects?.title || "Projects"}
+          {dict?.projects?.title || "Proyectos"}
         </motion.h2>
 
-        {/* Games Grid */}
+        {/* Game card */}
         <motion.div
           ref={gamesRef}
-          className={`grid gap-8 mb-20 ${
-            games.length === 1 ? "place-content-center" : "md:grid-cols-2 lg:grid-cols-3"
-          }`}
+          className="flex justify-center mb-20"
         >
           {games.map((game, index) => (
             <motion.div
               key={game.id}
-              className="w-[320px] md:min-w-sm group relative bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 hover:border-purple-400/50 transition-all duration-300"
+              className="w-[340px] group relative rounded-xl overflow-hidden border border-[#ff6b35]/20 hover:border-[#ff6b35]/60 transition-all duration-300"
+              style={{ background: 'rgba(255,107,53,0.05)', backdropFilter: 'blur(8px)' }}
               whileHover={{ scale: 1.02, y: -5 }}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              {/* Game Image Placeholder */}
-              <div className="h-48 bg-gradient-to-br from-purple-600 to-blue-600 relative overflow-hidden">
-                <div className="absolute inset-0 bg-black/20" />
+              {/* Header visual */}
+              <div className="h-48 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #1a0a00 0%, #0d0d1a 100%)' }}>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-6xl opacity-50">🎮</div>
+                  {/* Logo del juego */}
+                  <img
+                    src="/Omniverse_logo.png"
+                    alt="Omniverse: The Primordial Battlezone"
+                    className="w-full h-full object-contain p-4 opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                  />
                 </div>
-                <div className="absolute top-4 right-4">
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                    game.status === 'Available Now' ? 'bg-green-500/20 text-green-400' :
-                    game.status === 'Coming Soon' ? 'bg-yellow-500/20 text-yellow-400' :
-                    'bg-blue-500/20 text-blue-400'
-                  }`}>
+                <div className="absolute top-3 right-3">
+                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#ff6b35]/20 text-[#ff6b35] border border-[#ff6b35]/30">
                     {game.status}
                   </span>
                 </div>
@@ -197,10 +181,10 @@ export default function ProjectsSection({ lang, dict }: ProjectsSectionProps) {
 
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-xl font-quantum text-white group-hover:text-purple-400 transition-colors">
+                  <h3 className="text-xl font-quantum text-white group-hover:text-[#ff6b35] transition-colors">
                     {game.title}
                   </h3>
-                  <span className="text-sm text-gray-400 bg-white/10 px-2 py-1 rounded">
+                  <span className="text-xs text-gray-400 bg-white/10 px-2 py-1 rounded">
                     {game.genre}
                   </span>
                 </div>
@@ -208,22 +192,19 @@ export default function ProjectsSection({ lang, dict }: ProjectsSectionProps) {
                   {game.description}
                 </p>
                 <GamingButton>
-                  {dict?.projects?.playButton || "Learn More"}
+                  {dict?.projects?.playButton || "Saber Más"}
                 </GamingButton>
               </div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Game Features */}
-        <motion.div
-          ref={featuresRef}
-          className="text-center"
-        >
+        {/* Features */}
+        <motion.div ref={featuresRef} className="text-center">
           <h3 className="text-3xl font-quantum text-white mb-12">
-            {dict?.projects?.gameFeatures?.title || "Game Features"}
+            {dict?.projects?.gameFeatures?.title || "Características del Juego"}
           </h3>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <motion.div
@@ -232,7 +213,7 @@ export default function ProjectsSection({ lang, dict }: ProjectsSectionProps) {
                 whileHover={{ scale: 1.05, y: -5 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="flex justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                   {feature.icon}
                 </div>
                 <h4 className="text-lg font-quantum text-white mb-2">
