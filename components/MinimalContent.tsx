@@ -21,6 +21,13 @@ export default function MinimalContent({ dict, currentLang }: MinimalContentProp
     updatePreferences(allPreferences);
   };
 
+  const particles = Array.from({ length: 20 }, (_, i) => ({
+    left: (i * 17) % 100,
+    top: (i * 23) % 100,
+    duration: 4 + (i % 3),
+    delay: (i * 0.2) % 3
+  }));
+
   return (
     <div className="min-h-screen bg-black flex items-center justify-center p-6">
       <motion.div
@@ -31,46 +38,39 @@ export default function MinimalContent({ dict, currentLang }: MinimalContentProp
       >
         {/* Animated Background */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
+          {particles.map((p, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-orange-400/20 rounded-full"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: `${p.left}%`,
+                top: `${p.top}%`,
               }}
               animate={{
                 y: [0, -30, 0],
                 opacity: [0.2, 0.8, 0.2],
               }}
               transition={{
-                duration: 4 + Math.random() * 2,
+                duration: p.duration,
                 repeat: Infinity,
-                delay: Math.random() * 3,
+                delay: p.delay,
               }}
             />
           ))}
         </div>
 
         <div className="relative z-10">
-          {/* Logo */}
           <motion.div
             className="mb-8"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
           >
-            <h1 
-              className="text-6xl font-quantum font-bold text-white"
-              style={{
-                textShadow: '0 0 30px rgba(255, 107, 53, 0.5)'
-              }}
-            >
+            <h1 className="text-6xl font-quantum font-bold text-white">
               {dict?.hero?.title || "OMNIVERSE"}
             </h1>
           </motion.div>
 
-          {/* Message */}
           <motion.div
             className="mb-12"
             initial={{ opacity: 0 }}
@@ -88,7 +88,6 @@ export default function MinimalContent({ dict, currentLang }: MinimalContentProp
             </p>
           </motion.div>
 
-          {/* Action Button */}
           <motion.button
             onClick={handleAcceptCookies}
             className="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-quantum text-lg rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
@@ -101,7 +100,6 @@ export default function MinimalContent({ dict, currentLang }: MinimalContentProp
             {dict?.minimal?.acceptButton || "Accept Cookies & Continue"}
           </motion.button>
 
-          {/* Additional Info */}
           <motion.div
             className="mt-8 text-gray-500 text-sm"
             initial={{ opacity: 0 }}
