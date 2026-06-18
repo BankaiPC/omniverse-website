@@ -14,40 +14,40 @@ interface ContactSectionProps {
 }
 
 const IconPin = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5 text-[#ff6b35]">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5" style={{ color: '#71717A' }}>
     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" strokeLinejoin="round"/>
     <circle cx="12" cy="9" r="2.5"/>
   </svg>
 );
 
 const IconPhone = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5 text-[#ff6b35]">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5" style={{ color: '#71717A' }}>
     <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C9.6 21 3 14.4 3 6c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" strokeLinejoin="round"/>
   </svg>
 );
 
 const IconMail = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5 text-[#ff6b35]">
-    <rect x="2" y="4" width="20" height="16" rx="2"/>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5" style={{ color: '#71717A' }}>
+    <rect x="2" y="4" width="20" height="16" rx="0"/>
     <path d="M2 7l10 7 10-7"/>
   </svg>
 );
 
 const IconClock = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5 text-[#ff6b35]">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5" style={{ color: '#71717A' }}>
     <circle cx="12" cy="12" r="9"/>
     <path d="M12 7v5l3 3" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
 
 const IconDownload = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6" style={{ color: '#6D28D9' }}>
     <path d="M12 3v12M8 11l4 4 4-4" strokeLinecap="round" strokeLinejoin="round"/>
     <path d="M3 18h18" strokeLinecap="round"/>
   </svg>
 );
 
-export default function ContactSection({ lang, dict }: ContactSectionProps) {
+const ContactSection: React.FC<ContactSectionProps> = ({ lang, dict }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
@@ -71,18 +71,18 @@ export default function ContactSection({ lang, dict }: ContactSectionProps) {
     });
 
     tl.fromTo(titleRef.current,
-      { y: 100, opacity: 0, scale: 0.8 },
-      { y: 0, opacity: 1, scale: 1, duration: 1, ease: "power2.out" }
+      { y: 24, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.3, ease: "power2.out" }
     )
     .fromTo(formRef.current,
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
-      "-=0.5"
+      { y: 16, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.2, ease: "power2.out" },
+      "-=0.15"
     )
     .fromTo(infoRef.current,
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
-      "-=0.3"
+      { y: 16, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.2, ease: "power2.out" },
+      "-=0.1"
     );
 
     return () => { tl.kill(); };
@@ -158,43 +158,44 @@ export default function ContactSection({ lang, dict }: ContactSectionProps) {
       id="contact"
       ref={sectionRef}
       className="relative min-h-screen w-full flex-shrink-0 overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #06060e 0%, #0d0610 50%, #06060e 100%)' }}
+      style={{ background: '#0A0A0B' }}
     >
-      {/* Subtle dot pattern */}
-      <div className="absolute inset-0 opacity-4 pointer-events-none"
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
-          backgroundImage: 'radial-gradient(circle, #ff6b35 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(circle, #E5E5E5 1px, transparent 1px)',
           backgroundSize: '32px 32px'
         }}
       />
-      {/* Ambient glow bottom */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-64 bg-[#ff6b35]/5 rounded-full blur-3xl pointer-events-none"/>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 py-12 sm:py-20">
-        <motion.h2
+        <h2
           ref={titleRef}
-          className="text-3xl sm:text-5xl md:text-7xl font-quantum font-bold text-center text-white mb-8 md:mb-16"
-          style={{ textShadow: '0 0 20px rgba(255, 107, 53, 0.5)' }}
+          className="text-3xl sm:text-5xl md:text-7xl font-quantum font-bold text-center mb-8 md:mb-16"
+          style={{ color: '#E5E5E5' }}
         >
           {dict?.contact?.title || "Contacto"}
-        </motion.h2>
+        </h2>
 
         <motion.p
-          className="text-lg sm:text-xl text-gray-300 text-center leading-relaxed mb-12 max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 30 }}
+          className="text-lg sm:text-xl text-center leading-relaxed mb-12 max-w-3xl mx-auto"
+          style={{ color: '#A1A1AA' }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
         >
           {dict?.contact?.description || "¿Listo para unirte al futuro del gaming? Cuéntanos tu proyecto."}
         </motion.p>
 
         {/* Battlezone CTA banner */}
         <motion.div
-          className="max-w-4xl mx-auto mb-12 rounded-xl overflow-hidden border border-[#ff6b35]/30"
-          style={{ background: 'linear-gradient(135deg, rgba(255,107,53,0.08) 0%, rgba(13,13,26,0.9) 100%)' }}
-          initial={{ opacity: 0, y: 20 }}
+          className="max-w-4xl mx-auto mb-12 overflow-hidden"
+          style={{ background: '#111113', border: '1px solid #27272A' }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
         >
           <div className="flex flex-col md:flex-row items-center gap-6 p-6 md:p-8">
             <img
@@ -203,13 +204,16 @@ export default function ContactSection({ lang, dict }: ContactSectionProps) {
               className="w-48 md:w-56 object-contain flex-shrink-0"
             />
             <div className="flex-1 text-center md:text-left">
-              <span className="inline-block text-xs font-quantum text-[#ff6b35] border border-[#ff6b35]/40 px-3 py-1 rounded-full mb-3 tracking-widest uppercase">
+              <span
+                className="inline-block text-xs font-quantum px-3 py-1 mb-3 tracking-widest uppercase"
+                style={{ color: '#A78BFA', border: '1px solid rgba(109,40,217,0.4)' }}
+              >
                 {lang === 'es' ? 'Primer Proyecto' : 'First Project'}
               </span>
-              <h3 className="text-2xl md:text-3xl font-quantum text-white mb-2">
+              <h3 className="text-2xl md:text-3xl font-quantum mb-2" style={{ color: '#E5E5E5' }}>
                 The Primordial Battlezone
               </h3>
-              <p className="text-gray-400 text-sm mb-4">
+              <p className="text-sm mb-4" style={{ color: '#A1A1AA' }}>
                 {lang === 'es'
                   ? 'El primer universo de Omniverse Games. Combate, economía blockchain propia y comunidad global.'
                   : 'The first Omniverse Games universe. Combat, own blockchain economy and global community.'}
@@ -223,105 +227,109 @@ export default function ContactSection({ lang, dict }: ContactSectionProps) {
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {/* Form */}
-          <motion.form
+          <form
             ref={formRef}
             onSubmit={handleSubmit}
-            className="rounded-xl p-6 md:p-8 border border-white/10"
-            style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(8px)' }}
+            className="p-6 md:p-8"
+            style={{ background: '#111113', border: '1px solid #27272A' }}
           >
-            <h3 className="text-xl sm:text-2xl font-quantum text-white mb-6">
+            <h3 className="text-xl sm:text-2xl font-quantum mb-6" style={{ color: '#E5E5E5' }}>
               {dict?.contact?.form?.title || "Envíanos un Mensaje"}
             </h3>
 
             <div className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">{dict?.contact?.form?.name || "Nombre"}</label>
+                  <label className="block text-sm mb-2" style={{ color: '#71717A' }}>{dict?.contact?.form?.name || "Nombre"}</label>
                   <input
                     type="text" name="name" value={formData.name} onChange={handleInputChange} required
-                    className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#ff6b35] transition-all duration-300"
-                    style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)' }}
+                    className="w-full px-4 py-3 text-sm transition-colors duration-200 focus:outline-none"
+                    style={{ background: '#0A0A0B', border: '1px solid #27272A', color: '#E5E5E5' }}
                     placeholder={dict?.contact?.form?.namePlaceholder || "Tu nombre"}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">{dict?.contact?.form?.email || "Email"}</label>
+                  <label className="block text-sm mb-2" style={{ color: '#71717A' }}>{dict?.contact?.form?.email || "Email"}</label>
                   <input
                     type="email" name="email" value={formData.email} onChange={handleInputChange} required
-                    className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#ff6b35] transition-all duration-300"
-                    style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)' }}
+                    className="w-full px-4 py-3 text-sm transition-colors duration-200 focus:outline-none"
+                    style={{ background: '#0A0A0B', border: '1px solid #27272A', color: '#E5E5E5' }}
                     placeholder={dict?.contact?.form?.emailPlaceholder || "tu@email.com"}
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm text-gray-400 mb-2">{dict?.contact?.form?.subject || "Asunto"}</label>
+                <label className="block text-sm mb-2" style={{ color: '#71717A' }}>{dict?.contact?.form?.subject || "Asunto"}</label>
                 <input
                   type="text" name="subject" value={formData.subject} onChange={handleInputChange} required
-                  className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#ff6b35] transition-all duration-300"
-                  style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)' }}
+                  className="w-full px-4 py-3 text-sm transition-colors duration-200 focus:outline-none"
+                  style={{ background: '#0A0A0B', border: '1px solid #27272A', color: '#E5E5E5' }}
                   placeholder={dict?.contact?.form?.subjectPlaceholder || "¿De qué se trata?"}
                 />
               </div>
 
               <div>
-                <label className="block text-sm text-gray-400 mb-2">{dict?.contact?.form?.message || "Mensaje"}</label>
+                <label className="block text-sm mb-2" style={{ color: '#71717A' }}>{dict?.contact?.form?.message || "Mensaje"}</label>
                 <textarea
                   name="message" value={formData.message} onChange={handleInputChange} rows={5} required
-                  className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#ff6b35] transition-all duration-300 resize-none"
-                  style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)' }}
+                  className="w-full px-4 py-3 text-sm transition-colors duration-200 focus:outline-none resize-none"
+                  style={{ background: '#0A0A0B', border: '1px solid #27272A', color: '#E5E5E5' }}
                   placeholder={dict?.contact?.form?.messagePlaceholder || "Cuéntanos tu proyecto o idea..."}
                 />
               </div>
 
-              <button
+              <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-8 py-4 font-quantum font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-                style={{ background: 'linear-gradient(135deg, #ff6b35, #ff8c55)', color: '#fff' }}
+                className="w-full px-8 py-4 font-quantum font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{ background: '#6D28D9', color: '#E5E5E5' }}
+                whileHover={!isSubmitting ? { background: '#7C3AED' } : {}}
+                transition={{ duration: 0.2, ease: "easeOut" }}
               >
                 {isSubmitting
                   ? (dict?.contact?.form?.sending || 'Enviando...')
                   : (dict?.contact?.form?.submitButton || "Enviar Mensaje")}
-              </button>
+              </motion.button>
 
               {submitStatus !== 'idle' && (
                 <motion.div
-                  initial={{ opacity: 0, y: -10 }}
+                  initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className={`p-4 rounded-lg ${submitStatus === 'success'
-                    ? 'bg-green-500/10 border border-green-500/40 text-green-300'
-                    : 'bg-red-500/10 border border-red-500/40 text-red-300'}`}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  className="p-4 text-sm"
+                  style={submitStatus === 'success'
+                    ? { background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.3)', color: '#86EFAC' }
+                    : { background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.3)', color: '#FCA5A5' }}
                 >
                   {submitMessage}
                 </motion.div>
               )}
             </div>
-          </motion.form>
+          </form>
 
           {/* Info column */}
-          <motion.div ref={infoRef} className="space-y-8">
+          <div ref={infoRef} className="space-y-8">
 
             {/* Contact info */}
             <div>
-              <h3 className="text-2xl font-quantum text-white mb-6">
+              <h3 className="text-2xl font-quantum mb-6" style={{ color: '#E5E5E5' }}>
                 {dict?.contact?.info?.title || "Información de Contacto"}
               </h3>
               <div className="space-y-5">
                 {contactInfo.map((info, i) => (
                   <motion.div
                     key={i}
-                    className="flex items-start gap-4 group"
+                    className="flex items-start gap-4"
                     whileHover={{ x: 4 }}
-                    transition={{ duration: 0.2 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
                   >
-                    <div className="mt-0.5 group-hover:scale-110 transition-transform duration-200">
+                    <div className="mt-0.5">
                       {info.icon}
                     </div>
                     <div>
-                      <h4 className="text-white text-sm font-semibold mb-0.5">{info.title}</h4>
-                      <p className="text-gray-400 text-sm">{info.content}</p>
+                      <h4 className="text-sm font-semibold mb-0.5" style={{ color: '#E5E5E5' }}>{info.title}</h4>
+                      <p className="text-sm" style={{ color: '#A1A1AA' }}>{info.content}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -330,7 +338,7 @@ export default function ContactSection({ lang, dict }: ContactSectionProps) {
 
             {/* Social links */}
             <div>
-              <h4 className="text-lg font-quantum text-white mb-4">
+              <h4 className="text-lg font-quantum mb-4" style={{ color: '#E5E5E5' }}>
                 {dict?.contact?.social?.title || "Síguenos"}
               </h4>
               <div className="flex gap-3">
@@ -339,10 +347,10 @@ export default function ContactSection({ lang, dict }: ContactSectionProps) {
                     key={i}
                     href={s.url}
                     title={s.name}
-                    className="w-10 h-10 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300"
-                    style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)' }}
-                    whileHover={{ scale: 1.1, y: -2, borderColor: 'rgba(255,107,53,0.5)' }}
-                    whileTap={{ scale: 0.95 }}
+                    className="w-10 h-10 flex items-center justify-center"
+                    style={{ background: '#111113', border: '1px solid #27272A', color: '#71717A' }}
+                    whileHover={{ borderColor: '#6D28D9', color: '#A78BFA' }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
                   >
                     {s.icon}
                   </motion.a>
@@ -352,33 +360,35 @@ export default function ContactSection({ lang, dict }: ContactSectionProps) {
 
             {/* Launcher download */}
             <div
-              className="rounded-xl p-6 border border-[#ff6b35]/25"
-              style={{ background: 'rgba(255,107,53,0.06)' }}
+              className="p-6"
+              style={{ background: '#111113', border: '1px solid #27272A' }}
             >
               <div className="flex items-center gap-3 mb-3">
-                <div className="text-[#ff6b35]"><IconDownload /></div>
-                <h4 className="text-lg font-quantum text-white">
+                <IconDownload />
+                <h4 className="text-lg font-quantum" style={{ color: '#E5E5E5' }}>
                   {dict?.contact?.newsletter?.title || "Descarga el Launcher"}
                 </h4>
               </div>
-              <p className="text-gray-400 text-sm mb-4">
+              <p className="text-sm mb-4" style={{ color: '#A1A1AA' }}>
                 {dict?.contact?.newsletter?.description || "Accede al launcher de Omniverse Games y sé el primero en jugar The Primordial Battlezone."}
               </p>
               <div className="flex flex-col sm:flex-row gap-2">
                 <input
                   type="email"
                   placeholder={dict?.contact?.newsletter?.placeholder || "Tu email"}
-                  className="flex-1 px-4 py-2 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#ff6b35] text-sm transition-all duration-300"
-                  style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)' }}
+                  className="flex-1 px-4 py-2 text-sm focus:outline-none"
+                  style={{ background: '#0A0A0B', border: '1px solid #27272A', color: '#E5E5E5' }}
                 />
                 <GamingButton>
                   {dict?.contact?.newsletter?.button || "Descargar"}
                 </GamingButton>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default ContactSection;
