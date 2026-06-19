@@ -14,8 +14,6 @@ import CookieModal from '@/components/CookieModal';
 import ContentWrapper from '@/components/ContentWrapper';
 import { CookieProvider } from '@/contexts/CookieContext';
 
-export const runtime = 'edge';
-
 export default function Home({
   params,
 }: {
