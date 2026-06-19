@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 import { getClientDictionary } from '@/lib/client-dictionaries';
 import HomeSection from '@/components/sections/HomeSection';
 import AboutSection from '@/components/sections/AboutSection';
@@ -14,11 +15,8 @@ import CookieModal from '@/components/CookieModal';
 import ContentWrapper from '@/components/ContentWrapper';
 import { CookieProvider } from '@/contexts/CookieContext';
 
-export default function Home({
-  params,
-}: {
-  params: { lang: string };
-}) {
+export default function Home() {
+  const params = useParams<{ lang: string }>();
   const [lang, setLang] = useState<'en' | 'es'>('en');
   const [dict, setDict] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -26,7 +24,7 @@ export default function Home({
   useEffect(() => {
     const initializePage = async () => {
       try {
-        const validLang = (params.lang === 'en' || params.lang === 'es')
+        const validLang = (params?.lang === 'en' || params?.lang === 'es')
           ? params.lang as 'en' | 'es'
           : 'en';
 
@@ -44,7 +42,7 @@ export default function Home({
     };
 
     initializePage();
-  }, [params.lang]);
+  }, [params?.lang]);
 
   useEffect(() => {
     if (typeof document !== 'undefined') {

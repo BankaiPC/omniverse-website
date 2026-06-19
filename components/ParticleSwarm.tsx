@@ -193,7 +193,7 @@ export default function ParticleSwarm({ className = '' }: ParticleSwarmProps) {
   return (
     <canvas
       ref={canvasRef}
-      className={`fixed inset-0 w-full h-full ${className}`}
+      className={`absolute inset-0 w-full h-full ${className}`}
     />
   );
 }
