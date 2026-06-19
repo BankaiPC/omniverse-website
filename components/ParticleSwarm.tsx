@@ -136,7 +136,7 @@ export default function ParticleSwarm({ className = '' }: ParticleSwarmProps) {
         if (u.y < -20) u.y = canvas.height + 20;
         if (u.y > canvas.height + 20) u.y = -20;
 
-        const pulse = u.r + Math.sin(t * u.speed + u.phase) * 1.8;
+        const pulse = Math.max(0.4, u.r + Math.sin(t * u.speed + u.phase) * 1.8);
         const c = u.color;
 
         // Outer glow halo
