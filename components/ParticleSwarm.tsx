@@ -102,26 +102,6 @@ export default function ParticleSwarm({ className = '' }: ParticleSwarmProps) {
         ctx.fill();
       });
 
-      // Connection threads between nearby universes
-      ctx.globalCompositeOperation = 'lighter';
-      for (let i = 0; i < universes.length; i++) {
-        for (let j = i + 1; j < universes.length; j++) {
-          const dx = universes[i].x - universes[j].x;
-          const dy = universes[i].y - universes[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 110) {
-            const alpha = (1 - dist / 110) * 0.13;
-            const c = universes[i].color;
-            ctx.strokeStyle = `rgba(${c.r},${c.g},${c.b},${alpha})`;
-            ctx.lineWidth = 0.4;
-            ctx.beginPath();
-            ctx.moveTo(universes[i].x, universes[i].y);
-            ctx.lineTo(universes[j].x, universes[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-
       // Universe bubbles
       universes.forEach(u => {
         // Procedural drift — noise field shifts velocity each frame
@@ -150,28 +130,20 @@ export default function ParticleSwarm({ className = '' }: ParticleSwarmProps) {
         ctx.arc(u.x, u.y, pulse * 6, 0, Math.PI * 2);
         ctx.fill();
 
-        // Core bubble sphere — radial highlight for 3D feel
+        // Core bubble — soft nebula glow instead of glass-marble highlight
         const sphere = ctx.createRadialGradient(
-          u.x - pulse * 0.32, u.y - pulse * 0.32, 0,
+          u.x - pulse * 0.25, u.y - pulse * 0.25, 0,
           u.x, u.y, pulse
         );
-        sphere.addColorStop(0,    'rgba(255,255,255,0.95)');
-        sphere.addColorStop(0.3,  `rgba(${c.r},${c.g},${c.b},0.9)`);
-        sphere.addColorStop(0.75, `rgba(${c.r},${c.g},${c.b},0.35)`);
-        sphere.addColorStop(1,    `rgba(${c.r},${c.g},${c.b},0.05)`);
+        sphere.addColorStop(0,    `rgba(255,255,255,0.45)`);
+        sphere.addColorStop(0.35, `rgba(${c.r},${c.g},${c.b},0.6)`);
+        sphere.addColorStop(0.75, `rgba(${c.r},${c.g},${c.b},0.25)`);
+        sphere.addColorStop(1,    `rgba(${c.r},${c.g},${c.b},0.0)`);
         ctx.globalCompositeOperation = 'lighter';
         ctx.fillStyle = sphere;
         ctx.beginPath();
         ctx.arc(u.x, u.y, pulse, 0, Math.PI * 2);
         ctx.fill();
-
-        // Rim edge highlight
-        ctx.globalCompositeOperation = 'source-over';
-        ctx.strokeStyle = `rgba(${c.r},${c.g},${c.b},0.35)`;
-        ctx.lineWidth = 0.5;
-        ctx.beginPath();
-        ctx.arc(u.x, u.y, pulse, 0, Math.PI * 2);
-        ctx.stroke();
       });
 
       ctx.globalCompositeOperation = 'source-over';

@@ -75,7 +75,7 @@ const RACES: Race[] = [
     image: null,
     tagEs: 'Humanos',
     tagEn: 'Humans',
-    accent: '#A1A1AA',
+    accent: '#C4C4CC',
     descEs: 'Humanos de ciencia ficción, con colonias repartidas por el sistema solar. Mientras otras razas ven la Convergencia como destino o conquista, los Solaris la ven como lo que es para ellos: un acto cruel impuesto desde fuera. Y han jurado venganza.',
     descEn: 'Sci-fi humans, with colonies spread across the solar system. While other races see the Convergence as destiny or conquest, the Solaris see it for what it is to them: a cruel act imposed from outside. And they have sworn revenge.',
   },
@@ -85,7 +85,7 @@ const RACES: Race[] = [
     image: null,
     tagEs: 'Comerciantes',
     tagEn: 'Traders',
-    accent: '#71717A',
+    accent: '#9B9BA3',
     descEs: 'Seres de estatura media, comerciantes natos del Omniverso. No son guerreros ni conquistadores — son la red que conecta a todas las demás razas a través del intercambio. Se les conocerá sobre todo en la tienda online, donde comercian con todo tipo de objetos.',
     descEn: 'Medium-height beings, born traders of the Omniverse. They are neither warriors nor conquerors — they are the network connecting every other race through exchange. You will mostly encounter them in the online store, trading every kind of item.',
   },
@@ -134,6 +134,28 @@ export default function BattlezoneContent({ lang }: BattlezoneContentProps) {
 
       {/* HERO */}
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 text-center overflow-hidden" style={{ background: '#0A0A0B' }}>
+        {/* Starfield — static, layered for depth */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: `
+              radial-gradient(1px 1px at 12% 18%, #FFFFFF 100%, transparent),
+              radial-gradient(1px 1px at 28% 64%, #FFFFFF 100%, transparent),
+              radial-gradient(1.5px 1.5px at 41% 8%, #FFFFFF 100%, transparent),
+              radial-gradient(1px 1px at 55% 42%, #FFFFFF 100%, transparent),
+              radial-gradient(1px 1px at 68% 76%, #FFFFFF 100%, transparent),
+              radial-gradient(1.5px 1.5px at 78% 22%, #FFFFFF 100%, transparent),
+              radial-gradient(1px 1px at 88% 55%, #FFFFFF 100%, transparent),
+              radial-gradient(1px 1px at 6% 82%, #FFFFFF 100%, transparent),
+              radial-gradient(1.5px 1.5px at 95% 88%, #FFFFFF 100%, transparent),
+              radial-gradient(1px 1px at 35% 92%, #FFFFFF 100%, transparent),
+              radial-gradient(1px 1px at 18% 38%, #FFFFFF 100%, transparent),
+              radial-gradient(1px 1px at 62% 14%, #FFFFFF 100%, transparent)
+            `,
+            backgroundRepeat: 'no-repeat',
+            opacity: 0.8,
+          }}
+        />
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{
@@ -141,9 +163,18 @@ export default function BattlezoneContent({ lang }: BattlezoneContentProps) {
             backgroundSize: '32px 32px',
           }}
         />
+        {/* Nebula glows */}
         <div
-          className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[400px] pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(109,40,217,0.07) 0%, transparent 70%)', filter: 'blur(80px)' }}
+          className="absolute top-1/4 left-1/3 -translate-x-1/2 w-[700px] h-[500px] pointer-events-none"
+          style={{ background: 'radial-gradient(circle, rgba(109,40,217,0.22) 0%, transparent 70%)', filter: 'blur(90px)' }}
+        />
+        <div
+          className="absolute top-1/2 right-0 w-[500px] h-[400px] pointer-events-none"
+          style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.10) 0%, transparent 70%)', filter: 'blur(100px)' }}
+        />
+        <div
+          className="absolute bottom-0 left-0 w-[450px] h-[350px] pointer-events-none"
+          style={{ background: 'radial-gradient(circle, rgba(109,40,217,0.16) 0%, transparent 70%)', filter: 'blur(85px)' }}
         />
 
         <motion.div initial="hidden" animate="visible" variants={fadeUp} className="relative z-10 max-w-4xl">
@@ -157,11 +188,11 @@ export default function BattlezoneContent({ lang }: BattlezoneContentProps) {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-quantum font-bold mb-4" style={{ color: '#E5E5E5' }}>
             OMNIVERSE
           </h1>
-          <p className="text-xl md:text-2xl font-quantum tracking-[0.15em] uppercase mb-8" style={{ color: '#71717A' }}>
+          <p className="text-xl md:text-2xl font-quantum tracking-[0.15em] uppercase mb-8" style={{ color: '#9B9BA3' }}>
             {isEs ? 'La Zona de Batalla Primordial' : 'The Primordial Battlezone'}
           </p>
 
-          <p className="text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10" style={{ color: '#A1A1AA' }}>
+          <p className="text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10" style={{ color: '#C4C4CC' }}>
             {isEs
               ? 'Un Third-Person Shooter RPG competitivo construido en Unreal Engine, donde siete razas luchan por un lugar en la divinidad — sobre una economía respaldada por blockchain propia.'
               : 'A competitive RPG Third-Person Shooter built on Unreal Engine, where seven races fight for a place in divinity — backed by an economy on our own blockchain.'}
@@ -189,12 +220,12 @@ export default function BattlezoneContent({ lang }: BattlezoneContentProps) {
           <h2 className="text-3xl md:text-5xl font-quantum font-bold mb-8" style={{ color: '#E5E5E5' }}>
             {isEs ? 'Los Increados' : 'The Uncreated'}
           </h2>
-          <p className="text-base md:text-lg leading-relaxed mb-5" style={{ color: '#A1A1AA' }}>
+          <p className="text-base md:text-lg leading-relaxed mb-5" style={{ color: '#C4C4CC' }}>
             {isEs
               ? 'El Omniverso no es un lugar. Es una espuma — una extensión infinita de burbujas suspendidas en la nada, y cada burbuja es un universo completo: sus propias leyes, su propio tiempo, su propia muerte ya escrita.'
               : 'The Omniverse is not a place. It is a foam — an infinite expanse of bubbles suspended in nothingness, and every bubble is a complete universe: its own laws, its own time, its own death already written.'}
           </p>
-          <p className="text-base md:text-lg leading-relaxed mb-5" style={{ color: '#A1A1AA' }}>
+          <p className="text-base md:text-lg leading-relaxed mb-5" style={{ color: '#C4C4CC' }}>
             {isEs
               ? 'Los Increados crearon esa espuma — cada burbuja, cada universo, es su obra. Pero se aburrieron de ver cómo esas burbujas vivían y morían sin propósito. Por eso diseñaron la Convergencia: una competición a través de las burbujas donde las razas elegidas demuestran si merecen acompañarlos en la divinidad.'
               : 'The Uncreated made that foam — every bubble, every universe, is their work. But they grew bored watching those bubbles live and die without purpose. So they designed the Convergence: a competition across the bubbles where chosen races prove whether they deserve to join them in divinity.'}
@@ -264,7 +295,7 @@ export default function BattlezoneContent({ lang }: BattlezoneContentProps) {
                 <h3 className="text-xl font-quantum mb-3" style={{ color: '#E5E5E5' }}>
                   {race.name}
                 </h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#A1A1AA' }}>
+                <p className="text-sm leading-relaxed" style={{ color: '#C4C4CC' }}>
                   {isEs ? race.descEs : race.descEn}
                 </p>
               </div>
@@ -305,7 +336,7 @@ export default function BattlezoneContent({ lang }: BattlezoneContentProps) {
               whileHover={{ backgroundColor: '#111113' }}
             >
               <h3 className="text-lg font-quantum mb-2" style={{ color: '#E5E5E5' }}>{p.title}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: '#71717A' }}>{p.desc}</p>
+              <p className="text-sm leading-relaxed" style={{ color: '#9B9BA3' }}>{p.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -341,7 +372,7 @@ export default function BattlezoneContent({ lang }: BattlezoneContentProps) {
                 style={{ background: r.status === 'current' ? '#6D28D9' : '#3F3F46' }}
               />
               <div>
-                <h3 className="text-base font-quantum mb-1" style={{ color: r.status === 'current' ? '#E5E5E5' : '#71717A' }}>
+                <h3 className="text-base font-quantum mb-1" style={{ color: r.status === 'current' ? '#E5E5E5' : '#9B9BA3' }}>
                   {r.phase}
                 </h3>
                 <p className="text-sm" style={{ color: '#52525B' }}>{r.desc}</p>
@@ -362,7 +393,7 @@ export default function BattlezoneContent({ lang }: BattlezoneContentProps) {
           <h2 className="text-2xl md:text-4xl font-quantum font-bold mb-4" style={{ color: '#E5E5E5' }}>
             {isEs ? '¿Listo para la Convergencia?' : 'Ready for the Convergence?'}
           </h2>
-          <p className="text-sm md:text-base mb-8 max-w-xl mx-auto" style={{ color: '#71717A' }}>
+          <p className="text-sm md:text-base mb-8 max-w-xl mx-auto" style={{ color: '#9B9BA3' }}>
             {isEs
               ? 'Descarga el launcher y sé el primero en pisar la zona de batalla.'
               : 'Download the launcher and be the first to step into the battlezone.'}

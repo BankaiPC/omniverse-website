@@ -57,13 +57,25 @@ const HomeSection: React.FC<HomeSectionProps> = ({ lang, dict }) => {
       />
 
       <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center">
-        <h1
+        <motion.h1
           ref={titleRef}
           className="text-6xl md:text-8xl lg:text-9xl font-quantum font-bold mb-6"
-          style={{ color: '#E5E5E5' }}
+          style={{ color: '#F5F5F5' }}
+          animate={{
+            textShadow: [
+              '0 0 18px rgba(255,255,255,0.18)',
+              '0 0 18px rgba(255,255,255,0.18)',
+              '0 0 36px rgba(255,255,255,0.55)',
+              '0 0 18px rgba(255,255,255,0.18)',
+              '0 0 18px rgba(255,255,255,0.18)',
+              '0 0 30px rgba(255,255,255,0.45)',
+              '0 0 18px rgba(255,255,255,0.18)',
+            ],
+          }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', times: [0, 0.35, 0.42, 0.5, 0.78, 0.85, 1] }}
         >
           {dict?.hero?.title || "OMNIVERSE"}
-        </h1>
+        </motion.h1>
 
         <p
           ref={subtitleRef}
@@ -76,7 +88,7 @@ const HomeSection: React.FC<HomeSectionProps> = ({ lang, dict }) => {
         <p
           ref={descriptionRef}
           className="text-lg md:text-xl max-w-4xl mb-12 leading-relaxed"
-          style={{ color: '#A1A1AA' }}
+          style={{ color: '#C4C4CC' }}
         >
           {dict?.hero?.description || "Experience the next generation of immersive gaming technology. Join us on a journey through infinite possibilities."}
         </p>

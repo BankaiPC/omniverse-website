@@ -100,7 +100,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ lang, dict }) => {
         {/* Intro */}
         <motion.p
           className="text-base md:text-lg leading-relaxed mb-16 max-w-2xl"
-          style={{ color: '#71717A' }}
+          style={{ color: '#9B9BA3' }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
@@ -128,7 +128,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ lang, dict }) => {
               <h3 className="font-quantum text-sm tracking-widest uppercase mb-4" style={{ color: '#E5E5E5' }}>
                 {item.label}
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: '#71717A' }}>
+              <p className="text-sm leading-relaxed" style={{ color: '#9B9BA3' }}>
                 {item.body}
               </p>
             </motion.div>
@@ -156,7 +156,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ lang, dict }) => {
                 style={{ color: '#27272A', transition: 'color 0.2s ease-out' }}
                 whileHover={{ color: '#6D28D9' }}
               >
-                <div className="group-hover:[&>svg]:stroke-[#6D28D9]" style={{ color: '#71717A', transition: 'color 0.2s ease-out' }}>
+                <div className="group-hover:[&>svg]:stroke-[#6D28D9]" style={{ color: '#9B9BA3', transition: 'color 0.2s ease-out' }}>
                   {f.svg}
                 </div>
               </motion.div>

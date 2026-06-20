@@ -45,10 +45,10 @@ export default function MinimalContent({ dict, currentLang }: MinimalContentProp
         <h2 className="text-xl font-quantum mb-6" style={{ color: '#E5E5E5' }}>
           {dict?.minimal?.title || "Cookies Requeridas"}
         </h2>
-        <p className="text-base leading-relaxed mb-4" style={{ color: '#A1A1AA' }}>
+        <p className="text-base leading-relaxed mb-4" style={{ color: '#C4C4CC' }}>
           {dict?.minimal?.description || "Para ofrecerte la mejor experiencia, necesitamos tu consentimiento para usar cookies. Nuestra web requiere cookies para funcionar correctamente."}
         </p>
-        <p className="text-sm mb-10" style={{ color: '#71717A' }}>
+        <p className="text-sm mb-10" style={{ color: '#9B9BA3' }}>
           {dict?.minimal?.privacy || "Respetamos tu privacidad y solo usamos cookies para mejorar tu experiencia."}
         </p>
 

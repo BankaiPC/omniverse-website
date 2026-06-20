@@ -15,7 +15,7 @@ interface GameSectionProps {
 }
 
 const IconChain = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8" style={{ color: '#71717A' }}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8" style={{ color: '#9B9BA3' }}>
     <polygon points="12,2 18,5.5 18,12.5 12,16 6,12.5 6,5.5" strokeLinejoin="round"/>
     <line x1="12" y1="16" x2="12" y2="22"/>
     <circle cx="12" cy="22" r="1.5" fill="currentColor" stroke="none"/>
@@ -25,7 +25,7 @@ const IconChain = () => (
 );
 
 const IconMultiplayer = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8" style={{ color: '#71717A' }}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8" style={{ color: '#9B9BA3' }}>
     <circle cx="8" cy="8" r="3"/>
     <circle cx="16" cy="8" r="3"/>
     <path d="M2 20c0-3.3 2.7-6 6-6h8c3.3 0 6 2.7 6 6" strokeLinecap="round"/>
@@ -33,7 +33,7 @@ const IconMultiplayer = () => (
 );
 
 const IconGraphics = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8" style={{ color: '#71717A' }}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8" style={{ color: '#9B9BA3' }}>
     <rect x="2" y="4" width="20" height="14" rx="0"/>
     <line x1="8" y1="22" x2="16" y2="22"/>
     <line x1="12" y1="18" x2="12" y2="22"/>
@@ -42,7 +42,7 @@ const IconGraphics = () => (
 );
 
 const IconPerformance = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8" style={{ color: '#71717A' }}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8" style={{ color: '#9B9BA3' }}>
     <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" strokeLinejoin="round"/>
   </svg>
 );
@@ -180,11 +180,11 @@ const GameSection: React.FC<GameSectionProps> = ({ lang, dict }) => {
                   <h3 className="text-xl font-quantum" style={{ color: '#E5E5E5' }}>
                     {game.title}
                   </h3>
-                  <span className="text-xs px-2 py-1" style={{ color: '#A1A1AA', background: '#1A1A1D', border: '1px solid #27272A' }}>
+                  <span className="text-xs px-2 py-1" style={{ color: '#C4C4CC', background: '#1A1A1D', border: '1px solid #27272A' }}>
                     {game.genre}
                   </span>
                 </div>
-                <p className="text-sm mb-4" style={{ color: '#A1A1AA' }}>
+                <p className="text-sm mb-4" style={{ color: '#C4C4CC' }}>
                   {game.description}
                 </p>
                 <Link href={`/${lang}/battlezone`}>
@@ -217,7 +217,7 @@ const GameSection: React.FC<GameSectionProps> = ({ lang, dict }) => {
                 <h4 className="text-lg font-quantum mb-2" style={{ color: '#E5E5E5' }}>
                   {feature.title}
                 </h4>
-                <p className="text-sm" style={{ color: '#A1A1AA' }}>
+                <p className="text-sm" style={{ color: '#C4C4CC' }}>
                   {feature.description}
                 </p>
               </motion.div>

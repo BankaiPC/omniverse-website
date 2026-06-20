@@ -15,27 +15,27 @@ interface ContactSectionProps {
 }
 
 const IconPin = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5" style={{ color: '#71717A' }}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5" style={{ color: '#9B9BA3' }}>
     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" strokeLinejoin="round"/>
     <circle cx="12" cy="9" r="2.5"/>
   </svg>
 );
 
 const IconPhone = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5" style={{ color: '#71717A' }}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5" style={{ color: '#9B9BA3' }}>
     <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C9.6 21 3 14.4 3 6c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" strokeLinejoin="round"/>
   </svg>
 );
 
 const IconMail = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5" style={{ color: '#71717A' }}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5" style={{ color: '#9B9BA3' }}>
     <rect x="2" y="4" width="20" height="16" rx="0"/>
     <path d="M2 7l10 7 10-7"/>
   </svg>
 );
 
 const IconClock = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5" style={{ color: '#71717A' }}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5" style={{ color: '#9B9BA3' }}>
     <circle cx="12" cy="12" r="9"/>
     <path d="M12 7v5l3 3" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
@@ -180,7 +180,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, dict }) => {
 
         <motion.p
           className="text-lg sm:text-xl text-center leading-relaxed mb-12 max-w-3xl mx-auto"
-          style={{ color: '#A1A1AA' }}
+          style={{ color: '#C4C4CC' }}
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -214,7 +214,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, dict }) => {
               <h3 className="text-2xl md:text-3xl font-quantum mb-2" style={{ color: '#E5E5E5' }}>
                 The Primordial Battlezone
               </h3>
-              <p className="text-sm mb-4" style={{ color: '#A1A1AA' }}>
+              <p className="text-sm mb-4" style={{ color: '#C4C4CC' }}>
                 {lang === 'es'
                   ? 'El primer universo de Omniverse Games. Combate, economía blockchain propia y comunidad global.'
                   : 'The first Omniverse Games universe. Combat, own blockchain economy and global community.'}
@@ -243,7 +243,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, dict }) => {
             <div className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm mb-2" style={{ color: '#71717A' }}>{dict?.contact?.form?.name || "Nombre"}</label>
+                  <label className="block text-sm mb-2" style={{ color: '#9B9BA3' }}>{dict?.contact?.form?.name || "Nombre"}</label>
                   <input
                     type="text" name="name" value={formData.name} onChange={handleInputChange} required
                     className="w-full px-4 py-3 text-sm transition-colors duration-200 focus:outline-none"
@@ -252,7 +252,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, dict }) => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm mb-2" style={{ color: '#71717A' }}>{dict?.contact?.form?.email || "Email"}</label>
+                  <label className="block text-sm mb-2" style={{ color: '#9B9BA3' }}>{dict?.contact?.form?.email || "Email"}</label>
                   <input
                     type="email" name="email" value={formData.email} onChange={handleInputChange} required
                     className="w-full px-4 py-3 text-sm transition-colors duration-200 focus:outline-none"
@@ -263,7 +263,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, dict }) => {
               </div>
 
               <div>
-                <label className="block text-sm mb-2" style={{ color: '#71717A' }}>{dict?.contact?.form?.subject || "Asunto"}</label>
+                <label className="block text-sm mb-2" style={{ color: '#9B9BA3' }}>{dict?.contact?.form?.subject || "Asunto"}</label>
                 <input
                   type="text" name="subject" value={formData.subject} onChange={handleInputChange} required
                   className="w-full px-4 py-3 text-sm transition-colors duration-200 focus:outline-none"
@@ -273,7 +273,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, dict }) => {
               </div>
 
               <div>
-                <label className="block text-sm mb-2" style={{ color: '#71717A' }}>{dict?.contact?.form?.message || "Mensaje"}</label>
+                <label className="block text-sm mb-2" style={{ color: '#9B9BA3' }}>{dict?.contact?.form?.message || "Mensaje"}</label>
                 <textarea
                   name="message" value={formData.message} onChange={handleInputChange} rows={5} required
                   className="w-full px-4 py-3 text-sm transition-colors duration-200 focus:outline-none resize-none"
@@ -332,7 +332,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, dict }) => {
                     </div>
                     <div>
                       <h4 className="text-sm font-semibold mb-0.5" style={{ color: '#E5E5E5' }}>{info.title}</h4>
-                      <p className="text-sm" style={{ color: '#A1A1AA' }}>{info.content}</p>
+                      <p className="text-sm" style={{ color: '#C4C4CC' }}>{info.content}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -351,7 +351,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, dict }) => {
                     href={s.url}
                     title={s.name}
                     className="w-10 h-10 flex items-center justify-center"
-                    style={{ background: '#111113', border: '1px solid #27272A', color: '#71717A' }}
+                    style={{ background: '#111113', border: '1px solid #27272A', color: '#9B9BA3' }}
                     whileHover={{ borderColor: '#6D28D9', color: '#A78BFA' }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
                   >
@@ -372,7 +372,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, dict }) => {
                   {dict?.contact?.newsletter?.title || "Descarga el Launcher"}
                 </h4>
               </div>
-              <p className="text-sm mb-4" style={{ color: '#A1A1AA' }}>
+              <p className="text-sm mb-4" style={{ color: '#C4C4CC' }}>
                 {dict?.contact?.newsletter?.description || "Accede al launcher de Omniverse Games y sé el primero en jugar The Primordial Battlezone."}
               </p>
               <div className="flex flex-col sm:flex-row gap-2">

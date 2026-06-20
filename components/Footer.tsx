@@ -48,7 +48,7 @@ export default function Footer({ dict, currentLang }: FooterProps) {
             <h3 className="text-2xl font-quantum mb-4" style={{ color: '#E5E5E5' }}>
               {dict?.hero?.title || "OMNIVERSE GAMES"}
             </h3>
-            <p className="text-sm leading-relaxed" style={{ color: '#71717A' }}>
+            <p className="text-sm leading-relaxed" style={{ color: '#9B9BA3' }}>
               {dict?.footer?.description || "Desarrollamos videojuegos y experiencias digitales de nueva generación."}
             </p>
           </motion.div>
@@ -68,7 +68,7 @@ export default function Footer({ dict, currentLang }: FooterProps) {
                   <motion.button
                     onClick={() => scrollToSection(link.href)}
                     className="text-sm"
-                    style={{ background: 'none', border: 'none', color: '#71717A', cursor: 'pointer', padding: 0 }}
+                    style={{ background: 'none', border: 'none', color: '#9B9BA3', cursor: 'pointer', padding: 0 }}
                     whileHover={{ color: '#E5E5E5', x: 4 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
                     onMouseEnter={() => setHoveredLink(link.href)}
@@ -90,7 +90,7 @@ export default function Footer({ dict, currentLang }: FooterProps) {
             <h4 className="text-xs font-quantum tracking-widest uppercase mb-6" style={{ color: '#E5E5E5' }}>
               {dict?.footer?.contact || "Contacto"}
             </h4>
-            <div className="space-y-3 text-sm" style={{ color: '#71717A' }}>
+            <div className="space-y-3 text-sm" style={{ color: '#9B9BA3' }}>
               <p>{dict?.contact?.info?.address?.content || "C/ Faisanes 25, Busot, Alicante"}</p>
               <p>{dict?.contact?.info?.phone?.content || "+34 666 772 481"}</p>
               <p>{dict?.contact?.info?.email?.content || "bankaipc@gmail.com"}</p>
@@ -106,7 +106,7 @@ export default function Footer({ dict, currentLang }: FooterProps) {
             <h4 className="text-xs font-quantum tracking-widest uppercase mb-6" style={{ color: '#E5E5E5' }}>
               {dict?.footer?.newsletter || "Launcher"}
             </h4>
-            <p className="text-xs mb-4" style={{ color: '#71717A' }}>
+            <p className="text-xs mb-4" style={{ color: '#9B9BA3' }}>
               {dict?.contact?.newsletter?.description || "Descarga el launcher y juega antes que nadie."}
             </p>
             <div className="flex gap-2">
