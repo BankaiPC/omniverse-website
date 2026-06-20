@@ -4,9 +4,7 @@ import Footer from '@/components/Footer';
 import { CookieProvider } from '@/contexts/CookieContext';
 import BattlezoneContent from './BattlezoneContent';
 
-export async function generateStaticParams() {
-  return [{ lang: 'en' }, { lang: 'es' }];
-}
+export const runtime = 'edge';
 
 export default async function BattlezonePage({
   params,
