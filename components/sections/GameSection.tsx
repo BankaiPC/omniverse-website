@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from 'next/link';
 import GamingButton from "@/components/GamingButton";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -186,9 +187,11 @@ const GameSection: React.FC<GameSectionProps> = ({ lang, dict }) => {
                 <p className="text-sm mb-4" style={{ color: '#A1A1AA' }}>
                   {game.description}
                 </p>
-                <GamingButton>
-                  {dict?.projects?.playButton || "Saber Más"}
-                </GamingButton>
+                <Link href={`/${lang}/battlezone`}>
+                  <GamingButton>
+                    {dict?.projects?.playButton || "Saber Más"}
+                  </GamingButton>
+                </Link>
               </div>
             </motion.div>
           ))}

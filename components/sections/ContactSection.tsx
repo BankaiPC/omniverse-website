@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from 'next/link';
 import GamingButton from "@/components/GamingButton";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -218,9 +219,11 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, dict }) => {
                   ? 'El primer universo de Omniverse Games. Combate, economía blockchain propia y comunidad global.'
                   : 'The first Omniverse Games universe. Combat, own blockchain economy and global community.'}
               </p>
-              <GamingButton>
-                {lang === 'es' ? 'Saber Más' : 'Learn More'}
-              </GamingButton>
+              <Link href={`/${lang}/battlezone`}>
+                <GamingButton>
+                  {lang === 'es' ? 'Saber Más' : 'Learn More'}
+                </GamingButton>
+              </Link>
             </div>
           </div>
         </motion.div>
