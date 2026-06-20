@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
-import ParticleSwarm from "@/components/ParticleSwarm";
+import HeroBackground from "@/components/HeroBackground";
 import Navigation from "@/components/Navigation";
 import GamingButton from "@/components/GamingButton";
 
@@ -48,7 +48,7 @@ const HomeSection: React.FC<HomeSectionProps> = ({ lang, dict }) => {
 
   return (
     <section id="home" className="relative min-h-screen w-full flex-shrink-0 overflow-hidden" style={{ background: '#0A0A0B' }}>
-      <ParticleSwarm />
+      <HeroBackground />
 
       <Navigation
         title={dict?.hero?.title || "OMNIVERSE"}

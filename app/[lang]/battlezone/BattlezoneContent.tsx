@@ -56,8 +56,8 @@ const RACES: Race[] = [
     tagEs: 'Orcos Vampiro',
     tagEn: 'Vampire Orcs',
     accent: '#DC2626',
-    descEs: 'Una raza forjada en el hambre y la guerra a partes iguales. Lo que tienen de brutalidad en el campo de batalla lo compensan con una jerarquía propia, regida por códigos de sangre que pocos fuera de su raza llegan a comprender.',
-    descEn: 'A race forged equally by hunger and war. What they carry in battlefield brutality, they balance with their own hierarchy, governed by blood codes that few outside their race ever come to understand.',
+    descEs: 'No nacen. Aparecen. Son la proyección psíquica de un planeta consciente — nadie sabe cuál, ni dónde, ni si sigue existiendo. Lo único que se sabe es lo que ese planeta hizo una vez: hace eras, sufrió la invasión de un enemigo tan feroz que la defensa no dejó testigos, ni ruinas, ni siquiera el recuerdo del nombre del invasor. Solo silencio absoluto. De ese silencio nacieron los Orkvids. Biológicos, vivos, de carne y sangre real — pero su existencia no pasa por útero ni huevo: simplemente aparecen, ya formados, ya armados, ya furiosos. Adaptados para una sola cosa: el combate. Son la respuesta permanente de un planeta que decidió que nunca más sería sorprendido sin defensa, y que sigue proyectando guerreros mucho después de que la amenaza original desapareciera — si es que alguna vez desapareció del todo.',
+    descEn: 'They are not born. They appear. They are the psychic projection of a conscious planet — no one knows which one, where it is, or whether it still exists. The only thing known is what that planet did once: eras ago, it suffered the invasion of an enemy so ferocious that the defense left no witnesses, no ruins, not even the memory of the invader\'s name. Only absolute silence. From that silence the Orkvids were born. Biological, alive, real flesh and blood — but their existence passes through neither womb nor egg: they simply appear, already formed, already armed, already furious. Adapted for one thing only: combat. They are the permanent response of a planet that decided it would never again be caught without defense, and that keeps projecting warriors long after the original threat vanished — if it ever fully vanished at all.',
   },
   {
     id: 'mechtrons',
@@ -72,7 +72,7 @@ const RACES: Race[] = [
   {
     id: 'solaris',
     name: 'Solaris',
-    image: null,
+    image: '/races/solaris.jpg',
     tagEs: 'Humanos',
     tagEn: 'Humans',
     accent: '#C4C4CC',
