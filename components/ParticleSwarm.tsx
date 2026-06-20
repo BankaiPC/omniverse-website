@@ -159,9 +159,9 @@ export default function ParticleSwarm({ className = '' }: ParticleSwarmProps) {
       // Gentle dolly — slow breathing zoom + slow pan, simulates drifting through the field
       const cx = canvas.width / 2;
       const cy = canvas.height / 2;
-      const zoom = 1 + Math.sin(t * 0.0015) * 0.08;
-      const panX = Math.sin(t * 0.00045) * 35;
-      const panY = Math.cos(t * 0.00035) * 24;
+      const zoom = 1 + Math.sin(t * 0.0028) * 0.16;
+      const panX = Math.sin(t * 0.0009) * 70;
+      const panY = Math.cos(t * 0.0007) * 48;
       ctx.save();
       ctx.translate(cx + panX, cy + panY);
       ctx.scale(zoom, zoom);
@@ -193,7 +193,7 @@ export default function ParticleSwarm({ className = '' }: ParticleSwarmProps) {
         if (u.y > canvas.height + 20) u.y = -20;
       };
 
-      features.forEach(f => drift(f, 0.1));
+      features.forEach(f => drift(f, 0.04));
 
       // Organic branch network — fractal-jittered veins between feature bubbles
       connections.forEach(({ i, j, offsets, warm }) => {
@@ -214,7 +214,7 @@ export default function ParticleSwarm({ className = '' }: ParticleSwarmProps) {
 
       // Small background bubbles
       universes.forEach(u => {
-        drift(u, 0.25);
+        drift(u, 0.12);
         const pulse = Math.max(0.4, u.r + Math.sin(t * u.speed + u.phase) * 1.8);
         const c = u.color;
 
@@ -304,7 +304,18 @@ export default function ParticleSwarm({ className = '' }: ParticleSwarmProps) {
       });
 
       ctx.restore();
+
+      // Vignette behind the title — drawn outside the dolly transform so it
+      // stays fixed on screen, dimming the busy background right where the
+      // text sits without flattening the effect elsewhere.
       ctx.globalCompositeOperation = 'source-over';
+      const vignette = ctx.createRadialGradient(cx, cy * 0.85, 0, cx, cy * 0.85, Math.max(canvas.width, canvas.height) * 0.42);
+      vignette.addColorStop(0,   'rgba(10,10,11,0.55)');
+      vignette.addColorStop(0.6, 'rgba(10,10,11,0.25)');
+      vignette.addColorStop(1,   'rgba(10,10,11,0)');
+      ctx.fillStyle = vignette;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
       t++;
       animRef.current = requestAnimationFrame(draw);
     };

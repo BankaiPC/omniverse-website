@@ -50,6 +50,17 @@ export default function Home() {
     }
   }, [lang]);
 
+  useEffect(() => {
+    if (isLoading || typeof window === 'undefined') return;
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      const t = setTimeout(() => {
+        document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+      return () => clearTimeout(t);
+    }
+  }, [isLoading]);
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
@@ -35,6 +36,9 @@ const NavLink: React.FC<{ label: string; onClick: () => void }> = ({ label, onCl
 
 const Navigation: React.FC<NavigationProps> = ({ title, currentLang, dict }) => {
   const { preferences } = useCookie();
+  const router = useRouter();
+  const pathname = usePathname();
+  const isHomePage = pathname === `/${currentLang}`;
 
   const navItems: Record<string, string> = {
     home:    dict?.navigation?.home    || 'Inicio',
@@ -82,8 +86,12 @@ const Navigation: React.FC<NavigationProps> = ({ title, currentLang, dict }) => 
   }, [lastScrollY, preferences.analytics]);
 
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     setIsMobileMenuOpen(false);
+    if (isHomePage) {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      router.push(id === 'home' ? `/${currentLang}` : `/${currentLang}#${id}`);
+    }
   };
 
   useEffect(() => {

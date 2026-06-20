@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import ParticleSwarm from "@/components/ParticleSwarm";
 import Navigation from "@/components/Navigation";
@@ -17,6 +17,40 @@ const HomeSection: React.FC<HomeSectionProps> = ({ lang, dict }) => {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
+  const [flickerOn, setFlickerOn] = useState(false);
+  const [glitchOn, setGlitchOn] = useState(false);
+
+  // Irregular white twinkle + occasional brief glitch on the title
+  useEffect(() => {
+    let flickerTimer: ReturnType<typeof setTimeout>;
+    let glitchTimer: ReturnType<typeof setTimeout>;
+    let mounted = true;
+
+    const scheduleFlicker = () => {
+      const delay = 350 + Math.random() * 950;
+      flickerTimer = setTimeout(() => {
+        if (!mounted) return;
+        setFlickerOn(true);
+        setTimeout(() => { if (mounted) setFlickerOn(false); }, 90 + Math.random() * 130);
+        scheduleFlicker();
+      }, delay);
+    };
+
+    const scheduleGlitch = () => {
+      const delay = 4000 + Math.random() * 5500;
+      glitchTimer = setTimeout(() => {
+        if (!mounted) return;
+        setGlitchOn(true);
+        setTimeout(() => { if (mounted) setGlitchOn(false); }, 110 + Math.random() * 90);
+        scheduleGlitch();
+      }, delay);
+    };
+
+    scheduleFlicker();
+    scheduleGlitch();
+
+    return () => { mounted = false; clearTimeout(flickerTimer); clearTimeout(glitchTimer); };
+  }, []);
 
   useEffect(() => {
     if (!titleRef.current || !subtitleRef.current || !descriptionRef.current || !buttonsRef.current) return;
@@ -57,25 +91,39 @@ const HomeSection: React.FC<HomeSectionProps> = ({ lang, dict }) => {
       />
 
       <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center">
-        <motion.h1
-          ref={titleRef}
-          className="text-6xl md:text-8xl lg:text-9xl font-quantum font-bold mb-6"
-          style={{ color: '#F5F5F5' }}
-          animate={{
-            textShadow: [
-              '0 0 18px rgba(255,255,255,0.18)',
-              '0 0 18px rgba(255,255,255,0.18)',
-              '0 0 36px rgba(255,255,255,0.55)',
-              '0 0 18px rgba(255,255,255,0.18)',
-              '0 0 18px rgba(255,255,255,0.18)',
-              '0 0 30px rgba(255,255,255,0.45)',
-              '0 0 18px rgba(255,255,255,0.18)',
-            ],
-          }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', times: [0, 0.35, 0.42, 0.5, 0.78, 0.85, 1] }}
-        >
-          {dict?.hero?.title || "OMNIVERSE"}
-        </motion.h1>
+        <div className="relative inline-block mb-6">
+          <motion.h1
+            ref={titleRef}
+            className="text-6xl md:text-8xl lg:text-9xl font-quantum font-bold relative"
+            style={{ color: '#FFFFFF' }}
+            animate={{
+              textShadow: flickerOn
+                ? '0 0 24px rgba(255,255,255,0.6), 0 0 60px rgba(255,255,255,0.85), 0 0 110px rgba(255,255,255,0.4)'
+                : '0 0 14px rgba(255,255,255,0.22), 0 0 30px rgba(255,255,255,0.1)',
+              x: glitchOn ? [0, -3, 2, -2, 0] : 0,
+            }}
+            transition={{ duration: flickerOn ? 0.08 : 0.45, ease: 'easeOut' }}
+          >
+            {dict?.hero?.title || "OMNIVERSE"}
+          </motion.h1>
+
+          {glitchOn && (
+            <>
+              <span
+                className="absolute inset-0 text-6xl md:text-8xl lg:text-9xl font-quantum font-bold pointer-events-none select-none"
+                style={{ color: 'rgba(255,70,70,0.55)', transform: 'translate(-3px, 1px)', clipPath: 'inset(8% 0 42% 0)' }}
+              >
+                {dict?.hero?.title || "OMNIVERSE"}
+              </span>
+              <span
+                className="absolute inset-0 text-6xl md:text-8xl lg:text-9xl font-quantum font-bold pointer-events-none select-none"
+                style={{ color: 'rgba(80,200,255,0.55)', transform: 'translate(3px, -1px)', clipPath: 'inset(52% 0 6% 0)' }}
+              >
+                {dict?.hero?.title || "OMNIVERSE"}
+              </span>
+            </>
+          )}
+        </div>
 
         <p
           ref={subtitleRef}
