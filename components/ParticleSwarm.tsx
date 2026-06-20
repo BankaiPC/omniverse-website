@@ -132,7 +132,10 @@ export default function ParticleSwarm({ className = '' }: ParticleSwarmProps) {
         ctx.fill();
       });
 
-      // Feature bubbles — large, calm galaxy-in-glass spheres
+      // Feature bubbles — large, calm galaxy-in-glass spheres.
+      // Normal blending (not 'lighter') so they read as distinct glass
+      // objects instead of blown-out light sources.
+      ctx.globalCompositeOperation = 'source-over';
       features.forEach(f => {
         const nx = smoothNoise(f.x * 0.003 + f.noiseOffX, f.y * 0.003, t * 0.004);
         const ny = smoothNoise(f.x * 0.003, f.y * 0.003 + f.noiseOffY, t * 0.004);
@@ -146,30 +149,39 @@ export default function ParticleSwarm({ className = '' }: ParticleSwarmProps) {
         const pulse = f.r + Math.sin(t * f.speed + f.phase) * f.r * 0.04;
         const c = f.color;
 
-        // Outer glow halo
-        const glow = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, pulse * 1.6);
-        glow.addColorStop(0,   `rgba(${c.r},${c.g},${c.b},0.16)`);
-        glow.addColorStop(0.5, `rgba(${c.r},${c.g},${c.b},0.05)`);
-        glow.addColorStop(1,   'rgba(0,0,0,0)');
-        ctx.fillStyle = glow;
+        // Very subtle ambient glow — just enough to feel lit, not enough
+        // to wash out the bubble's edge
+        ctx.globalCompositeOperation = 'lighter';
+        const ambient = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, pulse * 1.25);
+        ambient.addColorStop(0,   `rgba(${c.r},${c.g},${c.b},0.06)`);
+        ambient.addColorStop(1,   'rgba(0,0,0,0)');
+        ctx.fillStyle = ambient;
         ctx.beginPath();
-        ctx.arc(f.x, f.y, pulse * 1.6, 0, Math.PI * 2);
+        ctx.arc(f.x, f.y, pulse * 1.25, 0, Math.PI * 2);
         ctx.fill();
+        ctx.globalCompositeOperation = 'source-over';
 
-        // Glass bubble body
-        const sphere = ctx.createRadialGradient(
-          f.x - pulse * 0.3, f.y - pulse * 0.3, 0,
-          f.x, f.y, pulse
-        );
-        sphere.addColorStop(0,   'rgba(255,255,255,0.14)');
-        sphere.addColorStop(0.6, `rgba(${c.r},${c.g},${c.b},0.13)`);
-        sphere.addColorStop(1,   `rgba(${c.r},${c.g},${c.b},0.03)`);
-        ctx.fillStyle = sphere;
+        // Everything below is clipped to the circle so the galaxy stays
+        // contained inside the sphere — this is what makes it read as a
+        // bubble rather than a blob.
+        ctx.save();
         ctx.beginPath();
         ctx.arc(f.x, f.y, pulse, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.clip();
 
-        // Embedded galaxy swirl — slow, smooth rotation, no flicker
+        // Colorful nebula fill inside the bubble
+        const nebula = ctx.createRadialGradient(
+          f.x - pulse * 0.25, f.y - pulse * 0.25, 0,
+          f.x, f.y, pulse * 1.3
+        );
+        nebula.addColorStop(0,    'rgba(255,255,255,0.5)');
+        nebula.addColorStop(0.22, `rgba(${c.r},${c.g},${c.b},0.55)`);
+        nebula.addColorStop(0.55, 'rgba(90,50,170,0.32)');
+        nebula.addColorStop(1,    'rgba(8,8,22,0.5)');
+        ctx.fillStyle = nebula;
+        ctx.fillRect(f.x - pulse, f.y - pulse, pulse * 2, pulse * 2);
+
+        // Spiral arms, slow smooth rotation, no flicker
         f.galaxyRot += 0.0009;
         ctx.save();
         ctx.translate(f.x, f.y);
@@ -178,28 +190,49 @@ export default function ParticleSwarm({ className = '' }: ParticleSwarmProps) {
           ctx.beginPath();
           const armOffset = arm * Math.PI;
           for (let a = 0; a <= Math.PI * 1.5; a += 0.18) {
-            const rr = (a / (Math.PI * 1.5)) * pulse * 0.82;
+            const rr = (a / (Math.PI * 1.5)) * pulse * 0.85;
             const ang = a + armOffset;
             const x = Math.cos(ang) * rr;
             const y = Math.sin(ang) * rr * 0.5;
             if (a === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
           }
-          ctx.strokeStyle = 'rgba(255,255,255,0.22)';
-          ctx.lineWidth = Math.max(0.5, pulse * 0.025);
+          ctx.strokeStyle = 'rgba(255,255,255,0.45)';
+          ctx.lineWidth = Math.max(0.6, pulse * 0.035);
           ctx.stroke();
         }
-        // Soft core
-        ctx.fillStyle = 'rgba(255,255,255,0.45)';
+        // Bright core
+        ctx.fillStyle = 'rgba(255,255,255,0.85)';
         ctx.beginPath();
-        ctx.arc(0, 0, Math.max(1, pulse * 0.06), 0, Math.PI * 2);
+        ctx.arc(0, 0, Math.max(1.2, pulse * 0.07), 0, Math.PI * 2);
         ctx.fill();
-        ctx.restore();
+        ctx.restore(); // undo translate/rotate, stay clipped
 
-        // Faint glass rim
-        ctx.strokeStyle = `rgba(${c.r},${c.g},${c.b},0.18)`;
-        ctx.lineWidth = 0.6;
+        // A few tiny stars scattered inside, seeded so they stay put
+        const starSeed = seededRng(Math.floor(f.x * 13 + f.y * 7));
+        for (let k = 0; k < 5; k++) {
+          const sa = starSeed() * Math.PI * 2;
+          const sr = starSeed() * pulse * 0.9;
+          ctx.fillStyle = 'rgba(255,255,255,0.5)';
+          ctx.beginPath();
+          ctx.arc(f.x + Math.cos(sa) * sr, f.y + Math.sin(sa) * sr, 0.7, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        ctx.restore(); // remove clip — rim drawn unclipped for a crisp edge
+
+        // Crisp glass rim
+        ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+        ctx.lineWidth = 1.1;
         ctx.beginPath();
         ctx.arc(f.x, f.y, pulse, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Specular highlight arc — top-left crescent, like light catching glass
+        ctx.strokeStyle = 'rgba(255,255,255,0.55)';
+        ctx.lineWidth = Math.max(1.5, pulse * 0.07);
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.arc(f.x, f.y, pulse * 0.86, Math.PI * 1.08, Math.PI * 1.62);
         ctx.stroke();
       });
 
