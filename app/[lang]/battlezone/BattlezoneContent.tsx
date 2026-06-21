@@ -109,14 +109,14 @@ const ROADMAP_ES = [
   { phase: 'Concepto', desc: 'Lore, razas y diseño de mundo en desarrollo activo.', status: 'current' },
   { phase: 'Alpha', desc: 'Primeras builds jugables, pruebas internas de combate y clases.', status: 'upcoming' },
   { phase: 'Beta', desc: 'Apertura a comunidad, ajuste de balance y economía.', status: 'upcoming' },
-  { phase: 'Lanzamiento', desc: 'Launcher público, wallet integrada, primera temporada competitiva.', status: 'upcoming' },
+  { phase: 'Lanzamiento', desc: 'Launcher público (próximamente), wallet integrada, primera temporada competitiva.', status: 'upcoming' },
 ];
 
 const ROADMAP_EN = [
   { phase: 'Concept', desc: 'Lore, races and world design in active development.', status: 'current' },
   { phase: 'Alpha', desc: 'First playable builds, internal combat and class testing.', status: 'upcoming' },
   { phase: 'Beta', desc: 'Community opens up, balance and economy tuning.', status: 'upcoming' },
-  { phase: 'Launch', desc: 'Public launcher, integrated wallet, first competitive season.', status: 'upcoming' },
+  { phase: 'Launch', desc: 'Public launcher (coming soon), integrated wallet, first competitive season.', status: 'upcoming' },
 ];
 
 const fadeUp = {
@@ -199,7 +199,7 @@ export default function BattlezoneContent({ lang }: BattlezoneContentProps) {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-14">
-            <GamingButton>{isEs ? 'Descargar Launcher' : 'Download Launcher'}</GamingButton>
+            <GamingButton>{isEs ? 'Descargar Launcher (Próximamente)' : 'Download Launcher (Coming Soon)'}</GamingButton>
             <GamingButton variant="secondary">{isEs ? 'Unirse a Discord' : 'Join Discord'}</GamingButton>
           </div>
 
@@ -409,10 +409,10 @@ export default function BattlezoneContent({ lang }: BattlezoneContentProps) {
           </h2>
           <p className="text-sm md:text-base mb-8 max-w-xl mx-auto" style={{ color: '#9B9BA3' }}>
             {isEs
-              ? 'Descarga el launcher y sé el primero en pisar la zona de batalla.'
-              : 'Download the launcher and be the first to step into the battlezone.'}
+              ? 'Descarga el launcher (próximamente) y sé el primero en pisar la zona de batalla.'
+              : 'Download the launcher (coming soon) and be the first to step into the battlezone.'}
           </p>
-          <GamingButton>{isEs ? 'Descargar Launcher' : 'Download Launcher'}</GamingButton>
+          <GamingButton>{isEs ? 'Descargar Launcher (Próximamente)' : 'Download Launcher (Coming Soon)'}</GamingButton>
         </motion.div>
       </section>
     </main>

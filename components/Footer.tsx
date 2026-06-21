@@ -104,10 +104,10 @@ export default function Footer({ dict, currentLang }: FooterProps) {
             transition={{ duration: 0.2, ease: "easeOut", delay: 0.15 }}
           >
             <h4 className="text-xs font-quantum tracking-widest uppercase mb-6" style={{ color: '#E5E5E5' }}>
-              {dict?.footer?.newsletter || "Launcher"}
+              {dict?.footer?.newsletter || "Launcher (Próximamente)"}
             </h4>
             <p className="text-xs mb-4" style={{ color: '#9B9BA3' }}>
-              {dict?.contact?.newsletter?.description || "Descarga el launcher y juega antes que nadie."}
+              {dict?.contact?.newsletter?.description || "Descarga el launcher (próximamente) y juega antes que nadie."}
             </p>
             <div className="flex gap-2">
               <input

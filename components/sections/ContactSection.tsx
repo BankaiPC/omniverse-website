@@ -420,11 +420,11 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, dict }) => {
               <div className="flex items-center gap-3 mb-3">
                 <IconDownload />
                 <h4 className="text-lg font-quantum" style={{ color: '#E5E5E5' }}>
-                  {dict?.contact?.newsletter?.title || "Descarga el Launcher"}
+                  {dict?.contact?.newsletter?.title || "Descarga el Launcher (Próximamente)"}
                 </h4>
               </div>
               <p className="text-sm mb-4" style={{ color: '#C4C4CC' }}>
-                {dict?.contact?.newsletter?.description || "Accede al launcher de Omniverse Games y sé el primero en jugar The Primordial Battlezone."}
+                {dict?.contact?.newsletter?.description || "Accede al launcher (próximamente) de Omniverse Games y sé el primero en jugar The Primordial Battlezone."}
               </p>
               <div className="flex flex-col sm:flex-row gap-2">
                 <input
