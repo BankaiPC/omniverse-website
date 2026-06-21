@@ -132,10 +132,10 @@ export default function Footer({ dict, currentLang }: FooterProps) {
           className="mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
           style={{ borderTop: '1px solid #27272A' }}
         >
-          <p className="text-xs" style={{ color: '#52525B' }}>
+          <p className="text-xs" style={{ color: '#A1A1AA' }}>
             © {currentYear} Omniverse Games. {dict?.footer?.rights || "Todos los derechos reservados."}
           </p>
-          <div className="flex gap-6 text-xs" style={{ color: '#52525B' }}>
+          <div className="flex gap-6 text-xs" style={{ color: '#A1A1AA' }}>
             <span>{dict?.footer?.privacy || "Privacidad"}</span>
             <span>{dict?.footer?.terms || "Términos"}</span>
             <span>{dict?.footer?.cookies || "Cookies"}</span>

@@ -62,7 +62,7 @@ export default function MinimalContent({ dict, currentLang }: MinimalContentProp
           {dict?.minimal?.acceptButton || "Aceptar y Continuar"}
         </motion.button>
 
-        <p className="mt-8 text-xs" style={{ color: '#52525B' }}>
+        <p className="mt-8 text-xs" style={{ color: '#A1A1AA' }}>
           {dict?.minimal?.note || "Al continuar, aceptas el uso de cookies para analítica, funcionalidad y marketing."}
         </p>
       </motion.div>

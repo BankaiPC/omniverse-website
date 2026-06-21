@@ -198,10 +198,24 @@ export default function BattlezoneContent({ lang }: BattlezoneContentProps) {
               : 'A competitive RPG Third-Person Shooter built on Unreal Engine, where seven races fight for a place in divinity — backed by an economy on our own blockchain.'}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-14">
             <GamingButton>{isEs ? 'Descargar Launcher' : 'Download Launcher'}</GamingButton>
             <GamingButton variant="secondary">{isEs ? 'Unirse a Discord' : 'Join Discord'}</GamingButton>
           </div>
+
+          <motion.img
+            src="/races/roster-lineup.webp"
+            alt="Omniverse: The Primordial Battlezone — roster"
+            className="w-full max-w-5xl mx-auto"
+            style={{
+              filter: 'drop-shadow(0 0 40px rgba(109,40,217,0.15))',
+              maskImage: 'linear-gradient(to bottom, transparent 0%, black 14%, black 86%, transparent 100%)',
+              WebkitMaskImage: '-webkit-linear-gradient(top, transparent 0%, black 14%, black 86%, transparent 100%)',
+            }}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
+          />
         </motion.div>
       </section>
 
@@ -230,7 +244,7 @@ export default function BattlezoneContent({ lang }: BattlezoneContentProps) {
               ? 'Los Increados crearon esa espuma — cada burbuja, cada universo, es su obra. Pero se aburrieron de ver cómo esas burbujas vivían y morían sin propósito. Por eso diseñaron la Convergencia: una competición a través de las burbujas donde las razas elegidas demuestran si merecen acompañarlos en la divinidad.'
               : 'The Uncreated made that foam — every bubble, every universe, is their work. But they grew bored watching those bubbles live and die without purpose. So they designed the Convergence: a competition across the bubbles where chosen races prove whether they deserve to join them in divinity.'}
           </p>
-          <p className="text-sm italic" style={{ color: '#52525B' }}>
+          <p className="text-sm italic" style={{ color: '#A1A1AA' }}>
             {isEs ? 'Nadie sabe qué pasa con los que pierden.' : 'No one knows what happens to those who lose.'}
           </p>
         </motion.div>
@@ -375,7 +389,7 @@ export default function BattlezoneContent({ lang }: BattlezoneContentProps) {
                 <h3 className="text-base font-quantum mb-1" style={{ color: r.status === 'current' ? '#E5E5E5' : '#9B9BA3' }}>
                   {r.phase}
                 </h3>
-                <p className="text-sm" style={{ color: '#52525B' }}>{r.desc}</p>
+                <p className="text-sm" style={{ color: '#A1A1AA' }}>{r.desc}</p>
               </div>
             </motion.div>
           ))}

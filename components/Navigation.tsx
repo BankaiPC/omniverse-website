@@ -19,7 +19,7 @@ interface NavigationProps {
 const NavLink: React.FC<{ label: string; onClick: () => void }> = ({ label, onClick }) => (
   <motion.button
     onClick={onClick}
-    className="relative text-[#71717A] font-quantum text-xs tracking-widest uppercase cursor-pointer px-3 py-2"
+    className="relative text-[#A1A1AA] font-quantum text-xs tracking-widest uppercase cursor-pointer px-3 py-2"
     whileHover={{ color: '#E5E5E5' }}
     transition={{ duration: 0.2, ease: 'easeOut' }}
     style={{ background: 'none', border: 'none' }}
@@ -217,7 +217,7 @@ const Navigation: React.FC<NavigationProps> = ({ title, currentLang, dict }) => 
               <motion.button
                 key={key}
                 onClick={() => scrollTo(key)}
-                className="w-full text-left py-3 px-2 text-[#71717A] font-quantum text-xs tracking-widest uppercase"
+                className="w-full text-left py-3 px-2 text-[#A1A1AA] font-quantum text-xs tracking-widest uppercase"
                 style={{ background: 'none', border: 'none', borderBottom: '1px solid #27272A' }}
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}

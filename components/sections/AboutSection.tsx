@@ -163,7 +163,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ lang, dict }) => {
               <h4 className="font-quantum text-xs tracking-widest uppercase mb-3" style={{ color: '#E5E5E5' }}>
                 {f.title}
               </h4>
-              <p className="text-xs leading-relaxed" style={{ color: '#52525B' }}>
+              <p className="text-xs leading-relaxed" style={{ color: '#A1A1AA' }}>
                 {f.desc}
               </p>
             </motion.div>
