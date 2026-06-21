@@ -82,7 +82,7 @@ const RACES: Race[] = [
   {
     id: 'frounds',
     name: 'Frounds',
-    image: null,
+    image: '/races/frounds.jpg',
     tagEs: 'Comerciantes',
     tagEn: 'Traders',
     accent: '#9B9BA3',

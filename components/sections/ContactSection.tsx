@@ -55,6 +55,8 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, dict }) => {
   const infoRef = useRef<HTMLDivElement>(null);
 
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [inquiryType, setInquiryType] = useState('general');
+  const [confidentialityAccepted, setConfidentialityAccepted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [submitMessage, setSubmitMessage] = useState('');
@@ -96,6 +98,8 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, dict }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (inquiryType === 'investor' && !confidentialityAccepted) return;
+
     setIsSubmitting(true);
     setSubmitStatus('idle');
     setSubmitMessage('');
@@ -104,14 +108,20 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, dict }) => {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, inquiryType, confidentialityAccepted }),
       });
       const data = await response.json();
 
       if (response.ok) {
         setSubmitStatus('success');
-        setSubmitMessage(dict?.contact?.form?.successMessage || 'Mensaje enviado. Nos ponemos en contacto pronto.');
+        setSubmitMessage(
+          inquiryType === 'investor'
+            ? (dict?.contact?.form?.successMessageInvestor || 'Mensaje confidencial recibido. Nos pondremos en contacto a la mayor brevedad posible.')
+            : (dict?.contact?.form?.successMessage || 'Mensaje enviado. Nos ponemos en contacto pronto.')
+        );
         setFormData({ name: '', email: '', subject: '', message: '' });
+        setInquiryType('general');
+        setConfidentialityAccepted(false);
       } else {
         setSubmitStatus('error');
         setSubmitMessage(dict?.contact?.form?.errorMessage || 'Error al enviar. Por favor inténtalo de nuevo.');
@@ -240,6 +250,25 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, dict }) => {
               {dict?.contact?.form?.title || "Envíanos un Mensaje"}
             </h3>
 
+            <div className="mb-4">
+              <label className="block text-sm mb-2" style={{ color: '#9B9BA3' }}>
+                {dict?.contact?.form?.inquiryType || "Tipo de consulta"}
+              </label>
+              <select
+                value={inquiryType}
+                onChange={(e) => { setInquiryType(e.target.value); setConfidentialityAccepted(false); }}
+                className="w-full px-4 py-3 text-sm transition-colors duration-200 focus:outline-none"
+                style={{ background: '#0A0A0B', border: '1px solid #27272A', color: '#E5E5E5' }}
+              >
+                <option value="general">{dict?.contact?.form?.inquiryGeneral || "Información general"}</option>
+                <option value="press">{dict?.contact?.form?.inquiryPress || "Prensa"}</option>
+                <option value="support">{dict?.contact?.form?.inquirySupport || "Soporte"}</option>
+                <option value="partnership">{dict?.contact?.form?.inquiryPartnership || "Colaboración"}</option>
+                <option value="investor">{dict?.contact?.form?.inquiryInvestor || "Inversor"}</option>
+                <option value="other">{dict?.contact?.form?.inquiryOther || "Otro"}</option>
+              </select>
+            </div>
+
             <div className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -282,9 +311,31 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, dict }) => {
                 />
               </div>
 
+              {inquiryType === 'investor' && (
+                <motion.label
+                  className="flex items-start gap-3 p-4 text-sm cursor-pointer"
+                  style={{ background: 'rgba(109,40,217,0.06)', border: '1px solid rgba(109,40,217,0.3)' }}
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={confidentialityAccepted}
+                    onChange={(e) => setConfidentialityAccepted(e.target.checked)}
+                    className="mt-0.5"
+                    style={{ accentColor: '#6D28D9' }}
+                  />
+                  <span style={{ color: '#C4C4CC' }}>
+                    {dict?.contact?.form?.confidentialityNotice ||
+                      "Confirmo que esta consulta es de carácter confidencial y me comprometo a no compartir ni divulgar la información intercambiada en este proceso."}
+                  </span>
+                </motion.label>
+              )}
+
               <motion.button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || (inquiryType === 'investor' && !confidentialityAccepted)}
                 className="w-full px-8 py-4 font-quantum font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{ background: '#6D28D9', color: '#E5E5E5' }}
                 whileHover={!isSubmitting ? { background: '#7C3AED' } : {}}
