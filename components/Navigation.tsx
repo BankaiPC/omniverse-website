@@ -144,18 +144,22 @@ const Navigation: React.FC<NavigationProps> = ({ title, currentLang, dict }) => 
     >
       {/* Logo */}
       <div ref={titleRef} style={{ opacity: 0 }}>
-        <span
+        <button
+          onClick={() => scrollTo('home')}
           className="font-quantum"
           style={{
             fontSize: isScrolled ? '0.95rem' : '1.1rem',
             letterSpacing: '0.2em',
             color: '#E5E5E5',
             transition: 'font-size 0.2s ease-out',
-            cursor: 'default',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            padding: 0,
           }}
         >
           OMNIVERSE GAMES
-        </span>
+        </button>
       </div>
 
       {/* Desktop nav */}
