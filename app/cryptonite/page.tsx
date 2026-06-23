@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 import GateForm from './GateForm';
-import ComingSoon from './ComingSoon';
+import CryptoniteContent from './CryptoniteContent';
 
 export const runtime = 'edge';
 
@@ -12,5 +12,5 @@ export default async function CryptonitePage() {
     return <GateForm />;
   }
 
-  return <ComingSoon />;
+  return <CryptoniteContent />;
 }
