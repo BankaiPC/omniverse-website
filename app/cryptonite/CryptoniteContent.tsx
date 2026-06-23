@@ -5,6 +5,53 @@ interface Feature {
   description: string;
 }
 
+interface ArchitectureLayer {
+  title: string;
+  description: string;
+}
+
+interface Spec {
+  value: string;
+  label: string;
+}
+
+interface TeamMember {
+  alias: string;
+  role: string;
+}
+
+const ARCHITECTURE: ArchitectureLayer[] = [
+  {
+    title: 'Cadena de Prueba',
+    description:
+      'Conserva solo las cabeceras de bloque recientes con prueba de trabajo. Es la capa que asegura todo lo demás.',
+  },
+  {
+    title: 'Mini-Blockchain',
+    description:
+      'Guarda las transacciones de los últimos días — lo justo para verificar la actividad reciente sin arrastrar el historial completo.',
+  },
+  {
+    title: 'Árbol de Cuentas',
+    description:
+      'Un balance con el saldo de cada dirección activa, en vez de derivarlo de transacciones pasadas. Va asegurado por hash dentro de cada bloque.',
+  },
+];
+
+const SPECS: Spec[] = [
+  { value: '1 min', label: 'TIEMPO DE BLOQUE' },
+  { value: 'M7', label: 'ALGORITMO POW' },
+  { value: '64-bit', label: 'GRANULARIDAD DE SUMINISTRO' },
+  { value: 'Dinámicos', label: 'RECOMPENSA, TAMAÑO Y DIFICULTAD' },
+];
+
+const TEAM: TeamMember[] = [
+  { alias: 'bitfreak (J.D. Bruce)', role: 'Creador del esquema mini-blockchain' },
+  { alias: 'Pallas', role: 'Desarrollo principal' },
+  { alias: 'sekker2k4', role: 'Comunidad y redes' },
+  { alias: 'enexus', role: 'Builds para Windows' },
+];
+
 const FEATURES: Feature[] = [
   {
     title: 'Esquema Mini-Blockchain',
@@ -67,6 +114,74 @@ const CryptoniteContent: FC = () => {
               <p className="text-xs text-[#9CB8AC] leading-relaxed">{feature.description}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="px-6 py-16 max-w-5xl mx-auto">
+        <h2 className="text-xs tracking-[0.25em] text-[#39FF8E] mb-8 text-center">
+          CÓMO FUNCIONA
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {ARCHITECTURE.map((layer, i) => (
+            <div key={layer.title} className="border border-[#1C3A2E] bg-[#0A1F16] p-5">
+              <span className="text-2xl font-bold text-[#39FF8E]/40">0{i + 1}</span>
+              <h3 className="text-sm font-bold mt-2 mb-2">{layer.title}</h3>
+              <p className="text-xs text-[#9CB8AC] leading-relaxed">{layer.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="px-6 py-16 max-w-5xl mx-auto border-t border-[#1C3A2E]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          {SPECS.map((spec) => (
+            <div key={spec.label}>
+              <p className="text-lg md:text-xl font-bold text-[#39FF8E]">{spec.value}</p>
+              <p className="text-[10px] tracking-wide text-[#9CB8AC] mt-1">{spec.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="px-6 py-16 max-w-5xl mx-auto border-t border-[#1C3A2E]">
+        <h2 className="text-xs tracking-[0.25em] text-[#39FF8E] mb-8 text-center">EQUIPO</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+          {TEAM.map((member) => (
+            <div key={member.alias}>
+              <p className="text-sm font-bold">{member.alias}</p>
+              <p className="text-[11px] text-[#9CB8AC] mt-1">{member.role}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="px-6 py-16 max-w-5xl mx-auto border-t border-[#1C3A2E] text-center">
+        <h2 className="text-xs tracking-[0.25em] text-[#39FF8E] mb-6">RECURSOS</h2>
+        <div className="flex flex-wrap justify-center gap-4 text-xs">
+          <a
+            href="https://cryptonite.info/files/mbc-scheme-rev3.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-[#1C3A2E] px-4 py-2 hover:border-[#39FF8E] transition-colors duration-200"
+          >
+            Whitepaper (PDF)
+          </a>
+          <a
+            href="https://github.com/pallas1/Cryptonite"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-[#1C3A2E] px-4 py-2 hover:border-[#39FF8E] transition-colors duration-200"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://cryptonite.info"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-[#1C3A2E] px-4 py-2 hover:border-[#39FF8E] transition-colors duration-200"
+          >
+            Sitio original
+          </a>
         </div>
       </section>
     </main>
