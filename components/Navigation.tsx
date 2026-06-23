@@ -6,7 +6,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
-import { useCookie } from '@/contexts/CookieContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,7 +34,6 @@ const NavLink: React.FC<{ label: string; onClick: () => void }> = ({ label, onCl
 );
 
 const Navigation: React.FC<NavigationProps> = ({ title, currentLang, dict }) => {
-  const { preferences } = useCookie();
   const router = useRouter();
   const pathname = usePathname();
   const isHomePage = pathname === `/${currentLang}`;
@@ -55,8 +53,6 @@ const Navigation: React.FC<NavigationProps> = ({ title, currentLang, dict }) => 
 
   const [isLoaded,         setIsLoaded]         = useState(false);
   const [isScrolled,       setIsScrolled]       = useState(false);
-  const [isVisible,        setIsVisible]        = useState(true);
-  const [lastScrollY,      setLastScrollY]      = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -65,25 +61,10 @@ const Navigation: React.FC<NavigationProps> = ({ title, currentLang, dict }) => 
   }, []);
 
   useEffect(() => {
-    const onScroll = () => {
-      const y   = window.scrollY;
-      const dir = y > lastScrollY ? 'down' : 'up';
-      const threshold = preferences.analytics ? 50 : 100;
-      const delta     = preferences.analytics ? 3  : 5;
-
-      setIsScrolled(y > 50);
-
-      if (y > threshold) {
-        if (dir === 'down' && y > lastScrollY + delta) setIsVisible(false);
-        if (dir === 'up'   && y < lastScrollY - delta) setIsVisible(true);
-      } else {
-        setIsVisible(true);
-      }
-      setLastScrollY(y);
-    };
+    const onScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, [lastScrollY, preferences.analytics]);
+  }, []);
 
   const scrollTo = (id: string) => {
     setIsMobileMenuOpen(false);
@@ -163,8 +144,7 @@ const Navigation: React.FC<NavigationProps> = ({ title, currentLang, dict }) => 
       </div>
 
       {/* Desktop nav */}
-      {(!isScrolled || isVisible) && (
-        <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2">
           <div ref={navLinksRef} className="hidden xl:flex items-center gap-1" style={{ opacity: 0 }}>
             {Object.entries(navItems).map(([key, val]) => (
               <NavLink key={key} label={val} onClick={() => scrollTo(key)} />
@@ -200,7 +180,6 @@ const Navigation: React.FC<NavigationProps> = ({ title, currentLang, dict }) => 
             />
           </button>
         </div>
-      )}
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (
