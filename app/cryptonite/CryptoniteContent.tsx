@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import DiamondLogo from './DiamondLogo';
 
 interface Feature {
   title: string;
@@ -30,7 +29,7 @@ const CryptoniteContent: FC = () => {
     <main style={{ background: '#06120D', color: '#E8FFF3' }} className="min-h-screen">
       <header className="flex items-center justify-between px-6 md:px-10 py-6">
         <div className="flex items-center gap-3">
-          <DiamondLogo size={32} />
+          <img src="/cryptonite/coin-logo.png" alt="" width={32} height={32} className="w-8 h-8" />
           <span className="font-bold tracking-[0.15em] text-sm">CRYPTONITE</span>
         </div>
         <span className="text-xs tracking-[0.2em] text-[#39FF8E]/70 border border-[#1C3A2E] px-3 py-1">
@@ -46,10 +45,13 @@ const CryptoniteContent: FC = () => {
           LA PRIMERA MINI-BLOCKCHAIN
         </p>
 
-        <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full border-2 border-[#1C3A2E] flex items-center justify-center mb-16">
-          <div className="absolute inset-2 rounded-full border border-[#39FF8E]/30" />
-          <DiamondLogo size={80} />
-        </div>
+        <img
+          src="/cryptonite/coin-logo.png"
+          alt="Cryptonite"
+          width={224}
+          height={224}
+          className="w-48 h-48 md:w-56 md:h-56 mb-16"
+        />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl w-full">
           {FEATURES.map((feature) => (

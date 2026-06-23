@@ -18,6 +18,13 @@ const GateForm: FC = () => {
         action={formAction}
         className="w-full max-w-sm border border-[#1C3A2E] bg-[#0A1F16] p-8"
       >
+        <img
+          src="/cryptonite/coin-logo.png"
+          alt="Cryptonite"
+          width={56}
+          height={56}
+          className="w-14 h-14 mb-4"
+        />
         <p className="text-xs tracking-[0.2em] text-[#39FF8E] mb-2">
           ACCESO RESTRINGIDO
         </p>
