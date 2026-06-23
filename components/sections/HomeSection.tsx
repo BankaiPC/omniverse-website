@@ -47,7 +47,7 @@ const HomeSection: React.FC<HomeSectionProps> = ({ lang, dict }) => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen w-full flex-shrink-0 overflow-hidden" style={{ background: '#0A0A0B' }}>
+    <section id="home" className="relative min-h-[calc(100vh-76px)] w-full flex-shrink-0 overflow-hidden" style={{ background: '#0A0A0B' }}>
       <HeroBackground />
 
       <Navigation
@@ -56,7 +56,7 @@ const HomeSection: React.FC<HomeSectionProps> = ({ lang, dict }) => {
         dict={dict}
       />
 
-      <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center">
+      <main className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-76px)] px-6 text-center">
         <h1
           ref={titleRef}
           className="text-6xl md:text-8xl lg:text-9xl font-quantum font-bold mb-6"
