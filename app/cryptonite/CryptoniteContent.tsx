@@ -7,20 +7,24 @@ interface Feature {
 
 const FEATURES: Feature[] = [
   {
-    title: 'Cryptonite Chain',
-    description: 'Red propia diseñada para transacciones ligeras y rápidas.',
+    title: 'Esquema Mini-Blockchain',
+    description:
+      'Las transacciones antiguas se descartan con el tiempo, así los nodos nuevos sincronizan en minutos y la minería se mantiene descentralizada.',
   },
   {
-    title: 'Micro Blockchain',
-    description: 'Arquitectura compacta, pensada para volumen alto sin fricción.',
+    title: 'Microtransacciones y Mensajes',
+    description:
+      'Al no acumular blockchain de forma indefinida, soporta pagos de valor mínimo y mensajes personalizados sin penalizar el tamaño de la red.',
   },
   {
-    title: 'Microtransacciones',
-    description: 'Pagos mínimos con coste casi nulo.',
+    title: 'Límites de Retiro',
+    description:
+      'Cada dirección puede limitar cuánto se retira por bloque, dando más confianza en transacciones sin confirmar y reduciendo el riesgo de doble gasto.',
   },
   {
-    title: 'Transacciones Inmutables',
-    description: 'Cada movimiento queda registrado de forma permanente y verificable.',
+    title: 'Transacciones No Maleables',
+    description:
+      'El emisor firma el identificador de la transacción, así cualquier alteración lo cambia — evita los problemas de maleabilidad que afectaron a otros proyectos.',
   },
 ];
 
