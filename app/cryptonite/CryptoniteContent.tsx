@@ -20,6 +20,39 @@ interface TeamMember {
   role: string;
 }
 
+interface IntegrationPhase {
+  label: string;
+  title: string;
+  description: string;
+}
+
+const INTEGRATION_PHASES: IntegrationPhase[] = [
+  {
+    label: 'FASE 1',
+    title: 'Transición',
+    description:
+      'Consolidación técnica y de marca de Cryptonite bajo Omniverse Games.',
+  },
+  {
+    label: 'FASE 2',
+    title: 'Integración',
+    description:
+      'XCN pasa a ser la moneda nativa de la economía de Omniverse: The Primordial Battlezone.',
+  },
+  {
+    label: 'FASE 3',
+    title: 'Exchange propio',
+    description:
+      'Exchange exclusivo del ecosistema Omniverse para XCN y los activos del juego.',
+  },
+  {
+    label: 'FASE 4',
+    title: 'Expansión',
+    description:
+      'Nuevos casos de uso para XCN dentro y fuera del ecosistema Omniverse.',
+  },
+];
+
 const ARCHITECTURE: ArchitectureLayer[] = [
   {
     title: 'Cadena de Prueba',
@@ -204,6 +237,37 @@ const CryptoniteContent: FC = () => {
           >
             Sitio original
           </a>
+        </div>
+      </section>
+
+      <section className="px-6 py-16 max-w-4xl mx-auto border-t border-[#1C3A2E]">
+        <p className="text-xs tracking-[0.25em] text-[#39FF8E] mb-3 text-center">
+          INTEGRACIÓN
+        </p>
+        <h2 className="text-2xl md:text-3xl font-bold mb-3 text-center">
+          XCN dentro del ecosistema Omniverse
+        </h2>
+        <p className="text-xs text-[#9CB8AC] mb-10 text-center max-w-xl mx-auto">
+          Borrador interno — fases sujetas a ajuste.
+        </p>
+
+        <div className="space-y-4">
+          {INTEGRATION_PHASES.map((phase) => (
+            <div
+              key={phase.label}
+              className="border border-[#1C3A2E] bg-[#0A1F16] p-6 flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6"
+            >
+              <span className="text-xs tracking-[0.2em] text-[#39FF8E] shrink-0 w-20">
+                {phase.label}
+              </span>
+              <div>
+                <h3 className="text-base font-bold mb-1">{phase.title}</h3>
+                <p className="text-sm text-[#9CB8AC] leading-relaxed">
+                  {phase.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </main>
