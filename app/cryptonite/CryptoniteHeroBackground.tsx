@@ -15,6 +15,14 @@ const ENERGY_PARTICLES = [
   { left: '36%', size: 2, delay: 3.5, duration: 13.0, rise: 360 },
   { left: '63%', size: 2.5, delay: 5.0, duration: 10.5, rise: 300 },
   { left: '44%', size: 2, delay: 7.5, duration: 11.5, rise: 310 },
+  { left: '32%', size: 2, delay: 8.5, duration: 9.8, rise: 270 },
+  { left: '68%', size: 2.5, delay: 1.5, duration: 12.0, rise: 330 },
+  { left: '55%', size: 2, delay: 9.0, duration: 10.8, rise: 280 },
+  { left: '38%', size: 3, delay: 0.5, duration: 13.5, rise: 350 },
+  { left: '60%', size: 2, delay: 4.5, duration: 9.2, rise: 245 },
+  { left: '34%', size: 2.5, delay: 6.5, duration: 11.8, rise: 305 },
+  { left: '65%', size: 2, delay: 2.5, duration: 8.6, rise: 265 },
+  { left: '42%', size: 2.5, delay: 7.0, duration: 12.8, rise: 380 },
 ];
 
 // Destellos de fondo, mismo patrón que HeroBackground.tsx (Omniverse)
@@ -29,6 +37,12 @@ const SPARKLES = [
   { top: '35%', left: '8%', size: 1.5, delay: 1.9, duration: 4.1 },
   { top: '42%', left: '47%', size: 2.5, delay: 1.0, duration: 4.4 },
   { top: '47%', left: '67%', size: 1.5, delay: 2.7, duration: 3.8 },
+  { top: '8%', left: '40%', size: 1.5, delay: 3.1, duration: 4.2 },
+  { top: '20%', left: '92%', size: 2, delay: 0.9, duration: 3.9 },
+  { top: '38%', left: '20%', size: 1.5, delay: 2.5, duration: 4.5 },
+  { top: '15%', left: '64%', size: 2, delay: 1.6, duration: 3.6 },
+  { top: '31%', left: '57%', size: 1.5, delay: 3.4, duration: 4.0 },
+  { top: '45%', left: '12%', size: 2, delay: 0.2, duration: 4.3 },
 ];
 
 interface CryptoniteHeroBackgroundProps {
