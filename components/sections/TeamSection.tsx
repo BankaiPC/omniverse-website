@@ -13,6 +13,27 @@ interface TeamSectionProps {
   dict: any;
 }
 
+// Posiciones/colores/tiempos fijos — sin Math.random() en render
+// (mismatch de hidratación servidor/cliente).
+const TEAM_PARTICLES = [
+  { left: '6%', top: '12%', color: '#6366f1', delay: 0.2, duration: 2.4 },
+  { left: '18%', top: '64%', color: '#8b5cf6', delay: 1.8, duration: 3.1 },
+  { left: '30%', top: '28%', color: '#a855f7', delay: 0.6, duration: 2.7 },
+  { left: '42%', top: '80%', color: '#3b82f6', delay: 2.6, duration: 3.6 },
+  { left: '54%', top: '10%', color: '#1d4ed8', delay: 1.1, duration: 2.2 },
+  { left: '66%', top: '50%', color: '#6366f1', delay: 3.2, duration: 3.3 },
+  { left: '78%', top: '22%', color: '#8b5cf6', delay: 0.4, duration: 2.9 },
+  { left: '90%', top: '70%', color: '#a855f7', delay: 2.0, duration: 3.5 },
+  { left: '10%', top: '88%', color: '#3b82f6', delay: 1.5, duration: 2.6 },
+  { left: '24%', top: '40%', color: '#1d4ed8', delay: 3.6, duration: 3.0 },
+  { left: '36%', top: '56%', color: '#6366f1', delay: 0.8, duration: 2.5 },
+  { left: '48%', top: '34%', color: '#8b5cf6', delay: 2.4, duration: 3.4 },
+  { left: '60%', top: '76%', color: '#a855f7', delay: 1.3, duration: 2.8 },
+  { left: '72%', top: '14%', color: '#3b82f6', delay: 3.0, duration: 3.2 },
+  { left: '84%', top: '46%', color: '#1d4ed8', delay: 0.5, duration: 2.3 },
+  { left: '94%', top: '84%', color: '#6366f1', delay: 1.9, duration: 3.7 },
+];
+
 export default function TeamSection({ lang, dict }: TeamSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -193,17 +214,17 @@ export default function TeamSection({ lang, dict }: TeamSectionProps) {
         
         {/* Floating Team Particles */}
         <div className="absolute inset-0">
-          {[...Array(16)].map((_, i) => (
+          {TEAM_PARTICLES.map((p, i) => (
             <div
               key={i}
               className="absolute w-2 h-2 rounded-full animate-pulse"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                backgroundColor: ['#6366f1', '#8b5cf6', '#a855f7', '#3b82f6', '#1d4ed8'][Math.floor(Math.random() * 5)],
+                left: p.left,
+                top: p.top,
+                backgroundColor: p.color,
                 opacity: 0.4,
-                animationDelay: `${Math.random() * 4}s`,
-                animationDuration: `${2 + Math.random() * 2}s`
+                animationDelay: `${p.delay}s`,
+                animationDuration: `${p.duration}s`
               }}
             />
           ))}

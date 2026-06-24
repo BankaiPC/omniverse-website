@@ -9,6 +9,19 @@ interface CookieModalProps {
   currentLang: 'en' | 'es';
 }
 
+// Posiciones/tiempos fijos — sin Math.random() en render (mismatch de
+// hidratación servidor/cliente).
+const COOKIE_PARTICLES = [
+  { left: '12%', top: '20%', duration: 2.4, delay: 0.2 },
+  { left: '28%', top: '70%', duration: 3.1, delay: 1.1 },
+  { left: '45%', top: '15%', duration: 2.8, delay: 0.6 },
+  { left: '60%', top: '55%', duration: 3.6, delay: 1.6 },
+  { left: '75%', top: '30%', duration: 2.2, delay: 0.9 },
+  { left: '85%', top: '65%', duration: 3.3, delay: 0.3 },
+  { left: '20%', top: '85%', duration: 2.6, delay: 1.4 },
+  { left: '55%', top: '80%', duration: 3.0, delay: 0.5 },
+];
+
 export default function CookieModal({ dict, currentLang }: CookieModalProps) {
   const { preferences, updatePreferences, hasConsent, setHasConsent } = useCookie();
   const [isVisible, setIsVisible] = useState(false);
@@ -140,22 +153,22 @@ export default function CookieModal({ dict, currentLang }: CookieModalProps) {
             {/* Animated Background */}
             <div className="absolute inset-0 rounded-2xl overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-red-500/10" />
-              {[...Array(8)].map((_, i) => (
+              {COOKIE_PARTICLES.map((p, i) => (
                 <motion.div
                   key={i}
                   className="absolute w-2 h-2 bg-orange-400/30 rounded-full"
                   style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
+                    left: p.left,
+                    top: p.top,
                   }}
                   animate={{
                     y: [0, -10, 0],
                     opacity: [0.3, 0.8, 0.3],
                   }}
                   transition={{
-                    duration: 2 + Math.random() * 2,
+                    duration: p.duration,
                     repeat: Infinity,
-                    delay: Math.random() * 2,
+                    delay: p.delay,
                   }}
                 />
               ))}
