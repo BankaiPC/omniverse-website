@@ -156,6 +156,28 @@ const CryptoniteContent: FC = () => {
       </section>
 
       <section className="px-6 py-16 max-w-5xl mx-auto border-t border-[#1C3A2E] text-center">
+        <h2 className="text-xs tracking-[0.25em] text-[#39FF8E] mb-6">MERCADOS</h2>
+        <div className="flex flex-wrap justify-center gap-4 text-xs">
+          <a
+            href="https://freiexchange.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-[#1C3A2E] px-4 py-2 hover:border-[#39FF8E] transition-colors duration-200"
+          >
+            Listada en FreiExchange
+          </a>
+          <a
+            href="https://coinmarketcap.com/currencies/cryptonite/historical-data/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-[#1C3A2E] px-4 py-2 hover:border-[#39FF8E] transition-colors duration-200"
+          >
+            Histórico en CoinMarketCap
+          </a>
+        </div>
+      </section>
+
+      <section className="px-6 py-16 max-w-5xl mx-auto border-t border-[#1C3A2E] text-center">
         <h2 className="text-xs tracking-[0.25em] text-[#39FF8E] mb-6">RECURSOS</h2>
         <div className="flex flex-wrap justify-center gap-4 text-xs">
           <a
