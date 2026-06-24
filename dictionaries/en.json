@@ -83,36 +83,29 @@
   },
   "academy": {
     "title": "Omniverse Academy",
-    "description": "Master the art of game development and immersive technology with our comprehensive courses designed by industry experts.",
-    "courses": {
+    "description": "Training in game development, blockchain, and artificial intelligence, with a direct path into the industry and into our own studio.",
+    "tracks": {
       "gameDev": {
         "title": "Game Development",
-        "description": "Learn to create immersive games from scratch"
+        "description": "Game design and programming with engines like Unreal Engine 5."
       },
-      "vrDesign": {
-        "title": "VR Design",
-        "description": "Master virtual reality design principles"
+      "blockchain": {
+        "title": "Blockchain",
+        "description": "Game economies, asset tokenization, and smart contracts."
       },
-      "aiGaming": {
-        "title": "AI in Gaming",
-        "description": "Integrate artificial intelligence in games"
+      "ai": {
+        "title": "Artificial Intelligence",
+        "description": "AI applied to NPCs, content generation, and production tooling."
       },
-      "gameArt": {
-        "title": "Game Art & Animation",
-        "description": "Create stunning visuals and animations"
+      "design": {
+        "title": "Game Design",
+        "description": "Systems design, narrative, and balancing for competitive games."
       }
     },
-    "stats": {
-      "students": "Students",
-      "success": "Success Rate",
-      "support": "Support"
-    },
-    "enrollButton": "Enroll Now",
     "cta": {
-      "title": "Ready to Start Your Journey?",
-      "description": "Join thousands of students who have already transformed their careers with our comprehensive courses.",
-      "browseButton": "Browse All Courses",
-      "freeTrialButton": "Start Free Trial"
+      "title": "Want to get involved?",
+      "description": "Enrollment opens later. Let us know you're interested.",
+      "button": "Let's talk"
     }
   },
   "team": {
@@ -171,64 +164,26 @@
     }
   },
   "investors": {
-    "title": "Our Investors",
-    "description": "We're backed by leading investors who share our vision of transforming the gaming industry through innovative technology and immersive experiences.",
-    "ventureCapital": {
-      "name": "TechVentures Capital",
-      "type": "Series A Lead",
-      "description": "Leading venture capital firm focused on gaming and tech startups"
-    },
-    "gamingFund": {
-      "name": "Gaming Innovation Fund",
-      "type": "Strategic Investor",
-      "description": "Specialized gaming industry investment fund"
-    },
-    "corporate": {
-      "name": "Meta Gaming Corp",
-      "type": "Corporate Partner",
-      "description": "Strategic partnership with major gaming corporation"
-    },
-    "angel": {
-      "name": "Angel Investors Group",
-      "type": "Angel Round",
-      "description": "Group of successful gaming industry entrepreneurs"
-    },
-    "metrics": {
-      "totalFunding": "Total Funding Raised",
-      "totalFundingDesc": "Across multiple funding rounds",
-      "investors": "Investors",
-      "investorsDesc": "Leading industry investors",
-      "growth": "Revenue Growth",
-      "growthDesc": "Year-over-year growth",
-      "countries": "Countries",
-      "countriesDesc": "Global market presence"
-    },
-    "timeline": {
-      "title": "Our Journey"
-    },
-    "milestones": {
-      "seriesA": {
-        "title": "Series A Funding",
-        "description": "Raised $15M to accelerate product development"
+    "title": "Building Omniverse",
+    "description": "We're raising a round to build Omniverse: The Primordial Battlezone and the blockchain economy behind it. We're looking for partners who share that long-term vision.",
+    "pillars": {
+      "product": {
+        "title": "Product",
+        "description": "Omniverse: The Primordial Battlezone — a competitive shooter with a game economy backed by our own blockchain."
       },
-      "launch": {
-        "title": "Product Launch",
-        "description": "Successfully launched first gaming platform"
+      "market": {
+        "title": "Market",
+        "description": "Esports and competitive gaming: growing demand for game economies with real asset ownership."
       },
-      "seed": {
-        "title": "Seed Funding",
-        "description": "Initial $5M seed round to build MVP"
-      },
-      "founded": {
-        "title": "Company Founded",
-        "description": "Started with vision to revolutionize gaming"
+      "team": {
+        "title": "Team",
+        "description": "A multidisciplinary team with experience in game development, blockchain, and growth."
       }
     },
     "cta": {
-      "title": "Interested in Investing?",
-      "description": "Join our mission to revolutionize gaming. Contact us to learn about investment opportunities.",
-      "contactButton": "Contact Us",
-      "pitchButton": "View Pitch Deck"
+      "title": "Interested in investing?",
+      "description": "All investment conversations are confidential. Let's talk directly.",
+      "contactButton": "Let's talk"
     }
   },
   "contact": {

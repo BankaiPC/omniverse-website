@@ -83,36 +83,29 @@
   },
   "academy": {
     "title": "Academia Omniverse",
-    "description": "Domina el desarrollo de videojuegos, blockchain, IA. Etc. Con salida directa a la industria y a nuestro estudio.",
-    "courses": {
+    "description": "Formación en desarrollo de videojuegos, blockchain e inteligencia artificial, con salida directa a la industria y a nuestro estudio.",
+    "tracks": {
       "gameDev": {
-        "title": "Desarrollo de Juegos",
-        "description": "Aprende a crear juegos inmersivos desde cero"
+        "title": "Desarrollo de Videojuegos",
+        "description": "Diseño y programación de juegos con motores como Unreal Engine 5."
       },
-      "vrDesign": {
-        "title": "Diseño VR",
-        "description": "Domina los principios del diseño de realidad virtual"
+      "blockchain": {
+        "title": "Blockchain",
+        "description": "Economías de juego, tokenización de activos y contratos inteligentes."
       },
-      "aiGaming": {
-        "title": "IA en Gaming",
-        "description": "Integra inteligencia artificial en juegos"
+      "ai": {
+        "title": "Inteligencia Artificial",
+        "description": "IA aplicada a NPCs, generación de contenido y herramientas de producción."
       },
-      "gameArt": {
-        "title": "Arte y Animación de Juegos",
-        "description": "Crea visuales y animaciones impresionantes"
+      "design": {
+        "title": "Game Design",
+        "description": "Diseño de sistemas, narrativa y balanceo de juegos competitivos."
       }
     },
-    "stats": {
-      "students": "Estudiantes",
-      "success": "Tasa de Éxito",
-      "support": "Soporte"
-    },
-    "enrollButton": "Inscribirse Ahora",
     "cta": {
-      "title": "¿Listo para Comenzar tu Viaje?",
-      "description": "Únete a miles de estudiantes que ya han transformado sus carreras con nuestros cursos integrales.",
-      "browseButton": "Explorar Todos los Cursos",
-      "freeTrialButton": "Comenzar Prueba Gratuita"
+      "title": "¿Quieres formar parte?",
+      "description": "Abriremos inscripciones más adelante. Déjanos tu interés.",
+      "button": "Hablemos"
     }
   },
   "team": {
@@ -171,64 +164,26 @@
     }
   },
   "investors": {
-    "title": "Nuestros Inversores",
-    "description": "Estamos respaldados por inversores líderes que comparten nuestra visión de transformar la industria del gaming a través de tecnología innovadora y experiencias inmersivas.",
-    "ventureCapital": {
-      "name": "TechVentures Capital",
-      "type": "Líder Serie A",
-      "description": "Firma de capital de riesgo líder enfocada en startups de gaming y tecnología"
-    },
-    "gamingFund": {
-      "name": "Fondo de Innovación Gaming",
-      "type": "Inversor Estratégico",
-      "description": "Fondo de inversión especializado en la industria del gaming"
-    },
-    "corporate": {
-      "name": "Meta Gaming Corp",
-      "type": "Socio Corporativo",
-      "description": "Asociación estratégica con corporación de gaming importante"
-    },
-    "angel": {
-      "name": "Grupo de Inversores Ángel",
-      "type": "Ronda Ángel",
-      "description": "Grupo de empresarios exitosos de la industria del gaming"
-    },
-    "metrics": {
-      "totalFunding": "Financiación Total Recaudada",
-      "totalFundingDesc": "A través de múltiples rondas de financiación",
-      "investors": "Inversores",
-      "investorsDesc": "Inversores líderes de la industria",
-      "growth": "Crecimiento de Ingresos",
-      "growthDesc": "Crecimiento año tras año",
-      "countries": "Países",
-      "countriesDesc": "Presencia en el mercado global"
-    },
-    "timeline": {
-      "title": "Nuestro Viaje"
-    },
-    "milestones": {
-      "seriesA": {
-        "title": "Financiación Serie A",
-        "description": "Recaudamos $15M para acelerar el desarrollo del producto"
+    "title": "Construyendo Omniverse",
+    "description": "Estamos levantando una ronda para construir Omniverse: The Primordial Battlezone y la economía blockchain que lo sostiene. Buscamos socios que compartan esa visión a largo plazo.",
+    "pillars": {
+      "product": {
+        "title": "Producto",
+        "description": "Omniverse: The Primordial Battlezone — un shooter competitivo con una economía de juego respaldada por blockchain propia."
       },
-      "launch": {
-        "title": "Lanzamiento del Producto",
-        "description": "Lanzamos exitosamente la primera plataforma de gaming"
+      "market": {
+        "title": "Mercado",
+        "description": "Esports y gaming competitivo: una demanda creciente por economías de juego con propiedad real de los activos."
       },
-      "seed": {
-        "title": "Financiación Semilla",
-        "description": "Ronda semilla inicial de $5M para construir MVP"
-      },
-      "founded": {
-        "title": "Empresa Fundada",
-        "description": "Comenzamos con la visión de revolucionar el gaming"
+      "team": {
+        "title": "Equipo",
+        "description": "Equipo multidisciplinar con experiencia en desarrollo de videojuegos, blockchain y growth."
       }
     },
     "cta": {
-      "title": "¿Interesado en Invertir?",
-      "description": "Únete a nuestra misión de revolucionar el gaming. Contáctanos para conocer las oportunidades de inversión.",
-      "contactButton": "Contáctanos",
-      "pitchButton": "Ver Pitch Deck"
+      "title": "¿Interesado en invertir?",
+      "description": "Toda conversación de inversión es confidencial. Hablemos directamente.",
+      "contactButton": "Hablemos"
     }
   },
   "contact": {
