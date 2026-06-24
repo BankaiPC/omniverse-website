@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import CryptoniteHeroBackground from './CryptoniteHeroBackground';
 
 interface Feature {
   title: string;
@@ -121,32 +122,36 @@ const CryptoniteContent: FC = () => {
         </span>
       </header>
 
-      <section className="flex flex-col items-center text-center px-6 pt-12 pb-20">
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-3 text-[#E8FFF3] [text-shadow:0_0_30px_rgba(57,255,142,0.35)]">
-          CRYPTONITE
-        </h1>
-        <p className="text-sm md:text-base tracking-[0.25em] text-[#39FF8E] mb-12">
-          LA PRIMERA MINI-BLOCKCHAIN
-        </p>
+      <section className="relative min-h-screen w-full overflow-hidden flex flex-col items-center justify-center text-center px-6">
+        <CryptoniteHeroBackground />
 
-        <img
-          src="/cryptonite/coin-logo.png"
-          alt="Cryptonite"
-          width={224}
-          height={224}
-          className="w-48 h-48 md:w-56 md:h-56 mb-16"
-        />
+        <div className="relative z-10 flex flex-col items-center">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-3 text-[#E8FFF3] [text-shadow:0_0_30px_rgba(57,255,142,0.35)]">
+            CRYPTONITE
+          </h1>
+          <p className="text-sm md:text-base tracking-[0.25em] text-[#39FF8E] mb-12">
+            LA PRIMERA MINI-BLOCKCHAIN
+          </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl w-full">
-          {FEATURES.map((feature) => (
-            <div
-              key={feature.title}
-              className="border border-[#1C3A2E] bg-[#0A1F16] p-5 text-left"
-            >
-              <h3 className="text-sm font-bold mb-2 text-[#E8FFF3]">{feature.title}</h3>
-              <p className="text-xs text-[#9CB8AC] leading-relaxed">{feature.description}</p>
-            </div>
-          ))}
+          <img
+            src="/cryptonite/coin-logo.png"
+            alt="Cryptonite"
+            width={224}
+            height={224}
+            className="w-48 h-48 md:w-56 md:h-56 mb-16"
+          />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl w-full">
+            {FEATURES.map((feature) => (
+              <div
+                key={feature.title}
+                className="border border-[#1C3A2E] bg-[#0A1F16] p-5 text-left"
+              >
+                <h3 className="text-sm font-bold mb-2 text-[#E8FFF3]">{feature.title}</h3>
+                <p className="text-xs text-[#9CB8AC] leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
