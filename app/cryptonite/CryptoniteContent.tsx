@@ -25,7 +25,7 @@ const CryptoniteContent: FC<CryptoniteContentProps> = ({ lang }) => {
         </div>
       </header>
 
-      <section className="relative min-h-screen w-full overflow-hidden flex flex-col items-center justify-center text-center px-6">
+      <section className="relative min-h-[calc(100vh-2cm)] w-full overflow-hidden flex flex-col items-center justify-center text-center px-6">
         <CryptoniteHeroBackground />
 
         <div className="relative z-10 flex flex-col items-center">
