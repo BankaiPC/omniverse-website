@@ -88,7 +88,7 @@ const CryptoniteContent: FC<CryptoniteContentProps> = ({ lang }) => {
         <h2 className="text-xs tracking-[0.25em] text-[#39FF8E] mb-8 text-center">
           {t.teamEyebrow}
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div className="grid grid-cols-3 gap-4 text-center">
           {t.team.map((member) => (
             <div key={member.alias}>
               <p className="text-sm font-bold">{member.alias}</p>
@@ -102,7 +102,7 @@ const CryptoniteContent: FC<CryptoniteContentProps> = ({ lang }) => {
         <h2 className="text-xs tracking-[0.25em] text-[#39FF8E] mb-6">{t.marketsEyebrow}</h2>
         <div className="flex flex-wrap justify-center gap-4 text-xs">
           <a
-            href="https://freiexchange.com"
+            href="https://freiexchange.com/market/XCN/BTC"
             target="_blank"
             rel="noopener noreferrer"
             className="border border-[#1C3A2E] px-4 py-2 hover:border-[#39FF8E] transition-colors duration-200"
