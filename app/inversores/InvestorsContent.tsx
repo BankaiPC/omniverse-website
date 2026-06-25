@@ -9,7 +9,7 @@ const SYNERGIES: Synergy[] = [
   {
     title: 'Caja durante el desarrollo',
     description:
-      'El juego tarda 18–24 meses en lanzar. La academia factura desde el mes 3, extendiendo el runway efectivo del capital invertido.',
+      'El juego (MVP) tarda 12 meses en lanzar, gracias a un workflow de desarrollo acelerado con IA. La academia factura desde el mes 3, extendiendo el runway efectivo del capital invertido.',
   },
   {
     title: 'Pipeline de talento propio',
