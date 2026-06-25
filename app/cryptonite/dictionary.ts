@@ -110,7 +110,7 @@ export const DICTIONARY: Record<Lang, Dictionary> = {
     teamEyebrow: 'EQUIPO',
     team: [
       { alias: 'bitfreak (J.D. Bruce)', role: 'Creador del esquema mini-blockchain' },
-      { alias: 'sekker2k4', role: 'Comunidad y redes' },
+      { alias: 'sekker2k4', role: 'Arquitecto y promotor del ecosistema Omniverse' },
       { alias: 'Biohazardev', role: 'Desarrollo Blockchain' },
     ],
     marketsEyebrow: 'MERCADOS',
@@ -200,7 +200,7 @@ export const DICTIONARY: Record<Lang, Dictionary> = {
     teamEyebrow: 'TEAM',
     team: [
       { alias: 'bitfreak (J.D. Bruce)', role: 'Creator of the mini-blockchain scheme' },
-      { alias: 'sekker2k4', role: 'Community & social' },
+      { alias: 'sekker2k4', role: 'Architect & promoter of the Omniverse ecosystem' },
       { alias: 'Biohazardev', role: 'Blockchain development' },
     ],
     marketsEyebrow: 'MARKETS',
@@ -290,7 +290,7 @@ export const DICTIONARY: Record<Lang, Dictionary> = {
     teamEyebrow: 'КОМАНДА',
     team: [
       { alias: 'bitfreak (J.D. Bruce)', role: 'Создатель схемы мини-блокчейна' },
-      { alias: 'sekker2k4', role: 'Сообщество и соцсети' },
+      { alias: 'sekker2k4', role: 'Архитектор и движущая сила экосистемы Omniverse' },
       { alias: 'Biohazardev', role: 'Разработка блокчейна' },
     ],
     marketsEyebrow: 'РЫНКИ',
@@ -380,7 +380,7 @@ export const DICTIONARY: Record<Lang, Dictionary> = {
     teamEyebrow: 'TEAM',
     team: [
       { alias: 'bitfreak (J.D. Bruce)', role: 'Schöpfer des Mini-Blockchain-Schemas' },
-      { alias: 'sekker2k4', role: 'Community & Social Media' },
+      { alias: 'sekker2k4', role: 'Architekt und Förderer des Omniverse-Ökosystems' },
       { alias: 'Biohazardev', role: 'Blockchain-Entwicklung' },
     ],
     marketsEyebrow: 'MÄRKTE',
@@ -465,7 +465,7 @@ export const DICTIONARY: Record<Lang, Dictionary> = {
     teamEyebrow: '团队',
     team: [
       { alias: 'bitfreak (J.D. Bruce)', role: '迷你区块链方案的创建者' },
-      { alias: 'sekker2k4', role: '社区与社交媒体' },
+      { alias: 'sekker2k4', role: 'Omniverse 生态系统的架构师与推动者' },
       { alias: 'Biohazardev', role: '区块链开发' },
     ],
     marketsEyebrow: '交易市场',
