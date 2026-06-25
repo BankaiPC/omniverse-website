@@ -49,6 +49,7 @@ interface Dictionary {
   resourcesEyebrow: string;
   resourceWhitepaper: string;
   resourceGithub: string;
+  resourceBitcointalk: string;
   resourceOriginal: string;
   integrationEyebrow: string;
   integrationTitle: string;
@@ -118,6 +119,7 @@ export const DICTIONARY: Record<Lang, Dictionary> = {
     resourcesEyebrow: 'RECURSOS',
     resourceWhitepaper: 'Whitepaper (PDF)',
     resourceGithub: 'GitHub',
+    resourceBitcointalk: 'Hilo en Bitcointalk',
     resourceOriginal: 'Sitio original',
     integrationEyebrow: 'INTEGRACIÓN',
     integrationTitle: 'XCN dentro del ecosistema Omniverse',
@@ -207,6 +209,7 @@ export const DICTIONARY: Record<Lang, Dictionary> = {
     resourcesEyebrow: 'RESOURCES',
     resourceWhitepaper: 'Whitepaper (PDF)',
     resourceGithub: 'GitHub',
+    resourceBitcointalk: 'Bitcointalk thread',
     resourceOriginal: 'Original site',
     integrationEyebrow: 'INTEGRATION',
     integrationTitle: 'XCN inside the Omniverse ecosystem',
@@ -296,6 +299,7 @@ export const DICTIONARY: Record<Lang, Dictionary> = {
     resourcesEyebrow: 'РЕСУРСЫ',
     resourceWhitepaper: 'Белая книга (PDF)',
     resourceGithub: 'GitHub',
+    resourceBitcointalk: 'Тема на Bitcointalk',
     resourceOriginal: 'Оригинальный сайт',
     integrationEyebrow: 'ИНТЕГРАЦИЯ',
     integrationTitle: 'XCN внутри экосистемы Omniverse',
@@ -385,6 +389,7 @@ export const DICTIONARY: Record<Lang, Dictionary> = {
     resourcesEyebrow: 'RESSOURCEN',
     resourceWhitepaper: 'Whitepaper (PDF)',
     resourceGithub: 'GitHub',
+    resourceBitcointalk: 'Bitcointalk-Thread',
     resourceOriginal: 'Ursprüngliche Website',
     integrationEyebrow: 'INTEGRATION',
     integrationTitle: 'XCN innerhalb des Omniverse-Ökosystems',
@@ -469,6 +474,7 @@ export const DICTIONARY: Record<Lang, Dictionary> = {
     resourcesEyebrow: '资源',
     resourceWhitepaper: '白皮书 (PDF)',
     resourceGithub: 'GitHub',
+    resourceBitcointalk: 'Bitcointalk 帖子',
     resourceOriginal: '官方原站',
     integrationEyebrow: '整合',
     integrationTitle: 'XCN 融入 Omniverse 生态系统',

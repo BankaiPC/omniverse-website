@@ -25,6 +25,24 @@ const CryptoniteContent: FC<CryptoniteContentProps> = ({ lang }) => {
         </div>
       </header>
 
+      <nav className="flex items-center gap-5 px-6 md:px-10 pb-4 overflow-x-auto text-xs tracking-wide whitespace-nowrap">
+        <a href="#como-funciona" className="text-[#9CB8AC] hover:text-[#39FF8E] transition-colors duration-200">
+          {t.howItWorksEyebrow}
+        </a>
+        <a href="#equipo" className="text-[#9CB8AC] hover:text-[#39FF8E] transition-colors duration-200">
+          {t.teamEyebrow}
+        </a>
+        <a href="#mercados" className="text-[#9CB8AC] hover:text-[#39FF8E] transition-colors duration-200">
+          {t.marketsEyebrow}
+        </a>
+        <a href="#recursos" className="text-[#9CB8AC] hover:text-[#39FF8E] transition-colors duration-200">
+          {t.resourcesEyebrow}
+        </a>
+        <a href="#integracion" className="text-[#9CB8AC] hover:text-[#39FF8E] transition-colors duration-200">
+          {t.integrationEyebrow}
+        </a>
+      </nav>
+
       <section className="relative min-h-[calc(100vh-2cm)] w-full overflow-hidden flex flex-col items-center justify-center text-center px-6">
         <CryptoniteHeroBackground />
 
@@ -58,7 +76,7 @@ const CryptoniteContent: FC<CryptoniteContentProps> = ({ lang }) => {
         </div>
       </section>
 
-      <section className="px-6 py-16 max-w-5xl mx-auto">
+      <section id="como-funciona" className="px-6 py-16 max-w-5xl mx-auto">
         <h2 className="text-xs tracking-[0.25em] text-[#39FF8E] mb-8 text-center">
           {t.howItWorksEyebrow}
         </h2>
@@ -84,7 +102,7 @@ const CryptoniteContent: FC<CryptoniteContentProps> = ({ lang }) => {
         </div>
       </section>
 
-      <section className="px-6 py-16 max-w-5xl mx-auto border-t border-[#1C3A2E]">
+      <section id="equipo" className="px-6 py-16 max-w-5xl mx-auto border-t border-[#1C3A2E]">
         <h2 className="text-xs tracking-[0.25em] text-[#39FF8E] mb-8 text-center">
           {t.teamEyebrow}
         </h2>
@@ -98,7 +116,7 @@ const CryptoniteContent: FC<CryptoniteContentProps> = ({ lang }) => {
         </div>
       </section>
 
-      <section className="px-6 py-16 max-w-5xl mx-auto border-t border-[#1C3A2E] text-center">
+      <section id="mercados" className="px-6 py-16 max-w-5xl mx-auto border-t border-[#1C3A2E] text-center">
         <h2 className="text-xs tracking-[0.25em] text-[#39FF8E] mb-6">{t.marketsEyebrow}</h2>
         <div className="flex flex-wrap justify-center gap-4 text-xs">
           <a
@@ -120,7 +138,7 @@ const CryptoniteContent: FC<CryptoniteContentProps> = ({ lang }) => {
         </div>
       </section>
 
-      <section className="px-6 py-16 max-w-5xl mx-auto border-t border-[#1C3A2E] text-center">
+      <section id="recursos" className="px-6 py-16 max-w-5xl mx-auto border-t border-[#1C3A2E] text-center">
         <h2 className="text-xs tracking-[0.25em] text-[#39FF8E] mb-6">{t.resourcesEyebrow}</h2>
         <div className="flex flex-wrap justify-center gap-4 text-xs">
           <a
@@ -140,6 +158,14 @@ const CryptoniteContent: FC<CryptoniteContentProps> = ({ lang }) => {
             {t.resourceGithub}
           </a>
           <a
+            href="https://bitcointalk.org/index.php?topic=1801595.0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-[#1C3A2E] px-4 py-2 hover:border-[#39FF8E] transition-colors duration-200"
+          >
+            {t.resourceBitcointalk}
+          </a>
+          <a
             href="https://cryptonite.info"
             target="_blank"
             rel="noopener noreferrer"
@@ -150,7 +176,7 @@ const CryptoniteContent: FC<CryptoniteContentProps> = ({ lang }) => {
         </div>
       </section>
 
-      <section className="px-6 py-16 max-w-4xl mx-auto border-t border-[#1C3A2E]">
+      <section id="integracion" className="px-6 py-16 max-w-4xl mx-auto border-t border-[#1C3A2E]">
         <p className="text-xs tracking-[0.25em] text-[#39FF8E] mb-3 text-center">
           {t.integrationEyebrow}
         </p>
