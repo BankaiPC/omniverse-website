@@ -24,6 +24,18 @@ interface ApiDict {
   searchPlaceholder: string;
   searchResultsLabel: string;
   searchNoResults: string;
+  gettingStartedTitle: string;
+  gsEndpointLabel: string;
+  gsEndpointNote: string;
+  gsAuthLabel: string;
+  gsAuthNote: string;
+  gsCliLabel: string;
+  gsP2pLabel: string;
+  gsP2pNote: string;
+  gsEnvelopeTitle: string;
+  gsEnvelopeNote: string;
+  mobileSelectPlaceholder: string;
+  selectFromSidebar: string;
 }
 
 export const API_DICTIONARY: Record<Lang, ApiDict> = {
@@ -77,6 +89,18 @@ export const API_DICTIONARY: Record<Lang, ApiDict> = {
     searchPlaceholder: 'Buscar comando…',
     searchResultsLabel: 'resultados',
     searchNoResults: 'No se encontraron comandos que coincidan.',
+    gettingStartedTitle: 'Cómo conectar',
+    gsEndpointLabel: 'Endpoint',
+    gsEndpointNote: 'RPC sobre HTTP, escucha en localhost por defecto',
+    gsAuthLabel: 'Autenticación',
+    gsAuthNote: 'HTTP Basic Auth — usuario y contraseña configurados en el nodo (flag --user en los ejemplos de curl)',
+    gsCliLabel: 'CLI',
+    gsP2pLabel: 'Puerto P2P',
+    gsP2pNote: 'red de nodos, distinto del puerto RPC',
+    gsEnvelopeTitle: 'Formato de petición',
+    gsEnvelopeNote: 'Sobre JSON-RPC 1.0: method y params dentro de un único POST. Ejemplo real con getinfo:',
+    mobileSelectPlaceholder: 'Selecciona un comando…',
+    selectFromSidebar: 'Selecciona un comando del panel izquierdo.',
   },
   en: {
     eyebrow: 'API',
@@ -128,6 +152,18 @@ export const API_DICTIONARY: Record<Lang, ApiDict> = {
     searchPlaceholder: 'Search commands…',
     searchResultsLabel: 'matches',
     searchNoResults: 'No matching commands found.',
+    gettingStartedTitle: 'How to connect',
+    gsEndpointLabel: 'Endpoint',
+    gsEndpointNote: 'RPC over HTTP, listens on localhost by default',
+    gsAuthLabel: 'Authentication',
+    gsAuthNote: 'HTTP Basic Auth — username and password configured on the node (--user flag in the curl examples)',
+    gsCliLabel: 'CLI',
+    gsP2pLabel: 'P2P port',
+    gsP2pNote: 'node network, separate from the RPC port',
+    gsEnvelopeTitle: 'Request format',
+    gsEnvelopeNote: 'JSON-RPC 1.0 envelope: method and params inside a single POST. Real example using getinfo:',
+    mobileSelectPlaceholder: 'Select a command…',
+    selectFromSidebar: 'Select a command from the left panel.',
   },
   ru: {
     eyebrow: 'API',
@@ -179,6 +215,18 @@ export const API_DICTIONARY: Record<Lang, ApiDict> = {
     searchPlaceholder: 'Поиск команды…',
     searchResultsLabel: 'совпадений',
     searchNoResults: 'Подходящих команд не найдено.',
+    gettingStartedTitle: 'Как подключиться',
+    gsEndpointLabel: 'Эндпоинт',
+    gsEndpointNote: 'RPC по HTTP, по умолчанию слушает localhost',
+    gsAuthLabel: 'Аутентификация',
+    gsAuthNote: 'HTTP Basic Auth — логин и пароль настраиваются на узле (флаг --user в примерах curl)',
+    gsCliLabel: 'CLI',
+    gsP2pLabel: 'P2P-порт',
+    gsP2pNote: 'сеть узлов, отдельно от RPC-порта',
+    gsEnvelopeTitle: 'Формат запроса',
+    gsEnvelopeNote: 'Конверт JSON-RPC 1.0: method и params в одном POST-запросе. Реальный пример с getinfo:',
+    mobileSelectPlaceholder: 'Выберите команду…',
+    selectFromSidebar: 'Выберите команду на панели слева.',
   },
   de: {
     eyebrow: 'API',
@@ -230,6 +278,18 @@ export const API_DICTIONARY: Record<Lang, ApiDict> = {
     searchPlaceholder: 'Befehl suchen…',
     searchResultsLabel: 'Treffer',
     searchNoResults: 'Keine passenden Befehle gefunden.',
+    gettingStartedTitle: 'Verbindung herstellen',
+    gsEndpointLabel: 'Endpoint',
+    gsEndpointNote: 'RPC über HTTP, standardmäßig nur localhost',
+    gsAuthLabel: 'Authentifizierung',
+    gsAuthNote: 'HTTP Basic Auth — Benutzername und Passwort werden am Node konfiguriert (--user-Flag in den curl-Beispielen)',
+    gsCliLabel: 'CLI',
+    gsP2pLabel: 'P2P-Port',
+    gsP2pNote: 'Node-Netzwerk, getrennt vom RPC-Port',
+    gsEnvelopeTitle: 'Anfrageformat',
+    gsEnvelopeNote: 'JSON-RPC-1.0-Umschlag: method und params in einem einzigen POST. Echtes Beispiel mit getinfo:',
+    mobileSelectPlaceholder: 'Befehl auswählen…',
+    selectFromSidebar: 'Befehl in der linken Leiste auswählen.',
   },
   zh: {
     eyebrow: 'API',
@@ -280,5 +340,17 @@ export const API_DICTIONARY: Record<Lang, ApiDict> = {
     searchPlaceholder: '搜索命令…',
     searchResultsLabel: '个匹配结果',
     searchNoResults: '没有找到匹配的命令。',
+    gettingStartedTitle: '如何连接',
+    gsEndpointLabel: '端点',
+    gsEndpointNote: '基于 HTTP 的 RPC,默认只监听 localhost',
+    gsAuthLabel: '身份验证',
+    gsAuthNote: 'HTTP Basic Auth——用户名和密码在节点上配置(curl 示例中的 --user 参数)',
+    gsCliLabel: 'CLI',
+    gsP2pLabel: 'P2P 端口',
+    gsP2pNote: '节点网络端口,与 RPC 端口不同',
+    gsEnvelopeTitle: '请求格式',
+    gsEnvelopeNote: 'JSON-RPC 1.0 信封格式:method 和 params 包含在同一个 POST 请求中。以 getinfo 为例:',
+    mobileSelectPlaceholder: '选择一个命令…',
+    selectFromSidebar: '请在左侧面板选择一个命令。',
   },
 };
