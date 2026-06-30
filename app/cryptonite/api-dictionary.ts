@@ -20,6 +20,10 @@ interface ApiDict {
   labelCollapse: string;
   labelNativeBadge: string;
   labelBugNote: string;
+  labelCopyLink: string;
+  searchPlaceholder: string;
+  searchResultsLabel: string;
+  searchNoResults: string;
 }
 
 export const API_DICTIONARY: Record<Lang, ApiDict> = {
@@ -69,6 +73,10 @@ export const API_DICTIONARY: Record<Lang, ApiDict> = {
     labelCollapse: 'Ocultar detalle',
     labelNativeBadge: 'NATIVO',
     labelBugNote: 'Nota de corrección',
+    labelCopyLink: 'Copiar enlace',
+    searchPlaceholder: 'Buscar comando…',
+    searchResultsLabel: 'resultados',
+    searchNoResults: 'No se encontraron comandos que coincidan.',
   },
   en: {
     eyebrow: 'API',
@@ -116,6 +124,10 @@ export const API_DICTIONARY: Record<Lang, ApiDict> = {
     labelCollapse: 'Hide detail',
     labelNativeBadge: 'NATIVE',
     labelBugNote: 'Correction note',
+    labelCopyLink: 'Copy link',
+    searchPlaceholder: 'Search commands…',
+    searchResultsLabel: 'matches',
+    searchNoResults: 'No matching commands found.',
   },
   ru: {
     eyebrow: 'API',
@@ -163,6 +175,10 @@ export const API_DICTIONARY: Record<Lang, ApiDict> = {
     labelCollapse: 'Скрыть детали',
     labelNativeBadge: 'NATIVE',
     labelBugNote: 'Примечание об исправлении',
+    labelCopyLink: 'Скопировать ссылку',
+    searchPlaceholder: 'Поиск команды…',
+    searchResultsLabel: 'совпадений',
+    searchNoResults: 'Подходящих команд не найдено.',
   },
   de: {
     eyebrow: 'API',
@@ -210,6 +226,10 @@ export const API_DICTIONARY: Record<Lang, ApiDict> = {
     labelCollapse: 'Detail ausblenden',
     labelNativeBadge: 'NATIV',
     labelBugNote: 'Korrekturhinweis',
+    labelCopyLink: 'Link kopieren',
+    searchPlaceholder: 'Befehl suchen…',
+    searchResultsLabel: 'Treffer',
+    searchNoResults: 'Keine passenden Befehle gefunden.',
   },
   zh: {
     eyebrow: 'API',
@@ -256,5 +276,9 @@ export const API_DICTIONARY: Record<Lang, ApiDict> = {
     labelCollapse: '收起详情',
     labelNativeBadge: '原生',
     labelBugNote: '修正说明',
+    labelCopyLink: '复制链接',
+    searchPlaceholder: '搜索命令…',
+    searchResultsLabel: '个匹配结果',
+    searchNoResults: '没有找到匹配的命令。',
   },
 };

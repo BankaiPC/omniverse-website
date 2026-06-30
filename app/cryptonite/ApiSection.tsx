@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import type { FC } from 'react';
 import { API_CATEGORIES } from './api-data';
 import { API_DICTIONARY } from './api-dictionary';
 import type { Lang } from './dictionary';
+import CodeBlock from './CodeBlock';
 
 interface ApiSectionProps {
   lang: Lang;
@@ -19,11 +20,20 @@ const CommandRow: FC<{
   noteEn?: string;
   detail: string;
   t: (typeof API_DICTIONARY)['es'];
-}> = ({ name, native, source, signature, description, noteEn, detail, t }) => {
+  forceOpen: boolean;
+}> = ({ name, native, source, signature, description, noteEn, detail, t, forceOpen }) => {
   const [open, setOpen] = useState(false);
+  const rowRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (forceOpen) {
+      setOpen(true);
+      rowRef.current?.scrollIntoView({ block: 'center' });
+    }
+  }, [forceOpen]);
 
   return (
-    <div className="border-b border-[#1C3A2E] last:border-b-0">
+    <div id={`cmd-${name}`} ref={rowRef} className="border-b border-[#1C3A2E] last:border-b-0 scroll-mt-24">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
@@ -37,6 +47,14 @@ const CommandRow: FC<{
                 {t.labelNativeBadge}
               </span>
             )}
+            <a
+              href={`#cmd-${name}`}
+              onClick={(e) => e.stopPropagation()}
+              className="text-[#71717A] hover:text-[#39FF8E] text-[10px]"
+              title={t.labelCopyLink}
+            >
+              #
+            </a>
           </div>
           <p className="text-xs text-[#9CB8AC] mt-1 leading-relaxed">{description}</p>
         </div>
@@ -48,18 +66,16 @@ const CommandRow: FC<{
           <p className="text-[10px] tracking-wide text-[#71717A] mb-2">
             {t.labelSource}: <code>{source}</code>
           </p>
-          <pre className="bg-[#06120D] border border-[#1C3A2E] p-3 overflow-x-auto text-[#A7C4B5] whitespace-pre-wrap">
-            {signature}
-          </pre>
+          <CodeBlock text={signature} />
           {noteEn && (
             <div className="border border-[#39FF8E]/30 bg-[#39FF8E]/5 p-3 mt-2">
               <p className="text-[10px] tracking-widest text-[#39FF8E] mb-1">{t.labelBugNote}</p>
               <pre className="whitespace-pre-wrap text-[#9CB8AC]">{noteEn}</pre>
             </div>
           )}
-          <pre className="bg-[#06120D] border border-[#1C3A2E] p-3 mt-2 overflow-x-auto text-[#A7C4B5] whitespace-pre-wrap">
-            {detail}
-          </pre>
+          <div className="mt-2">
+            <CodeBlock text={detail} />
+          </div>
         </div>
       )}
     </div>
@@ -67,12 +83,17 @@ const CommandRow: FC<{
 };
 
 const CategoryAccordion: FC<{
-  category: string;
   label: string;
   commands: (typeof API_CATEGORIES)[number]['commands'];
   t: (typeof API_DICTIONARY)['es'];
-}> = ({ label, commands, t }) => {
+  forceOpen: boolean;
+  highlightCmd: string | null;
+}> = ({ label, commands, t, forceOpen, highlightCmd }) => {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (forceOpen) setOpen(true);
+  }, [forceOpen]);
 
   return (
     <div className="border border-[#1C3A2E] bg-[#0A1F16]">
@@ -99,6 +120,7 @@ const CategoryAccordion: FC<{
               noteEn={cmd.noteEn}
               detail={cmd.detail}
               t={t}
+              forceOpen={highlightCmd === cmd.name}
             />
           ))}
         </div>
@@ -109,6 +131,33 @@ const CategoryAccordion: FC<{
 
 const ApiSection: FC<ApiSectionProps> = ({ lang }) => {
   const t = API_DICTIONARY[lang];
+  const [query, setQuery] = useState('');
+  const [hashCmd, setHashCmd] = useState<string | null>(null);
+
+  // al cargar con un #cmd-xxx en la URL, expandir esa categoría/comando
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash.startsWith('#cmd-')) {
+      setHashCmd(hash.slice(5));
+    }
+  }, []);
+
+  const normalizedQuery = query.trim().toLowerCase();
+
+  const filteredCategories = useMemo(() => {
+    if (!normalizedQuery) return API_CATEGORIES;
+    return API_CATEGORIES.map((cat) => ({
+      ...cat,
+      commands: cat.commands.filter(
+        (cmd) =>
+          cmd.name.toLowerCase().includes(normalizedQuery) ||
+          cmd.descriptionEn.toLowerCase().includes(normalizedQuery)
+      ),
+    })).filter((cat) => cat.commands.length > 0);
+  }, [normalizedQuery]);
+
+  const totalMatches = filteredCategories.reduce((sum, c) => sum + c.commands.length, 0);
+  const isSearching = normalizedQuery.length > 0;
 
   return (
     <section id="api" className="px-6 py-16 max-w-5xl mx-auto border-t border-[#1C3A2E]">
@@ -133,17 +182,37 @@ const ApiSection: FC<ApiSectionProps> = ({ lang }) => {
         </div>
       </div>
 
-      <div className="space-y-3">
-        {API_CATEGORIES.map((cat) => (
-          <CategoryAccordion
-            key={cat.category}
-            category={cat.category}
-            label={t.categoryNames[cat.category] ?? cat.category}
-            commands={cat.commands}
-            t={t}
-          />
-        ))}
+      <div className="mb-4 sticky top-2 z-10">
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder={t.searchPlaceholder}
+          className="w-full bg-[#0A1F16] border border-[#1C3A2E] focus:border-[#39FF8E] outline-none px-4 py-2.5 text-xs text-[#E8FFF3] placeholder:text-[#71717A]"
+        />
+        {isSearching && (
+          <p className="text-[10px] text-[#71717A] mt-1.5 px-1">
+            {totalMatches} {t.searchResultsLabel}
+          </p>
+        )}
       </div>
+
+      {isSearching && totalMatches === 0 ? (
+        <p className="text-xs text-[#71717A] text-center py-8">{t.searchNoResults}</p>
+      ) : (
+        <div className="space-y-3">
+          {filteredCategories.map((cat) => (
+            <CategoryAccordion
+              key={cat.category}
+              label={t.categoryNames[cat.category] ?? cat.category}
+              commands={cat.commands}
+              t={t}
+              forceOpen={isSearching || (hashCmd !== null && cat.commands.some((c) => c.name === hashCmd))}
+              highlightCmd={hashCmd}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 };
