@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import CryptoniteHeroBackground from './CryptoniteHeroBackground';
 import LanguageSwitcher from './LanguageSwitcher';
+import ApiSection from './ApiSection';
 import { DICTIONARY, type Lang } from './dictionary';
 
 interface CryptoniteContentProps {
@@ -40,6 +41,9 @@ const CryptoniteContent: FC<CryptoniteContentProps> = ({ lang }) => {
         </a>
         <a href="#integracion" className="text-[#9CB8AC] hover:text-[#39FF8E] transition-colors duration-200">
           {t.integrationEyebrow}
+        </a>
+        <a href="#api" className="text-[#9CB8AC] hover:text-[#39FF8E] transition-colors duration-200">
+          API
         </a>
       </nav>
 
@@ -206,6 +210,8 @@ const CryptoniteContent: FC<CryptoniteContentProps> = ({ lang }) => {
           ))}
         </div>
       </section>
+
+      <ApiSection lang={lang} />
     </main>
   );
 };
