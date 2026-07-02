@@ -1,8 +1,30 @@
 import type { FC } from 'react';
+import { motion, MotionConfig } from 'framer-motion';
 import CryptoniteHeroBackground from './CryptoniteHeroBackground';
 import LanguageSwitcher from './LanguageSwitcher';
 import ApiSection from './ApiSection';
 import { DICTIONARY, type Lang } from './dictionary';
+
+// Stagger de entrada del hero. 0.2s ease-out por elemento (mismo timing
+// que el resto del sitio). Framer Motion NO respeta prefers-reduced-motion
+// por defecto — hay que activarlo explícitamente. Se hace con
+// <MotionConfig reducedMotion="user"> más abajo, que sustituye
+// transform/opacity por instantáneo cuando el SO lo pide.
+const heroContainer = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+  },
+};
+
+const heroItem = {
+  hidden: { opacity: 0, y: 16 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.2, ease: 'easeOut' as const },
+  },
+};
 
 interface CryptoniteContentProps {
   lang: Lang;
@@ -12,6 +34,7 @@ const CryptoniteContent: FC<CryptoniteContentProps> = ({ lang }) => {
   const t = DICTIONARY[lang];
 
   return (
+    <MotionConfig reducedMotion="user">
     <main style={{ background: '#06120D', color: '#E8FFF3' }} className="min-h-screen">
       <header className="flex flex-wrap items-center justify-between gap-3 px-6 md:px-10 py-6">
         <div className="flex items-center gap-3">
@@ -50,15 +73,27 @@ const CryptoniteContent: FC<CryptoniteContentProps> = ({ lang }) => {
       <section className="relative min-h-[calc(100vh-2cm)] w-full overflow-hidden flex flex-col items-center justify-center text-center px-6">
         <CryptoniteHeroBackground />
 
-        <div className="relative z-10 flex flex-col items-center">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-3 text-[#E8FFF3] [text-shadow:0_0_30px_rgba(57,255,142,0.35)]">
+        <motion.div
+          className="relative z-10 flex flex-col items-center"
+          variants={heroContainer}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.h1
+            variants={heroItem}
+            className="text-4xl md:text-6xl font-bold tracking-tight mb-3 text-[#E8FFF3] [text-shadow:0_0_30px_rgba(57,255,142,0.35)]"
+          >
             CRYPTONITE
-          </h1>
-          <p className="text-sm md:text-base tracking-[0.25em] text-[#39FF8E] mb-12">
+          </motion.h1>
+          <motion.p
+            variants={heroItem}
+            className="text-sm md:text-base tracking-[0.25em] text-[#39FF8E] mb-12"
+          >
             {t.tagline}
-          </p>
+          </motion.p>
 
-          <img
+          <motion.img
+            variants={heroItem}
             src="/cryptonite/coin-logo.png"
             alt="Cryptonite"
             width={224}
@@ -66,18 +101,22 @@ const CryptoniteContent: FC<CryptoniteContentProps> = ({ lang }) => {
             className="w-48 h-48 md:w-56 md:h-56 mb-16"
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl w-full">
+          <motion.div
+            variants={heroContainer}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl w-full"
+          >
             {t.features.map((feature) => (
-              <div
+              <motion.div
                 key={feature.title}
+                variants={heroItem}
                 className="border border-[#1C3A2E] bg-[#0A1F16] p-5 text-left"
               >
                 <h3 className="text-sm font-bold mb-2 text-[#E8FFF3]">{feature.title}</h3>
                 <p className="text-xs text-[#9CB8AC] leading-relaxed">{feature.description}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       <section id="como-funciona" className="px-6 py-16 max-w-5xl mx-auto">
@@ -213,6 +252,7 @@ const CryptoniteContent: FC<CryptoniteContentProps> = ({ lang }) => {
 
       <ApiSection lang={lang} />
     </main>
+    </MotionConfig>
   );
 };
 
