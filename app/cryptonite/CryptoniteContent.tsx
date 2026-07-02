@@ -1,3 +1,5 @@
+'use client';
+
 import type { FC } from 'react';
 import { motion, MotionConfig } from 'framer-motion';
 import CryptoniteHeroBackground from './CryptoniteHeroBackground';
